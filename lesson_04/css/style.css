@@ -1,0 +1,120 @@
+/* підключення шрифтів */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,600;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Work+Sans:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Work+Sans:ital,wght@0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:regular,400,500');
+@import url("fonts.css");
+
+/* Скидання стилей */
+@import url("reset.css");
+
+body {
+font-family:  'Proxima Nova Rg', sans-serif; 
+font-weight: normal;
+font-style: normal;
+font-display: swap; 
+}
+.header-menu a {
+font-family: 'Proxima Nova Rg', sans-serif;
+font-weight: bold;
+font-style: normal;
+font-display: swap;
+text-decoration: underline;
+letter-spacing: 1.3px;
+font-size: 20px;   
+}
+h1 {
+font-size: 50px;
+font-family: 'Proxima Nova Bl', sans-serif;
+font-weight: 900;
+font-style: normal;
+font-display: swap;
+letter-spacing: 10px;
+text-align: center;
+}
+.section1-content h2 {
+font-family: 'Proxima Nova Rg', sans-serif;
+font-weight: bold;
+font-style: normal;
+font-display: swap;
+font-size: 30px;
+word-spacing: 10px;
+}
+.section2-title {
+font-family: 'Proxima Nova Rg', sans-serif;
+font-weight: bold;
+font-style: normal;
+font-display: swap;
+font-size: 30px;
+word-spacing: 10px;   
+}
+.section1-subtitle, .section2-subtitle {
+font-size: 20px; 
+text-shadow: 2px 2px 5px #000, 5px -2px 10px red;
+font-style: italic;
+text-transform: uppercase;  
+}
+span {
+text-transform: uppercase;
+font-weight: bold;
+text-shadow: 2px 2px 2px #8e5f5f;
+}
+.block1-subtitle {
+font-family: "Work Sans" , sans-serif;
+font-size: 38px;
+font-style: normal;
+font-weight: 600;
+line-height: 50px;
+color: #132138;
+text-align: center;
+}
+.section2-block1 p {
+font-family: "Work Sans" , sans-serif;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+color: #556070;  
+}
+.block2-subtitle {
+   font-family: "DM Sans" , sans-serif;
+font-size: 88px;
+font-style: normal;
+font-weight: 700;
+line-height: 95px;
+color: #1E1B39;
+text-align: center;
+}
+.section2-block2 p {
+font-family: "DM Sans" , sans-serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 42px;
+color: #474464;
+}
+.block3-subtitle {
+font-family: "Roboto" , sans-serif;
+font-size: 50px;
+font-style: normal;
+font-weight: 500;
+line-height: 66px; /* 132% */
+letter-spacing: 1px;
+color: #091133;
+text-align: center;
+}
+.section2-block3 p {
+font-family: "Roboto" , sans-serif;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 30px; /* 166.667% */
+}
+.item-link {
+color: red;
+}
+.footer-title {
+text-transform: uppercase;
+color: blue;
+}
