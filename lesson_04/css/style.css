@@ -12,14 +12,12 @@
 body {
 font-family:  'Proxima Nova Rg', sans-serif; 
 font-weight: normal;
-font-style: normal;
-font-display: swap; 
+font-style: normal; 
 }
 .header-menu a {
 font-family: 'Proxima Nova Rg', sans-serif;
 font-weight: bold;
 font-style: normal;
-font-display: swap;
 text-decoration: underline;
 letter-spacing: 1.3px;
 font-size: 20px;   
@@ -29,7 +27,6 @@ font-size: 50px;
 font-family: 'Proxima Nova Bl', sans-serif;
 font-weight: 900;
 font-style: normal;
-font-display: swap;
 letter-spacing: 10px;
 text-align: center;
 }
@@ -37,7 +34,6 @@ text-align: center;
 font-family: 'Proxima Nova Rg', sans-serif;
 font-weight: bold;
 font-style: normal;
-font-display: swap;
 font-size: 30px;
 word-spacing: 10px;
 }
@@ -45,7 +41,6 @@ word-spacing: 10px;
 font-family: 'Proxima Nova Rg', sans-serif;
 font-weight: bold;
 font-style: normal;
-font-display: swap;
 font-size: 30px;
 word-spacing: 10px;   
 }
