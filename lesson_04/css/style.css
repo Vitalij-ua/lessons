@@ -10,37 +10,32 @@
 @import url("reset.css");
 
 body {
-font-family:  'Proxima Nova Rg', sans-serif; 
-font-weight: normal;
-font-style: normal; 
+font-family:  'Proxima Nova', sans-serif; 
+font-weight: 400; 
 }
 .header-menu a {
-font-family: 'Proxima Nova Rg', sans-serif;
-font-weight: bold;
-font-style: normal;
+font-family: 'Proxima Nova', sans-serif;
+font-weight: 700;
 text-decoration: underline;
 letter-spacing: 1.3px;
 font-size: 20px;   
 }
 h1 {
 font-size: 50px;
-font-family: 'Proxima Nova Bl', sans-serif;
+font-family: 'Proxima Nova', sans-serif;
 font-weight: 900;
-font-style: normal;
 letter-spacing: 10px;
 text-align: center;
 }
 .section1-content h2 {
-font-family: 'Proxima Nova Rg', sans-serif;
-font-weight: bold;
-font-style: normal;
+font-family: 'Proxima Nova', sans-serif;
+font-weight: 700;
 font-size: 30px;
 word-spacing: 10px;
 }
 .section2-title {
-font-family: 'Proxima Nova Rg', sans-serif;
-font-weight: bold;
-font-style: normal;
+font-family: 'Proxima Nova', sans-serif;
+font-weight: 700;
 font-size: 30px;
 word-spacing: 10px;   
 }
@@ -52,13 +47,12 @@ text-transform: uppercase;
 }
 span {
 text-transform: uppercase;
-font-weight: bold;
+font-weight: 700;
 text-shadow: 2px 2px 2px #8e5f5f;
 }
 .block1-subtitle {
 font-family: "Work Sans" , sans-serif;
 font-size: 38px;
-font-style: normal;
 font-weight: 600;
 line-height: 50px;
 color: #132138;
@@ -67,7 +61,6 @@ text-align: center;
 .section2-block1 p {
 font-family: "Work Sans" , sans-serif;
 font-size: 18px;
-font-style: normal;
 font-weight: 400;
 line-height: 24px;
 color: #556070;  
@@ -75,7 +68,6 @@ color: #556070;
 .block2-subtitle {
    font-family: "DM Sans" , sans-serif;
 font-size: 88px;
-font-style: normal;
 font-weight: 700;
 line-height: 95px;
 color: #1E1B39;
@@ -84,17 +76,15 @@ text-align: center;
 .section2-block2 p {
 font-family: "DM Sans" , sans-serif;
 font-size: 24px;
-font-style: normal;
 font-weight: 400;
-line-height: 42px;
+line-height: 1.75;
 color: #474464;
 }
 .block3-subtitle {
 font-family: "Roboto" , sans-serif;
 font-size: 50px;
-font-style: normal;
 font-weight: 500;
-line-height: 66px; /* 132% */
+line-height: 1.32; /* 132% */
 letter-spacing: 1px;
 color: #091133;
 text-align: center;
@@ -102,9 +92,8 @@ text-align: center;
 .section2-block3 p {
 font-family: "Roboto" , sans-serif;
 font-size: 18px;
-font-style: normal;
 font-weight: 400;
-line-height: 30px; /* 166.667% */
+line-height: 1.66; /* 166.667% */
 }
 .item-link {
 color: red;
