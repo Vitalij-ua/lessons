@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:regular,400,500');
+@import url('https://fonts.googleapis.com/css?family=Manrope:regular,600,700');
+@import url("reset.css");
+
+body {
+   font-family: "Roboto", sans-serif;
+   background-color: #cac8c8;
+}
+
+.header-menu-list {
+   font-size: 0;
+   margin-block: 40px;
+}
+
+.header-items-item {
+   display: inline-block;
+}
+
+.header-items-item div {
+
+   padding: 10px;
+   background-color: white;
+   font-size: 16px;
+   margin-inline: 20px;
+}
+
+h1 {
+   font-size: 50px;
+   font-weight: 700;
+   text-align: center;
+   margin-bottom: 40px;
+   text-shadow: 5px 5px 3px #5c4d4d;
+}
+
+
+h2 {
+   font-size: 35px;
+   font-weight: 700;
+   color: rgb(39, 39, 68);
+   margin: 0px 0px 30px 20px;
+   text-shadow: 5px 5px 3px #5c4d4d;
+}
+
+.section1-content-block1,
+.section1-content-block2 {
+   margin-bottom: 40px;
+   font-size: 0;
+}
+
+.section1-content-block1-text,
+.section1-title-block1-imag,
+.section1-content-block2-text,
+.section1-title-block2-imag {
+   width: 49%;
+   display: inline-block;
+   padding: 20px;
+   vertical-align: middle;
+   background-color: white;
+}
+
+.section1-content-block1-text,
+.section1-title-block2-imag {
+   margin-right: 2%;
+}
+
+.section1-title-block2-imag img,
+.section1-title-block1-imag img {
+   max-width: 100%;
+}
+
+.section1-content p {
+   font-size: 16px;
+}
+
+.page-section1 p {
+   margin-bottom: 10px;
+}
+
+h3 {
+   font-size: 35px;
+   color: rgb(101, 101, 181);
+   margin: 0px 0px 30px 20px;
+   text-shadow: 5px 5px 3px #ada1df;
+}
+
+.section2-block1 {
+   background-color: #141414;
+}
+
+.section2-block1-title {
+   padding-top: 80px;
+   margin-bottom: 80px;
+}
+
+.section2-block1-container {
+   max-width: 1597px;
+   overflow: hidden;
+   margin: 0 auto;
+
+}
+
+.section2-block1-content {
+   margin-bottom: 100px;
+}
+
+h4 {
+   font-family: 'Manrope', sans-serif;
+   font-size: 38px;
+   font-weight: 700;
+   line-height: 1.50;
+   color: #FFF;
+}
+
+.section2-block1-title p {
+   color: #999;
+   font-family: 'Manrope', sans-serif;
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 1.50;
+}
+
+.icon-name {
+   color: #FFF;
+
+   font-family: 'Manrope', sans-serif;
+   font-size: 24px;
+   font-style: normal;
+   font-weight: 600;
+   line-height: 1.50;
+}
+
+.icon {
+   margin: 0px 30px 30px 0px;
+}
+
+.section2-block1-row1 p,
+.section2-block1-row2 p {
+   color: #999;
+   font-family: 'Manrope', sans-serif;
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 1.50;
+}
+
+.icon-name {
+   display: inline-block;
+}
+
+
+.block1-row1-column1,
+.block1-row1-column2,
+.block1-row1-column3,
+.block1-row2-column1,
+.block1-row2-column2,
+.block1-row2-column3 {
+   display: inline-block;
+   max-width: 100%;
+   min-height: 283px;
+   background-color: #fff;
+   padding: 50px;
+   margin-right: 30px;
+   background: linear-gradient(222deg, rgba(229, 0, 0, 0.50) -208.03%, rgba(229, 0, 0, 0.00) 41.32%), #0F0F0F;
+   border: 1px solid #262626;
+   border-radius: 12px;
+   vertical-align: middle;
+}
+
+.section2-block1-row1,
+.section2-block1-row2 {
+   font-size: 0;
+   margin-right: -30px;
+}
+
+.section2-block1-row1 {
+   margin-bottom: 30px;
+}
+
+.section2-block2 {
+   background-color: #fff;
+}
+
+.section2-block2-container {
+   max-width: 539px;
+   margin: 0 auto;
+}
+
+.block2-subtitle {
+   font-family: 'Roboto', sans-serif;
+   font-size: 50px;
+   font-weight: 500;
+   line-height: 1.32;
+   color: #091133;
+   letter-spacing: 1px;
+   padding-top: 100px;
+   margin-bottom: 20px;
+}
+
+.section2-block2-text {
+   margin-bottom: 56px;
+}
+
+.section2-block2-text p {
+   font-family: 'Roboto', sans-serif;
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 1.66;
+   color: #505F98;
+   margin-bottom: 20px;
+}
+
+.section2-block2-button1 {
+   display: inline-block;
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+   font-weight: 500;
+   line-height: 1.62;
+   color: #FFF;
+   text-align: center;
+   min-width: 189px;
+   min-height: 36px;
+   background-color: #111B47;
+   margin-right: 30px;
+}
+
+.block2-button1,
+.block2-button2 {
+   padding: 5px;
+}
+
+.section2-block2-button2 {
+   display: inline-block;
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+   font-weight: 500;
+   line-height: 1.62;
+   border: 2px solid #091133;
+   min-width: 189px;
+   min-height: 36px;
+   text-align: center;
+   color: #091133;
+   vertical-align: middle;
+}
+
+
+.section2-block2-buttons {
+   padding-bottom: 100px;
+}
