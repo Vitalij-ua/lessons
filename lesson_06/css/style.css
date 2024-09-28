@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:regular,400,500');
+@import url('https://fonts.googleapis.com/css?family=Epilogue:regular,800');
+@import url('https://fonts.googleapis.com/css?family=Manrope:regular,600,700');
+@import url("reset.css");
+
+body {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;
+}
+
+.wrapper {
+   min-height: 100%;
+   overflow: hidden;
+}
+
+.nav-menu {
+   padding: 50px;
+   background: url("../img/01.jpg") center / cover no-repeat scroll;
+   opacity: 0.6;
+}
+
+.nav-menu-items {
+   display: inline-block;
+   margin-right: 30px;
+}
+
+.nav-menu-item-link {
+   min-width: 300px;
+   padding: 10px;
+   border: 5px solid #5158d7;
+   text-align: center;
+   border-radius: 10px;
+   box-shadow: inset 0px 0px 7px 5px rgb(54, 119, 151);
+   font-weight: 500;
+   background-color: #fff;
+}
+
+h1 {
+   font-size: 50px;
+   font-weight: 500;
+   text-align: center;
+   padding: 20px;
+   text-shadow: 5px 5px 3px #5c4d4d;
+   border-block: 2px solid #5c4d4d;
+   box-shadow: inset 0px 0px 25px 5px black;
+}
+
+.section1 {
+   background: #FDF0E9;
+   padding-block: 50px;
+   font-family: 'Epilogue', sans-serif;
+}
+
+.section1-container {
+   max-width: 1200px;
+   padding-inline: 15px;
+   margin: 0 auto;
+}
+
+.section1-content {
+   display: inline-block;
+   padding-top: 77px;
+   margin-right: 150px;
+}
+
+.section1-content-subtitle span {
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 2;
+   letter-spacing: 3px;
+   text-transform: uppercase;
+   color: #EF6D58;
+   margin-bottom: 20px;
+}
+
+.section1-content h2 {
+   font-size: 56px;
+   font-weight: 800;
+   line-height: 1.14;
+   letter-spacing: -1px;
+   color: #391400;
+   margin-bottom: 26px;
+}
+
+.section1-content p {
+   font-size: 20px;
+   font-weight: 400;
+   line-height: 1.6;
+   color: #391400;
+   margin-bottom: 24px;
+}
+
+.section1-content-list li {
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 2;
+   color: rgba(57, 20, 0, 0.64);
+   background: url('../img/check.png') left no-repeat;
+   padding-left: 48px;
+   margin-bottom: 16px;
+}
+
+.section2 {
+   background: #141414;
+   padding-block: 50px;
+   font-family: 'Manrope', sans-serif;
+}
+
+.section2-container {
+   max-width: 1920px;
+   margin: 0 auto;
+   padding-inline: 15px;
+}
+
+.section2-container-image {
+   min-height: 860px;
+   background: url("../img/vektor.png") center / 470px no-repeat,
+      linear-gradient(to bottom, rgba(20, 20, 20, 0) 20%, #141414 100%) center / cover no-repeat,
+      linear-gradient(to top, rgba(20, 20, 20, 0) 20%, #141414 100%) center / cover no-repeat,
+      url("../img/02.png") center / cover no-repeat;
+   margin-bottom: -87px;
+}
+
+.section2-container-text h2 {
+   color: #FFF;
+   text-align: center;
+   font-size: 58px;
+   font-weight: 700;
+   line-height: 1.5;
+}
+
+.section2-container-text p {
+   color: #999;
+   text-align: center;
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 1.5;
+}
+
+.section2-container-text {
+   margin-bottom: 50px;
+}
+
+.section2-container-text-button a {
+   min-width: 300px;
+   border-radius: 8px;
+   padding: 15px;
+   color: #FFF;
+   font-size: 18px;
+   font-weight: 600;
+   line-height: 1.5;
+   text-align: center;
+   background-color: #E50000;
+}
+
+.section2-container-text-button span {
+   background: url('../img/Icon.png') left / 28px no-repeat;
+   padding-left: 30px;
+}
+
+.section2-container-text-button {
+   text-align: center;
+}
+
+.footer {
+   text-align: center;
+   padding: 20px;
+}
