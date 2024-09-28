@@ -85,10 +85,10 @@ h3 {
 
 .section2-block1 {
    background-color: #141414;
+   padding: 80px 10px 100px 10px;
 }
 
 .section2-block1-title {
-   padding-top: 80px;
    margin-bottom: 80px;
 }
 
@@ -96,11 +96,6 @@ h3 {
    max-width: 1597px;
    overflow: hidden;
    margin: 0 auto;
-
-}
-
-.section2-block1-content {
-   margin-bottom: 100px;
 }
 
 h4 {
@@ -121,7 +116,6 @@ h4 {
 
 .icon-name {
    color: #FFF;
-
    font-family: 'Manrope', sans-serif;
    font-size: 24px;
    font-style: normal;
@@ -129,8 +123,12 @@ h4 {
    line-height: 1.50;
 }
 
+.icon-container {
+   margin-bottom: 30px;
+}
+
 .icon {
-   margin: 0px 30px 30px 0px;
+   padding-right: 30px;
 }
 
 .section2-block1-row1 p,
@@ -174,11 +172,13 @@ h4 {
 
 .section2-block2 {
    background-color: #fff;
+   padding: 80px 10px 100px 10px;
 }
 
 .section2-block2-container {
    max-width: 539px;
    margin: 0 auto;
+
 }
 
 .block2-subtitle {
@@ -188,7 +188,6 @@ h4 {
    line-height: 1.32;
    color: #091133;
    letter-spacing: 1px;
-   padding-top: 100px;
    margin-bottom: 20px;
 }
 
@@ -204,10 +203,9 @@ h4 {
    color: #505F98;
    margin-bottom: 20px;
 }
-
-.section2-block2-button1,
-.section2-block2-button2 {
-   display: inline-block;
+.section2-block2-buttons {
+   font-size: 0;
+   margin-bottom: 20px;
 }
 
 .block2-button1 {
@@ -218,9 +216,9 @@ h4 {
    color: #FFF;
    text-align: center;
    min-width: 189px;
-   min-height: 36px;
    background-color: #111B47;
    margin-right: 30px;
+   border: 2px solid #091133;
 }
 
 .block2-button1,
@@ -235,13 +233,6 @@ h4 {
    line-height: 1.62;
    border: 2px solid #091133;
    min-width: 189px;
-   min-height: 36px;
    text-align: center;
    color: #091133;
-   vertical-align: middle;
-}
-
-
-.section2-block2-buttons {
-   padding-bottom: 100px;
 }
