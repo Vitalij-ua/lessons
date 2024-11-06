@@ -7,12 +7,6 @@ body {
    font-size: 16px;
 }
 
-/* Подивіться будь ласка.
-В мене чомусь не припускається footer .
-Мабуть щось не так написав. */
-
-
-
 
 .wrapper {
    min-height: 100%;
@@ -25,14 +19,6 @@ body {
    flex-grow: 1;
    background-color: #28293E;
 }
-
-
-
-
-
-
-
-
 
 
 
