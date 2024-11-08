@@ -621,6 +621,7 @@ h1:hover {
 
 .founder-words__content {
    flex-basis: 470px;
+   position: relative;
 }
 
 .founder-words__label {
@@ -638,14 +639,14 @@ h1:hover {
    z-index: 2;
 }
 
-.founder-words__content::after {
+.founder-words__label::after {
    content: '';
    background: url('../img/20.svg');
    width: 100px;
    height: 80px;
    position: absolute;
    right: 46px;
-   top: 50px;
+   top: 10px;
 
 }
 
