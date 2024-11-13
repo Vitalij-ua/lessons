@@ -81,6 +81,7 @@ h1:hover {
 }
 
 #message-personal {
+   resize: vertical;
    margin-bottom: 26px;
 }
 
