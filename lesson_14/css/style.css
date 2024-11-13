@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:regular,600');
+@import url(' https://fonts.googleapis.com/css?family=Manrope:regular,600');
+@import url("reset.css");
+
+body {
+   font-family: 'Work Sans', sans-serif;
+   font-weight: 400;
+   font-size: 18px;
+}
+
+.wrapper {
+   min-height: 100%;
+   overflow: clip;
+   display: flex;
+   flex-direction: column;
+}
+
+.wrapper>main {
+   flex-grow: 1;
+}
+
+h1 {
+   font-size: 50px;
+   font-weight: 400;
+   text-align: center;
+   padding: 20px;
+   text-shadow: 5px 5px 3px #5c4d4d;
+   border-block: 2px solid #5c4d4d;
+   box-shadow: inset 0px 0px 25px 5px rgb(136, 128, 82);
+   transition: 2s;
+}
+
+h1:hover {
+   text-shadow: 15px 15px 8px #121212;
+   box-shadow: inset 0px 0px 25px 15px rgb(18, 18, 18);
+}
+
+.page {
+   padding: 10px;
+}
+
+.page__personal-portfolio {
+   padding: 100px 10px;
+   background-color: #F0F1F3;
+   line-height: 1.33;
+   /* 133.333% */
+}
+
+.personal-portfolio__container {
+   padding: 88px;
+   margin: 0 auto;
+   max-width: 736px;
+   width: 100%;
+   background-color: #fff;
+   border-radius: 15px;
+   box-shadow: 0px 59px 124px 0px rgba(0, 0, 0, 0.12);
+}
+
+
+.form-personal {
+   display: flex;
+   flex-direction: column;
+   gap: 24px;
+}
+
+.personal-portfolio__text {
+   margin-bottom: 50px;
+}
+
+.form-personal__block {
+   display: flex;
+   gap: 24px;
+   width: 100%;
+   flex-wrap: wrap;
+}
+
+.form-personal__input {
+   border-bottom: 1.5px solid #E6E8EB;
+   padding-bottom: 14px;
+   width: 100%;
+}
+
+#message-personal {
+   margin-bottom: 26px;
+}
+
+.form-personal__input:focus::placeholder {
+   color: #A53DFF;
+}
+
+.form-personal__input:focus {
+   border-bottom: 1.5px solid #A53DFF;
+   outline: none;
+}
+
+.form-personal__button {
+   border-radius: 4px;
+   background-color: #A43DFF;
+   display: flex;
+   width: fit-content;
+   padding: 12px 24px;
+   justify-content: center;
+   align-items: center;
+   gap: 12px;
+   font-size: 16px;
+   font-weight: 600;
+   line-height: 1.5;
+   /* 150% */
+   color: #FFF;
+   transition: 0.4s;
+}
+
+.form-personal__button:hover {
+   gap: 16px;
+   padding: 12px 20px 12px 24px;
+   background-color: #8621de;
+}
+
+
+
+
+.page__dark-theme {
+   padding-block: 100px;
+   background-color: #141414;
+   color: #999;
+   font-family: 'Manrope';
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 150%;
+}
+
+.dark-theme__container {
+   max-width: 1006px;
+   width: 100%;
+   margin: 0 auto;
+   padding-inline: 15px;
+}
+
+.form-dark {
+   padding: 50px;
+   border-radius: 12px;
+   border: 1px solid #262626;
+   background-color: #0F0F0F;
+   display: flex;
+   flex-direction: column;
+   gap: 50px;
+}
+
+.form-dark__block {
+   display: flex;
+   gap: 50px;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+
+.form-dark__line {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+   flex-basis: 411px;
+}
+
+.form-dark__label {
+   font-weight: 600;
+   color: #FFF;
+}
+
+.form-dark__input {
+   border-radius: 8px;
+   border: 1px solid #262626;
+   background: #141414;
+   padding: 20px;
+}
+
+.form-dark__textarea {
+   min-height: 163px;
+   padding: 20px;
+   border-radius: 8px;
+   border: 1px solid #262626;
+   background: #141414;
+   resize: vertical;
+}
+
+.form-dark__checkbox {
+   align-self: center;
+}
+
+.checkbox__input {
+   appearance: none;
+}
+
+.checkbox__label {
+   display: inline-flex;
+   align-items: center;
+   gap: 10px;
+   cursor: pointer;
+}
+
+.checkbox__label::before {
+   content: "";
+   flex-shrink: 0;
+   width: 28px;
+   height: 28px;
+   border-radius: 4px;
+   border: 1px solid #262626;
+   transition: background-color 0.3s;
+}
+
+.checkbox__input:checked+.checkbox__label::before {
+   background: #141414 url('../img/03.svg') center / contain no-repeat;
+}
+
+.checkbox__input:focus-visible+.checkbox__label {
+   outline: 2px solid #FFF;
+   border-radius: 5px;
+}
+
+.form-dark__button {
+   color: #FFF;
+   font-weight: 600;
+   padding: 18px 24px;
+   border-radius: 8px;
+   background-color: #E50000;
+   transition: 0.4s;
+}
+
+.form-dark__button:hover {
+   background-color: #e38585;
+   color: #390505;
+}
+
+.footer {
+   text-align: center;
+   padding: 20px;
+}
