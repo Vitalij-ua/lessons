@@ -1336,6 +1336,10 @@ h1:hover {
       justify-content: center;
       gap: 30px;
    }
+
+   .our-team__cards {
+      gap: 10px;
+   }
 }
 
 @media (max-width: 767.98px) {
@@ -1386,8 +1390,13 @@ h1:hover {
       display: none;
    }
 
+   .portfolio__cards {
+      gap: 15px;
+   }
+
    .portfolio__row {
       flex-direction: column;
+      gap: 15px;
    }
 
    .card--big {
@@ -1421,6 +1430,30 @@ h1:hover {
       /* 133.333% */
       width: 329px;
       height: 138px;
+   }
+
+   .page__portfolio {
+      padding-block: 30px;
+   }
+
+   .page__get-started {
+      padding-block: 92px 30px;
+   }
+
+   .page__events {
+      padding-block: 30px;
+   }
+
+   .page__our-team {
+      padding-block: 30px;
+   }
+
+   .page__founder-words {
+      padding-block: 40px;
+   }
+
+   .events__blocks {
+      gap: 15px;
    }
 }
 
