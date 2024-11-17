@@ -1390,8 +1390,8 @@ h1:hover {
       flex-direction: column;
    }
 
-   .card {
-      flex-basis: 670px;
+   .card--big {
+      flex-basis: 470px;
    }
 
    .card__image {
