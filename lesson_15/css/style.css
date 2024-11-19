@@ -199,6 +199,10 @@ h1:hover {
    color: #FFF;
 }
 
+.portfolio__mini {
+   display: none;
+}
+
 .portfolio__tabs {
    margin-bottom: 60px;
    display: flex;
@@ -1295,25 +1299,30 @@ h1:hover {
    .our-team__cards {
       overflow: scroll;
       padding: 20px;
-   
+
    }
+
    .our-team__cards::-webkit-scrollbar {
-      
-      width: 0px; /* Ширина всего элемента навигации */
+
+      width: 0px;
+      /* Ширина всего элемента навигации */
       height: 10px;
-    }
-    
-    .our-team__cards::-webkit-scrollbar-track {
-     
-      background: #28293E; /* Цвет дорожки */
-     
-    }
-    
-    .our-team__cards::-webkit-scrollbar-thumb {
-      
-      background-color: #EF6D58; /* Цвет бегунка */
-      border-radius: 20px; /* Округление бегунка */
-    }
+   }
+
+   .our-team__cards::-webkit-scrollbar-track {
+
+      background: #28293E;
+      /* Цвет дорожки */
+
+   }
+
+   .our-team__cards::-webkit-scrollbar-thumb {
+
+      background-color: #EF6D58;
+      /* Цвет бегунка */
+      border-radius: 20px;
+      /* Округление бегунка */
+   }
 
 }
 
@@ -1338,7 +1347,7 @@ h1:hover {
 
    .watch__card,
    .watch__rating,
-   
+
    .genres__picture {
       overflow: visible;
    }
@@ -1351,26 +1360,31 @@ h1:hover {
       /* scrollbar-width: thin;
       scrollbar-color: #E50000 #141414; */
    }
+
    .watch__cards::-webkit-scrollbar,
    .genres__galery::-webkit-scrollbar {
-      
-      width: 0px; /* Ширина всего элемента навигации */
+
+      width: 0px;
+      /* Ширина всего элемента навигации */
       height: 6px;
-    }
-    
-    .watch__cards::-webkit-scrollbar-track,
+   }
+
+   .watch__cards::-webkit-scrollbar-track,
    .genres__galery::-webkit-scrollbar-track {
-     
-      background: #141414; /* Цвет дорожки */
-     
-    }
-    
-    .watch__cards::-webkit-scrollbar-thumb,
+
+      background: #141414;
+      /* Цвет дорожки */
+
+   }
+
+   .watch__cards::-webkit-scrollbar-thumb,
    .genres__galery::-webkit-scrollbar-thumb {
 
-      background-color: #E50000; /* Цвет бегунка */
-      border-radius: 20px; /* Округление бегунка */
-    }
+      background-color: #E50000;
+      /* Цвет бегунка */
+      border-radius: 20px;
+      /* Округление бегунка */
+   }
 
 
 
@@ -1430,6 +1444,32 @@ h1:hover {
    }
 
    /* blue */
+   .portfolio__tabs {
+      display: none;
+   }
+
+   .portfolio__mini {
+      display: block;
+      padding: 10px 10px 40px;
+      font-size: 16px;
+      color: rgba(57, 20, 0, 0.64);
+      font-weight: 400;
+      line-height: 2;
+      /* 200% */
+   }
+
+   .mini__block {
+      border-radius: 6px;
+      background: #FFF;
+      width: 100%;
+     
+   }
+   .mini__tabs {
+      padding: 9px 5px 6px 16px;
+   }
+   .mini__sub-title {
+      padding: 9px 5px 6px 16px;
+   }
    .get-started__container {
       justify-content: center;
    }
