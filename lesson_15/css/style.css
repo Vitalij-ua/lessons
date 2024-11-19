@@ -1199,7 +1199,6 @@ h1:hover {
       height: 20px;
    }
 
-   /* blue */
 }
 
 @media (max-width: 1199.98px) {
@@ -1293,6 +1292,28 @@ h1:hover {
    }
 
    /* blue */
+   .our-team__cards {
+      overflow: scroll;
+      padding: 20px;
+   
+   }
+   .our-team__cards::-webkit-scrollbar {
+      
+      width: 0px; /* Ширина всего элемента навигации */
+      height: 10px;
+    }
+    
+    .our-team__cards::-webkit-scrollbar-track {
+     
+      background: #28293E; /* Цвет дорожки */
+     
+    }
+    
+    .our-team__cards::-webkit-scrollbar-thumb {
+      
+      background-color: #EF6D58; /* Цвет бегунка */
+      border-radius: 20px; /* Округление бегунка */
+    }
 
 }
 
@@ -1317,13 +1338,39 @@ h1:hover {
 
    .watch__card,
    .watch__rating,
-   .genres__galery,
+   
    .genres__picture {
       overflow: visible;
    }
-         /* or scroll or slider */
 
+   /* or scroll or slider */
+   .watch__cards,
+   .genres__galery {
+      overflow: scroll;
+      padding-bottom: 10px;
+      /* scrollbar-width: thin;
+      scrollbar-color: #E50000 #141414; */
+   }
+   .watch__cards::-webkit-scrollbar,
+   .genres__galery::-webkit-scrollbar {
+      
+      width: 0px; /* Ширина всего элемента навигации */
+      height: 6px;
+    }
+    
+    .watch__cards::-webkit-scrollbar-track,
+   .genres__galery::-webkit-scrollbar-track {
+     
+      background: #141414; /* Цвет дорожки */
+     
+    }
+    
+    .watch__cards::-webkit-scrollbar-thumb,
+   .genres__galery::-webkit-scrollbar-thumb {
 
+      background-color: #E50000; /* Цвет бегунка */
+      border-radius: 20px; /* Округление бегунка */
+    }
 
 
 
