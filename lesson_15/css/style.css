@@ -1274,9 +1274,6 @@ h1:hover {
       padding: 50px 0px;
    }
 
-   [class*="__container"] {
-      padding-inline: 5px;
-   }
 
    .watch__star {
       width: 14px;
@@ -1450,7 +1447,7 @@ h1:hover {
 
    .portfolio__mini {
       display: block;
-      padding: 10px 10px 40px;
+      padding-bottom: 40px;
       font-size: 16px;
       color: rgba(57, 20, 0, 0.64);
       font-weight: 400;
@@ -1469,6 +1466,7 @@ h1:hover {
    }
    .mini__sub-title {
       padding: 9px 5px 6px 16px;
+      cursor: pointer;
    }
    .get-started__container {
       justify-content: center;
