@@ -289,6 +289,7 @@ h1:hover {
    width: 100%;
    height: 100%;
    border-radius: 6px;
+   object-fit: cover;
    transition: transform 0.5s;
 }
 
@@ -354,7 +355,7 @@ h1:hover {
 .get-started__container {
    position: relative;
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
    gap: 30px;
    align-items: center;
    padding-inline: 100px 83px;
@@ -871,7 +872,7 @@ h1:hover {
 
 }
 
-.header-section:not(:last-child) {
+.header-section--margin:not(:last-child) {
    margin-bottom: 50px;
 }
 
@@ -962,6 +963,40 @@ h1:hover {
    background-color: #E50000;
 }
 
+/* or scroll or slider */
+.watch__cards,
+.genres__galery {
+   overflow: auto;
+   padding-bottom: 10px;
+   /* scrollbar-width: thin;
+      scrollbar-color: #E50000 #141414; */
+}
+
+.watch__cards::-webkit-scrollbar,
+.genres__galery::-webkit-scrollbar {
+
+   width: 0px;
+   /* Ширина всего элемента навигации */
+   height: 10px;
+}
+
+.watch__cards::-webkit-scrollbar-track,
+.genres__galery::-webkit-scrollbar-track {
+
+   background: #141414;
+   /* Цвет дорожки */
+
+}
+
+.watch__cards::-webkit-scrollbar-thumb,
+.genres__galery::-webkit-scrollbar-thumb {
+
+   background-color: #E50000;
+   /* Цвет бегунка */
+   border-radius: 20px;
+   /* Округление бегунка */
+}
+
 .watch__cards {
    display: flex;
    justify-content: space-between;
@@ -990,6 +1025,9 @@ h1:hover {
 }
 
 .watch__image {
+   object-fit: cover;
+   max-width: 320px;
+   aspect-ratio: 320 / 404;
    width: 100%;
    border-radius: 12px;
 }
@@ -1082,10 +1120,10 @@ h1:hover {
 
 .genres__images::before {
    content: '';
-   width: 237px;
-   height: 252px;
+   width: 100%;
+   height: 100%;
    position: absolute;
-   left: -11px;
+   /* left: -11px; */
    background: linear-gradient(180deg, rgba(26, 26, 26, 0.00) 0%, #1A1A1A 101.79%);
 
 }
@@ -1339,49 +1377,15 @@ h1:hover {
    .watch__border,
    .genres__border {
       border: none;
-      padding: 10px;
+      /* padding: 10px; */
    }
 
    .watch__card,
    .watch__rating,
-
    .genres__picture {
       overflow: visible;
    }
 
-   /* or scroll or slider */
-   .watch__cards,
-   .genres__galery {
-      overflow: scroll;
-      padding-bottom: 10px;
-      /* scrollbar-width: thin;
-      scrollbar-color: #E50000 #141414; */
-   }
-
-   .watch__cards::-webkit-scrollbar,
-   .genres__galery::-webkit-scrollbar {
-
-      width: 0px;
-      /* Ширина всего элемента навигации */
-      height: 6px;
-   }
-
-   .watch__cards::-webkit-scrollbar-track,
-   .genres__galery::-webkit-scrollbar-track {
-
-      background: #141414;
-      /* Цвет дорожки */
-
-   }
-
-   .watch__cards::-webkit-scrollbar-thumb,
-   .genres__galery::-webkit-scrollbar-thumb {
-
-      background-color: #E50000;
-      /* Цвет бегунка */
-      border-radius: 20px;
-      /* Округление бегунка */
-   }
 
 
 
@@ -1403,6 +1407,12 @@ h1:hover {
    .our-team__cards {
       gap: 10px;
    }
+   .get-started__container {
+      padding-inline: 28PX;
+   }
+   .get-started__photo {
+      margin-top: 0;
+   }
 }
 
 @media (max-width: 767.98px) {
@@ -1416,8 +1426,10 @@ h1:hover {
    }
 
    .genres__button {
-      top: 92%;
       left: 40%;
+      bottom: 0;
+      top: auto;
+
    }
 
    .genres__border {
@@ -1428,7 +1440,7 @@ h1:hover {
       display: none;
    }
 
-   .header-section:not(:last-child) {
+   .header-section--margin:not(:last-child) {
       margin-bottom: 20px;
    }
 
@@ -1447,34 +1459,31 @@ h1:hover {
 
    .portfolio__mini {
       display: block;
+      width: 100%;
       padding-bottom: 40px;
+     
+   }
+
+   .mini__block {
+      width: 100%;
+      padding: 9px 5px 6px 16px;
+      border-radius: 6px;
+      background: #FFF;
       font-size: 16px;
       color: rgba(57, 20, 0, 0.64);
       font-weight: 400;
       line-height: 2;
       /* 200% */
+
    }
 
-   .mini__block {
-      border-radius: 6px;
-      background: #FFF;
-      width: 100%;
-     
-   }
-   .mini__tabs {
+   .mini__tab {
       padding: 9px 5px 6px 16px;
-   }
-   .mini__sub-title {
-      padding: 9px 5px 6px 16px;
-      cursor: pointer;
-   }
-   .get-started__container {
-      justify-content: center;
+
    }
 
-   .get-started__photo {
-      margin-top: 0;
-   }
+
+  
 
    .our-team__right {
       display: none;
@@ -1493,9 +1502,6 @@ h1:hover {
       flex-basis: 470px;
    }
 
-   .card__image {
-      object-fit: cover;
-   }
 
    .portfolio__row:last-child .card:last-child {
       display: none;
@@ -1518,8 +1524,8 @@ h1:hover {
       font-weight: 700;
       line-height: 1.33;
       /* 133.333% */
-      width: 329px;
-      height: 138px;
+      max-width: 329px;
+   
    }
 
    .page__portfolio {
