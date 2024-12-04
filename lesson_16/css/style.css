@@ -72,8 +72,7 @@ h1:hover {
 }
 
 .header__menu {
-   max-width: 515px;
-   width: 100%;
+   flex-basis: 515px;
 }
 
 .menu__list {
@@ -328,7 +327,9 @@ h1:hover {
 }
 
 .merchent__photo img {
-   max-width: 100%;
+   width: 100%;
+   aspect-ratio: 1;
+   border-radius: 50%;
    object-fit: cover;
 }
 
@@ -381,13 +382,14 @@ h1:hover {
    height: 50.580431%;
    /* 305/603 */
    aspect-ratio: 246/305;
-   border-radius: 48% 48% 2.173913% 2.173913%;
+   border-radius: 50% 50% 2.2% 2.2% / 41% 41% 2.2% 2.2%;
    background-color: #B550F8;
    margin-bottom: 17px;
 }
 
 .left-block__laptop img {
    position: absolute;
+   aspect-ratio: 255/265;
    width: 103.658537%;
    /* 255/246 */
    right: -12.195122%;
@@ -398,6 +400,7 @@ h1:hover {
 }
 
 .left-block__something {
+   aspect-ratio: 142/73;
    width: 51.449275%;
    /* 142/276 */
    object-fit: cover;
@@ -406,6 +409,7 @@ h1:hover {
 .left-block__envelope {
    padding-left: 20.289855%;
    /* 56/276 */
+   height: 18.573798%; /* 112/603 */
    width: 97.826087%;
    /* 270/276 */
    object-fit: cover;
@@ -448,12 +452,14 @@ h1:hover {
 }
 
 .right-block__stars img {
+   aspect-ratio: 42/56;
    width: 37.5%;
    /* 42/112 */
    object-fit: cover;
 }
 
 .right-block__cloud {
+   aspect-ratio: 112/82;
    width: 42.105263%;
    /* 112/266 */
    align-self: flex-end;
@@ -467,7 +473,7 @@ h1:hover {
    height: 54.174067%;
    /* 305/563 */
    aspect-ratio: 246/305;
-   border-radius: 48% 48% 2.173913% 2.173913%;
+   border-radius: 50% 50% 2.2% 2.2% / 41% 41% 2.2% 2.2%;
    background-color: #F7CC47;
    margin-bottom: 22px;
    align-self: flex-end;
@@ -475,6 +481,7 @@ h1:hover {
 
 .right-block__woman img {
    position: absolute;
+   aspect-ratio: 246/269;
    bottom: 0;
    left: 0;
    width: 100%;
@@ -482,7 +489,7 @@ h1:hover {
 }
 
 .right-block__arrow {
-   width: 100%;
+   aspect-ratio: 94/35;
    width: 35.338346%;
    /* 94/266 */
    object-fit: cover;
@@ -616,7 +623,9 @@ h1:hover {
       padding: 0;
    }
 
-
+   .open-menu body{
+      overflow: hidden;
+    }
    .open-menu .menu__body,
    .open-menu .menu__body::before {
       inset-inline-start: 0;
