@@ -86,6 +86,7 @@ h1:hover {
    justify-content: center;
    gap: 20px 60px;
    flex-wrap: wrap;
+   padding-top: 9px;
 }
 
 .light-portfolio__tab--active,
@@ -183,7 +184,7 @@ h1:hover {
 }
 
 .card__block {
-   position: absolute;
+   position: relative;
    z-index: 2;
 }
 
