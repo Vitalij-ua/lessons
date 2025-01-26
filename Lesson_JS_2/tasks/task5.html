@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Задача 5</title>
+</head>
+<body>
+   <h1>Задача 5</h1>
+   <p> Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.</p>
+   <script>
+       //Крок 0. Позначення величин
+       //elapsedSeconds кількість секунд, що пройшла від початку доби
+       //elapsedHours кількість годин, що пройшла від початку доби
+       //elapsedMinutes кількість хвилин, що пройшла від початку доби
+       //minutesResiue   залишок хвилин
+      //Крок 1. Введення необхідних даних
+      const elapsedSeconds = parseInt(prompt(`Введіть кількість секунд, що пройшла від початку доби `))
+      //Крок 2. Обчислення
+      const elapsedMinutes = parseInt(elapsedSeconds/60) 
+      const elapsedHours = parseInt (elapsedSeconds/3600)
+      const minutesResiue = parseInt (elapsedMinutes - elapsedHours*60)
+      //Крок 3 Виведення результатів
+      document.write (`пройшлo від початку доби ${elapsedSeconds} секунд <br> це ${elapsedHours} годин і ${minutesResiue} хвилин`)
+   </script>
+   </script>
+</body>
+</html>
