@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Задача 2 </title>
+</head>
+
+<body>
+   <h1>Задача 2 </h1>
+   <p>З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше,
+      якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.</p>
+   <script>
+      // //Крок 0. Позначення
+      // priceProduct ціна товару
+      // quantityMoney кількість грошей
+      // quantityMoneyLottery ціна товару + лотерея
+      // priceLottery ціна лотереї
+      // //Крок 1. Вводимо необхідні дані
+      const priceProduct = parseFloat(prompt(`Введіть ціна товару`))
+      const quantityMoney = parseFloat(prompt(`Введіть кількість грошей`))
+      const priceLottery = 4
+      // //Крок 2. Обчислення результату
+      // const quantityMoneyLottery = priceLottery + priceProduct
+      // // //Крок 3. Ввиведення результатів
+      // if (priceProduct > quantityMoney)
+      //    document.write(`У вас недостатньо грошей`)
+      // else if (priceProduct === quantityMoney)
+      //    document.write(`Гарної покупки`)
+      // else if (quantityMoney >= quantityMoneyLottery)
+      //    document.write(`Гарної покупки. Пропонуємо купити лотерею за 4 грн. `)
+      // else
+      //    document.write(`Гарної покупки`)
+
+       if (quantityMoney < priceProduct) 
+       document.write(`У вас недостатньо грошей`)
+       else {
+         document.write(`Гарної покупки.`)
+         if (quantityMoney - priceProduct >= 4) 
+         document.write(` Пропонуємо купити лотерею за 4 грн. `)
+       }
+   </script>
+</body>
+
+</html>

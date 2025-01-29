@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Задача 5</title>
+</head>
+
+<body>
+   <h1>Задача 5</h1>
+   <p> З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести
+      на екран назву транспортного засобу, яким він може керувати.</p>
+   <script>
+      //Крок 0. Позначення величин
+      //  category 
+      // А-мотоцикл
+      //В-легковий автомобіль
+      // С-вантажний автомобіль
+      //Крок 1. Введення необхідних даних
+      const category = prompt(`Введіть назву категорії водія : А ,В або С`)
+      let result
+      //Крок 2. Обчислення
+      //Крок 3 Виведення результатів
+
+      switch (category) {
+         case `A`:
+            result = `мотоциклом`
+            break;
+         case `B`:
+            result = `легковим автомобілем`
+            break;
+         case `B`:
+            result = `вантажним автомобылем`
+            break;
+         default:
+            result = `некоректні данні`
+            break;
+      }
+
+      // if (category == `A`)
+      // result = `мотоциклом`
+      // else if (category == `B`)
+      // result = `легковим автомобілем`
+      // else if (category == `C`)
+      // result = `вантажним автомобылем`
+      // else 
+      // result = `некоректні данні`
+      document.write(`Ви можете керувати : ${result}`)
+   </script>
+   </script>
+</body>
+
+</html>
