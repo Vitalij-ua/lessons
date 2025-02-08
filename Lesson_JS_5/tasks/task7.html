@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Задача 7</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 7</h1>
+   <p> Задача 4. Вивести таблицю з 3 рядків і 7 стовпців</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         document.write (`<table>`)
+         for (let row = 1; row <= 3; row++) {
+            document.write(`<tr>`)
+            for (let i = 1; i <= 7; i++) {
+               document.write(`<td>${i}</td>`)
+            }
+            document.write(`</tr>`)
+         }
+         document.write (`</table>`)
+
+      }
+   </script>
+</body>
+
+</html>

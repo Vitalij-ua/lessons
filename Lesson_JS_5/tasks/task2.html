@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Задача 2 </title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+
+
+   <h1>Задача 2 </h1>
+   <p>Задача -1. Вивести на екран номери місяців весни і літа (від 3 до 8)</p>
+   <script>
+      
+      if (confirm('Почати тестування?')) {
+        
+         document.write(`<ul>`)
+           
+         for (let i = 3; i <= 8; i++) {
+            let season
+            if (i<6) season = `це весна`
+            else  season = `це літо`
+            switch (i) {
+               case 3: document.write(`<li>${i} березень - ${season}</li>`)
+             
+                  break;
+               case 4: document.write(`<li>${i} квітень - ${season}</li>`)
+
+                  break;
+               case 5: document.write(`<li>${i} травень - ${season}</li>`)
+
+                  break;
+               case 6: document.write(`<li>${i} червень - ${season}</li>`)
+
+                  break;
+               case 7: document.write(`<li>${i} липень - ${season}</li>`)
+
+                  break;
+               case 8: document.write(`<li>${i} серпень - ${season}</li>`)
+
+                  break;
+
+
+            }
+
+         }
+         document.write(`</ul>`)
+      }
+
+   </script>
+</body>
+
+</html>

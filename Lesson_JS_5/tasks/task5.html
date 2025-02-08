@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Задача 5</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 5</h1>
+   <p>Задача 2. Створити 10 елементів для введення цін продуктів</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         document.write(`<div  class="product">`)
+         for (let i = 1; i <= 10; i++) {
+            document.write(`
+            <div  class="product-item">
+				   <label for="product-${i}">Product #${i}</label>
+				   <input type="number" class="product-input" id="product-${i}">
+			   </div>      
+            `)
+         }
+         document.write(`</div>`)
+      }
+   </script>
+</body>
+
+</html>

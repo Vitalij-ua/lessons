@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Задача 8</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 8</h1>
+   <p>Задача 8. Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати
+      confirm).</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         const minNum = parseInt(prompt(`Введіть мінімальне число яке хочете`))
+         const maxNum = parseInt(prompt(`Введіть максимальне число яке хочете. Та загадайте число в цому інтервалі `))
+         let random
+         let guessed = false
+         for (let i = 1; i <= 3; i++) {
+             random = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+            if (confirm(`Це те число -  ${random} ?`)){
+               guessed = true
+               break 
+            }   
+        }
+        if (guessed) document.write (`Ви загадали - ${random}`)
+        else document.write (`Ми не знаємо яке число ви загадали`)
+      }
+
+   </script>
+</body>
+
+</html>
