@@ -113,3 +113,7 @@ td {
 .link:not(:last-child) {
   margin-bottom: 0.3125rem;
 }
+.prize {
+  max-width: 9.375rem;
+  max-height: 9.375rem;
+}

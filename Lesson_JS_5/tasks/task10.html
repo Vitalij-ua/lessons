@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Задача 10</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 10</h1>
+   <p>Задача 7. Вивести на екран N абзаців (N вводиться користувачем) за зразком:</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         let n , num = 1
+         n = parseInt(prompt(`Введіть потрібну кількість абзаців`))
+         document.write(`<h1>Заголовок ${n}</h1>`)
+         for (let i = 0; i <= n; i++) {
+            document.write (`<p>Розділ ${n}, Параграф ${num++}</p>`)     
+         }
+         document.write (`<hr>`)
+      }
+
+   </script>
+</body>
+
+</html>

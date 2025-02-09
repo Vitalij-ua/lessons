@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Задача 11</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 11</h1>
+   <p>Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як
+      одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн,
+      три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору
+      зображення за номером).</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         let sum = 0
+         let prize = 0
+         for (let imgIndex = 1; imgIndex <= 3; imgIndex++) {
+            const randomImage = 1 + Math.floor(Math.random() * 4)
+            document.write(`<img class="prize" src="img/${randomImage}.jpg" <br> `)
+            sum += Math.pow(10, randomImage)
+         }
+         switch (sum) {
+            case 30: //це коли всі були зображення № 1
+               prize = 100
+               break
+            case 300: //це коли всі були зображення № 2
+               prize = 200
+               break
+            case 3000: //це коли всі були зображення № 3
+               prize = 500
+               break
+            case 30000: //це коли всі були зображення № 4
+               prize = 1000
+               break
+         }
+         document.write(`<div>Виграш : ${prize} </div>`)
+      }
+
+   </script>
+</body>
+
+</html>
