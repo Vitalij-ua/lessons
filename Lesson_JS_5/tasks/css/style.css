@@ -73,6 +73,11 @@ h1 {
   text-align: center;
   padding-block: 1.25rem;
 }
+h2 {
+  font-size: 1.25rem;
+  text-align: center;
+  padding-block: 1.25rem;
+}
 p {
   text-align: center;
   padding-block: 1.25rem;
@@ -85,6 +90,11 @@ table {
 td {
   padding: 0.625rem;
   border: 0.0625rem solid black;
+}
+hr {
+  background-color: black;
+  height: 0.0625rem;
+  width: 100%;
 }
 .product {
   display: flex;
