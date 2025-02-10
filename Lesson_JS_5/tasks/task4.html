@@ -17,10 +17,12 @@
    <script>
       if (confirm('Почати тестування?')) {
          const num = parseInt(prompt(`Введіть число`))
+         document.write (`<ul>`)
          for (let i = 1; i <= num; i++) {
             const random = 1 + Math.floor(Math.random() * 100)
             document.write(`<li>${i}-${random}</li>`)
          }
+         document.write (`</ul>`)
       }
 
    </script>
