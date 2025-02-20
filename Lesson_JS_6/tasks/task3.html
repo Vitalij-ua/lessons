@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №6 Задача 3</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 3.</h1>
+   <p>9. Вивести на екран </p>
+   <script>
+
+      if (confirm('Почати тестування?')) {
+
+         document.write(`<ul style="font-size: 2rem; margin: 2rem auto; width: fit-content;">`)
+         for (let row = 1; row <= 23; row++) {
+  
+            document.write(`<li style="list-style: none;">`)
+               document.write (`${ row } `)
+               for (let col = 1; col <= row; col++) {
+                  document.write (`${ col } `)
+               }
+            document.write(`</li>`)
+
+         }
+         document.write(`</ul>`)
+
+
+         document.write(`<ol style="font-size: 2rem; margin: 2rem auto; width: fit-content;">`)
+         for (let row = 1; row <= 23; row++) {
+            document.write(`<li>`)
+               for (let col = 1; col <= row; col++) {
+                  document.write (`${ col } `)
+               }
+            document.write(`</li>`)
+
+         }
+         document.write(`</ol>`)
+      }
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №6 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <!-- <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table> -->
+   <h1>Задача 1. Відобразити трикутник за допомогою символів «о»</h1>
+   <p></p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         let col = `o`
+         document.write(`<table  style="font-size: 2rem;">`)
+         for (let row = 1; row <= 10; row++) {
+            document.write(`<tr>
+                              <td style="border: none;">`)
+               for (let i = 1; i <= row; i++) {
+                  document.write(`${col}`)                 
+               } 
+                  document.write(`</td>
+                              </tr>`)                 
+         }
+         document.write(`</table>`)
+         
+      }
+   </script>
+</body>
+
+</html>
