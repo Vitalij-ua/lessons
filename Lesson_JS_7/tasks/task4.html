@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №7 Задача 4</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <!-- <table>
+      <tr>
+         <td></td>
+      </tr>
+   </table> -->
+   <h1>Задача 4.</h1>
+   <p>Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+   </p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         function getTable(row, col) {
+        
+            document.write (`<table>`) 
+                      
+               for (let indexRow = 1; indexRow <= row; indexRow++) {
+                  document.write (`<tr>`)
+                  for (let indexCol = 1; indexCol <= col; indexCol++) {
+                     document.write (`<td>Hi</td>`)                    
+                  }
+                  document.write (`</tr>`)
+               }
+             document.write (`</table>`)
+             return
+         }
+         const row = parseInt ( prompt (`Введіть кількість рядків`))
+         const col = parseInt ( prompt (`Введіть кількість стовпців`))
+
+         getTable(row, col)
+      }
+   </script>
+</body>
+
+</html>
