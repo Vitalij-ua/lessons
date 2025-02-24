@@ -22,14 +22,14 @@
       if (confirm('Почати тестування?')) {
          function getSumNumbers(a, b, c, d) {
             let sum = a + b + c + d
-            if (sum) {
+            if (sum || sum === 0) {
                return sum
             }
             else throw new Error('Невірно введено число')
          }
          function getMultiplicationNumbers(a, b, c, d) {
             let multiply = a * b * c * d
-            if (multiply) {
+            if (multiply || multiply === 0) {
                return multiply
             }
             else throw new Error('Невірно введено число')
@@ -38,7 +38,7 @@
 
          function getAverageNumber(a, b, c, d) {
             let average = (a + b + c + d) / 4
-            if (average) {
+            if (average || average === 0) {
                return average
             }
             else throw new Error('Невірно введено число')
@@ -54,7 +54,7 @@
             if (min1 < min2) {
                min = min1
             } else min = min2
-            if (min) {
+            if (min || min === 0) {
                return min
             }
             else throw new Error('Невірно введено число')
