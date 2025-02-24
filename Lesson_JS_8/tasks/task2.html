@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №8 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 2.</h1>
+   <p>Задача 2. Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
+      номери днів, протягом яких кількість відвідувачів була меншою за 20;
+      номери днів, коли кількість відвідувачів була мінімальною;
+      загальну кількість клієнтів у робочі дні та окремо загальну кількість клієнтів на вихідних.
+
+   </p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         let numberClients = [26, 13, 19, 25, 37, 46, 49]
+         function getMinNumberDay(numberClients) {
+            let minNumberDay = []
+            for (let i = 0; i < numberClients.length; i++) {
+               if (numberClients[i] < 20) minNumberDay.push(i + 1)
+            }
+            return minNumberDay
+         }
+
+         function getMinNumberClientsDayAll(numberClients) {
+            let minNumberClientsDayAll = []
+            let minClient = numberClients[0]
+            for (let i = 0; i < numberClients.length; i++) {
+               if (numberClients[i] < minClient) minClient = numberClients[i]
+            }
+            for (let i = 0; i < numberClients.length; i++) {
+              if (numberClients[i] === minClient) minNumberClientsDayAll.push(i + 1)
+               
+            }
+            
+            return minNumberClientsDayAll
+         }
+
+         function getSumClientsWorkingDay(numberClients) {
+            let sumClientsWorkingDay = 0
+            for (let i = 0; i < 5; i++){
+                sumClientsWorkingDay += numberClients[i]
+            }
+            return sumClientsWorkingDay
+         }
+
+
+         function getSumClientsWeekend(numberClients) {
+            let sumClientsWeekend = 0
+            for (let i = 5; i < 7; i++){
+               sumClientsWeekend += numberClients[i]
+            }
+            return sumClientsWeekend
+         }
+
+         let minNumberDay = getMinNumberDay(numberClients)
+         document.write(`номери днів, протягом яких кількість відвідувачів була меншою за 20 : ${minNumberDay}<br>`)
+         let minNumberClientsDayAll = getMinNumberClientsDayAll(numberClients)
+         document.write(`номер дня, коли кількість відвідувачів була мінімальною : ${minNumberClientsDayAll}<br>`)
+         let sumClientsWorkingDay = getSumClientsWorkingDay(numberClients)
+         document.write(`загальну кількість клієнтів у робочі дні : ${sumClientsWorkingDay}<br>`)
+         let sumClientsWeekend = getSumClientsWeekend(numberClients)
+         document.write (`кількість клієнтів на вихідних : ${sumClientsWeekend}<br>`)
+      }
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №8 Задача 3</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 3.</h1>
+   <p>Задача 3. Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+   </p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         
+         
+         function getSumNames(nameIvan, arrNamesStudents) {
+            let sumNames = 0
+            for (let i = 0; i < arrNamesStudents.length; i++) {
+               if (arrNamesStudents[i] === nameIvan) sumNames++                                               
+            }
+            return sumNames
+         }
+         const nameIvan = 'Іван'
+         let arrNamesStudents = ['Іван', 'Ольга', 'Роман', 'Іван', 'Іван']
+         let ivan = getSumNames (nameIvan, arrNamesStudents)
+         
+           document.write (`sum : ${ivan}`) 
+            
+         
+      }
+   </script>
+</body>
+
+</html>

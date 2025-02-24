@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №8 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 1</h1>
+   <p>Задача 1. Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він
+      відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+      би одна трійка)).</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         function getAverageScore(studentScores) {
+            let averageScore = 0
+            let sum = 0
+            for (let i = 0; i < studentScores.length; i++) {
+               sum += studentScores[i]
+            }
+            return averageScore = sum / studentScores.length
+         }
+
+         function getCategoryScore(studentScores) {
+            let categoryScore
+            let res2 = 0
+            let res3 = 0
+            let res4 = 0
+            for (let i = 0; i < studentScores.length; i++) {
+               if (studentScores[i] === 2) res2++
+               if (studentScores[i] === 3) res3++
+               if (studentScores[i] === 4) res4++
+            }
+            if (res2 > 0) categoryScore = `двійочник`
+            else if (res3 > 0) categoryScore = `трійочник`
+            else if (res4 > 0) categoryScore = `хорошист`
+            else categoryScore = `відмінник`
+            return categoryScore
+         }
+         let studentScores = [5, 5, 3, 5, 5, 5, 4 ]
+         let averageScore = getAverageScore(studentScores)
+         let categoryScore = getCategoryScore(studentScores)
+         document.write(`середній бал : ${averageScore.toFixed(2)}<br>`)
+         document.write(`він : ${categoryScore}`)
+      }
+   </script>
+</body>
+
+</html>

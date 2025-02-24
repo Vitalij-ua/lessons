@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №8 Задача 4</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 4.</h1>
+   <p>Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+      • починаються на букву «А»;
+      • перша і остання літери співпадають;
+      • складаються з більше ніш 5 символів;
+   </p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         let arrNumbersAuto = ['AN5445', 'AX5289', 'BD9876', 'B9470B']
+         function getStartA(arrNumbersAuto) {
+            let sumStartA = 0
+            for (let i = 0; i < arrNumbersAuto.length; i++) {
+               let startA = arrNumbersAuto[i]
+               for (let n = 0; n < startA.length; n++) {
+                  if (startA[0] === "A") sumStartA++
+                  break
+               }
+            }
+            return sumStartA
+         }
+
+         function getFirstLastSign(arrNumbersAuto) {
+            let sumFirstLastSign = 0
+            for (let i = 0; i < arrNumbersAuto.length; i++) {
+               let firstLastSign = arrNumbersAuto[i]
+               for (let n = 0; n < firstLastSign.length; n++) {
+                  if (firstLastSign[0] === firstLastSign[firstLastSign.length - 1]) sumFirstLastSign++
+                  break
+               }
+            }
+            return sumFirstLastSign
+         }
+
+         function getMorFiveSign(arrNumbersAuto) {
+            let morFiveSign = 0
+            for (let i = 0; i < arrNumbersAuto.length; i++) {
+               let fiveSign = arrNumbersAuto[i]
+               for (let n = 0; n < fiveSign.length; n++) {
+                  if(fiveSign.length > 5) morFiveSign++
+                  break
+               }
+            }
+            return morFiveSign
+         }
+
+         let sumStartA = getStartA(arrNumbersAuto)
+         document.write(`кількість номерів, які починаються на букву «А» : ${sumStartA}<br>`)
+         let sumFirstLastSign = getFirstLastSign(arrNumbersAuto)
+         document.write(`кількість номерів, перша і остання літери співпадають : ${sumFirstLastSign}<br>`)
+         let morFiveSign = getMorFiveSign(arrNumbersAuto)
+         document.write(`кількість номерів, які складаються з більше ніш 5 символів : ${morFiveSign}`)
+      }
+   </script>
+</body>
+
+</html>
