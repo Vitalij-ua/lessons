@@ -24,10 +24,8 @@
             let sumStartA = 0
             for (let i = 0; i < arrNumbersAuto.length; i++) {
                let startA = arrNumbersAuto[i]
-               for (let n = 0; n < startA.length; n++) {
-                  if (startA[0] === "A") sumStartA++
-                  break
-               }
+               if (startA[0] === "A") sumStartA++
+
             }
             return sumStartA
          }
@@ -36,10 +34,8 @@
             let sumFirstLastSign = 0
             for (let i = 0; i < arrNumbersAuto.length; i++) {
                let firstLastSign = arrNumbersAuto[i]
-               for (let n = 0; n < firstLastSign.length; n++) {
-                  if (firstLastSign[0] === firstLastSign[firstLastSign.length - 1]) sumFirstLastSign++
-                  break
-               }
+               if (firstLastSign[0] === firstLastSign[firstLastSign.length - 1]) sumFirstLastSign++
+
             }
             return sumFirstLastSign
          }
@@ -48,10 +44,7 @@
             let morFiveSign = 0
             for (let i = 0; i < arrNumbersAuto.length; i++) {
                let fiveSign = arrNumbersAuto[i]
-               for (let n = 0; n < fiveSign.length; n++) {
-                  if(fiveSign.length > 5) morFiveSign++
-                  break
-               }
+               if (fiveSign.length > 5) morFiveSign++
             }
             return morFiveSign
          }

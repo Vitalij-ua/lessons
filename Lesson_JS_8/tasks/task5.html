@@ -25,51 +25,51 @@
       if (confirm('Почати тестування?')) {
 //=========== 1 - варіант =============================
 
-         // function getBedScore(studentScores) {
-         //    let bedScore = 0
-         //    for (let i = 0; i < studentScores.length; i++) {
-         //       if (studentScores[i] === 2) bedScore++
-         //    }
-         //    return bedScore
-         // }
+         function getBedScore(studentScores) {
+            let bedScore = 0
+            for (let i = 0; i < studentScores.length; i++) {
+               if (studentScores[i] === 2) bedScore++
+            }
+            return bedScore
+         }
 
-         // function getBelowverageScore(studentScores) {
-         //    let belowverageScore = 0
-         //    for (let i = 0; i < studentScores.length; i++) {
-         //       if (studentScores[i] < 4) belowverageScore++
-         //    }
-         //    return belowverageScore
-         // }
+         function getBelowverageScore(studentScores) {
+            let belowverageScore = 0
+            for (let i = 0; i < studentScores.length; i++) {
+               if (studentScores[i] < 4) belowverageScore++
+            }
+            return belowverageScore
+         }
 
-         // function getGoodScore(studentScores) {
-         //    let goodScore = 0
-         //    for (let i = 0; i < studentScores.length; i++) {
-         //       if (studentScores[i] >= 4) goodScore++
-         //    }
-         //    return goodScore
-         // }
+         function getGoodScore(studentScores) {
+            let goodScore = 0
+            for (let i = 0; i < studentScores.length; i++) {
+               if (studentScores[i] >= 4) goodScore++
+            }
+            return goodScore
+         }
 
-         // let studentScores = [5, 2, 3, 3, 5, 2, 4]
-         // let bedScore = getBedScore(studentScores)
-         // let belowverageScore = getBelowverageScore(studentScores)
-         // let goodScore = getGoodScore(studentScores)
-         // document.write(`двійок : ${bedScore}<br> кількість оцінок, які нижче середнього : ${belowverageScore}<br>  кількість хороших оцінок : ${goodScore} `)
+         let studentScores = [5, 2, 3, 3, 5, 2, 4]
+         let bedScore = getBedScore(studentScores)
+         let belowverageScore = getBelowverageScore(studentScores)
+         let goodScore = getGoodScore(studentScores)
+         document.write(`двійок : ${bedScore}<br> кількість оцінок, які нижче середнього : ${belowverageScore}<br>  кількість хороших оцінок : ${goodScore} `)
 
 //=========== 2 - варіант =============================
 
-         function getCategoryScore(studentScores) {
-            let bedScore = 0
-            let belowverageScore = 0
-            let goodScore = 0
-            for (let i = 0; i < studentScores.length; i++) {
-               if(studentScores[i] === 2) bedScore++
-               if(studentScores[i] < 4) belowverageScore++
-               if(studentScores[i] >= 4) goodScore++
-            }
-            return document.write (`двійок : ${bedScore}<br> кількість оцінок, які нижче середнього : ${belowverageScore}<br>  кількість хороших оцінок : ${goodScore} `)
-         }
-         let studentScores = [5, 2, 3, 3, 5, 2, 4 ]
-         let categoryScore = getCategoryScore(studentScores)
+      //    function getCategoryScore(studentScores) {
+      //       let bedScore = 0
+      //       let belowverageScore = 0
+      //       let goodScore = 0
+      //       for (let i = 0; i < studentScores.length; i++) {
+      //          if(studentScores[i] === 2) bedScore++
+      //          if(studentScores[i] < 4) belowverageScore++
+      //          if(studentScores[i] >= 4) goodScore++
+      //       }
+      //        document.write (`двійок : ${bedScore}<br> кількість оцінок, які нижче середнього : ${belowverageScore}<br>  кількість хороших оцінок : ${goodScore} `)
+      //    }
+      //    let studentScores = [5, 2, 3, 3, 5, 2, 4 ]
+      //    let categoryScore = getCategoryScore(studentScores)
       }
    </script>
 </body>

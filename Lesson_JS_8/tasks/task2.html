@@ -28,25 +28,28 @@
             }
             return minNumberDay
          }
-
+         function getMinClients(numberClients) {
+            let minClients = numberClients[0]
+            for (let i = 0; i < numberClients.length; i++) {
+               if (numberClients[i] < minClients) minClients = numberClients[i]
+            }
+            return minClients
+         }
+         
          function getMinNumberClientsDayAll(numberClients) {
+            let minClients = getMinClients(numberClients)
             let minNumberClientsDayAll = []
-            let minClient = numberClients[0]
             for (let i = 0; i < numberClients.length; i++) {
-               if (numberClients[i] < minClient) minClient = numberClients[i]
+               if (numberClients[i] === minClients) minNumberClientsDayAll.push(i + 1)
+
             }
-            for (let i = 0; i < numberClients.length; i++) {
-              if (numberClients[i] === minClient) minNumberClientsDayAll.push(i + 1)
-               
-            }
-            
             return minNumberClientsDayAll
          }
 
          function getSumClientsWorkingDay(numberClients) {
             let sumClientsWorkingDay = 0
-            for (let i = 0; i < 5; i++){
-                sumClientsWorkingDay += numberClients[i]
+            for (let i = 0; i < 5; i++) {
+               sumClientsWorkingDay += numberClients[i]
             }
             return sumClientsWorkingDay
          }
@@ -54,7 +57,7 @@
 
          function getSumClientsWeekend(numberClients) {
             let sumClientsWeekend = 0
-            for (let i = 5; i < 7; i++){
+            for (let i = 5; i < 7; i++) {
                sumClientsWeekend += numberClients[i]
             }
             return sumClientsWeekend
@@ -67,7 +70,7 @@
          let sumClientsWorkingDay = getSumClientsWorkingDay(numberClients)
          document.write(`загальну кількість клієнтів у робочі дні : ${sumClientsWorkingDay}<br>`)
          let sumClientsWeekend = getSumClientsWeekend(numberClients)
-         document.write (`кількість клієнтів на вихідних : ${sumClientsWeekend}<br>`)
+         document.write(`кількість клієнтів на вихідних : ${sumClientsWeekend}<br>`)
       }
    </script>
 </body>
