@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №9 Задача 8</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 8.</h1>
+   <p>8. Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+
+         function inputMarks() {
+            const arrElement = new Array(parseInt(prompt(`Введіть кількість номерів авто`)))
+            const marksList = ['AP434AD', 'BA4234DA', 'AT5235FG']
+            for (let i = 0; i < arrElement.length; i++) {
+               const mark = prompt('Введіть номер авто')
+               marksList.push(mark)
+            }
+            return marksList
+         }
+         const marksList = inputMarks()
+         const newMarksList = marksList.filter(el => el[0] === 'A')
+         document.write(`масив номерів авто : ${marksList} <br>`)
+         document.write(`новий масив тих, які починаються на «А» : ${newMarksList}`)
+      }
+   </script>
+</body>
+
+</html>

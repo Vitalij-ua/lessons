@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №9 Задача 4</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 4.</h1>
+   <p>4.Дано масив елементів. Вивести на екран елементи, що більші за 100
+      ///// ---------- Тут використати цикл for..of -----------
+   </p>
+   <script>
+      if (confirm('Почати тестування?')) {
+
+         function inputMarks() {
+            const arrElement = new Array(parseInt(prompt(`Введіть кількість елементів`)))
+            const marksList = []
+            for (let i = 0; i < arrElement.length; i++) {
+               const mark = parseInt(prompt('Введіть число, дво або тризначне'))
+               marksList.push(mark)
+            }
+            return marksList
+         }
+
+         // function elements(arr) {
+         //    for (let el of arr) {
+         //       if (el > 100)
+         //          document.write(` ${el}, `)
+         //    }
+         // }
+
+         const elements = ((arr) => {
+            const arrElements = []
+            for (let el of arr) {
+               if (el > 100)
+                  arrElements.push(el)
+            }
+            return arrElements
+         })
+
+         const marksList = inputMarks()
+         const el = elements(marksList)
+         document.write(`масив елементів : ${marksList}<br> більші за 100 : ${el}`)
+
+      }
+   </script>
+</body>
+
+</html>

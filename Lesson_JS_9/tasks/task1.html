@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №9 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 1</h1>
+   <p>1. Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів
+      заповнених нулями.</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         // ==== 1 =====
+         // function arr(arrElement) {            
+         //    arrElement.fill(0)
+         //    document.write(`масив, що складається з вказаної кількості елементів заповнених нулями : ${arrElement}`)
+         // }
+         // const arrElement = new Array(parseInt(prompt(`Введіть кількість елементів`)))
+         // arr(arrElement)
+
+         // == 2 =========
+         const arr = (() => {
+            arrElement.fill(0)
+            document.write(`масив, що складається з вказаної кількості елементів заповнених нулями : ${arrElement}`)
+         })
+         const arrElement = new Array(parseInt(prompt(`Введіть кількість елементів`)))
+         arr(arrElement)
+
+         // == 3 ========
+         //  const arr = (() => {
+         //    const arrElement = new Array(parseInt(prompt(`Введіть кількість елементів`)))
+         //    arrElement.fill(0)
+         //    document.write(`масив, що складається з вказаної кількості елементів заповнених нулями : ${arrElement}`)
+         // })
+         
+         // arr()
+      }
+   </script>
+</body>
+
+</html>

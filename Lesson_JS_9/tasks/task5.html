@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №9 Задача 5</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 5.</h1>
+   <p>5.Дано масив елементів. Знайти добуток додатних елементів
+      ///// ---------- Тут використати цикл for..of -----------
+   </p>
+   <script>
+      if (confirm('Почати тестування?')) {
+
+         function inputMarks() {
+            const arrElement = new Array(parseInt(prompt(`Введіть кількість елементів`)))
+            const marksList = []
+            for (let i = 0; i < arrElement.length; i++) {
+               const mark = parseInt(prompt('Введіть число'))
+               marksList.push(mark)
+            }
+            return marksList
+         }
+
+         function resArrElement(arr) {
+            let res = 1
+            for (let el of arr) {
+               if (el > 0) res *= el
+            }
+            return res
+         }
+
+         const marksList = inputMarks()
+         const res = resArrElement(marksList)
+         document.write(`масив елементів : ${marksList}<br> добуток додатних елементів : ${res}`)
+      }
+   </script>
+</body>
+
+</html>

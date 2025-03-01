@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №9 Задача 9</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 9.</h1>
+   <p>9. Дано масив імен. Сформувати масив з перших літер цих імен.</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         function inputMarks() {
+            const arrElement = new Array(parseInt(prompt(`Введіть кількість імен`)))
+            const marksList = ['Іван', 'Петро', 'Яна']
+            for (let i = 0; i < arrElement.length; i++) {
+               const mark = prompt('Введіть імена')
+               marksList.push(mark)
+            }
+            return marksList
+         }
+         const marksList = inputMarks()
+         const newMarksList = marksList.map(el => el[0])
+         document.write(`масив імен : ${marksList}<br>`)
+         document.write(`масив з перших літер цих імен :${newMarksList}`)
+      }
+   </script>
+</body>
+
+</html>

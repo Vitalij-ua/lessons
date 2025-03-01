@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №9 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 2.</h1>
+   <p>2. Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга
+      заповнена 7-ками.</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         const arr = (() => {
+         arrElement.fill(1, 0, Math.floor(arrElement.length / 2))
+         arrElement.fill(7, Math.floor(arrElement.length / 2))
+         document.write(`масив, у якому перша половина заповнена 1-цями, а друга заповнена 7-ками: ${arrElement}`) 
+         })
+        
+         const arrElement = new Array(parseInt(prompt(`Введіть кількість елементів`)))
+         arr (arrElement)
+      }
+   </script>
+</body>
+
+</html>

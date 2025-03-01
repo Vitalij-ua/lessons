@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №9 Задача 10</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 10.</h1>
+   <p>10. Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у
+      грн.</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         function inputMarks() {
+            const arrElement = new Array(parseInt(prompt(`Введіть кількість елементів`)))
+            const marksList = []
+            for (let i = 0; i < arrElement.length; i++) {
+               const mark = parseInt(prompt('Введіть число'))
+               marksList.push(mark)
+            }
+            return marksList
+         }
+         const marksList = inputMarks()
+         const marksListGrn = marksList.map(el => el + 'грн')
+         document.write(`масив цін у грн : ${marksListGrn}<br>`)
+         const marksListTax = marksList.map(el => el / 5 + 'грн')
+         document.write(`масив, який  містить величину сплаченого податку у
+      грн : ${marksListTax}`)
+      }
+   </script>
+</body>
+
+</html>

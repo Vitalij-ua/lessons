@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №9 Задача 6</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 6.</h1>
+   <p>6.Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+
+         function inputMarks() {
+            const arrElement = new Array(parseInt(prompt(`Введіть кількість елементів`)))
+            const marksList = []
+            for (let i = 0; i < arrElement.length; i++) {
+               const mark = parseInt(prompt('Введіть число'))
+               marksList.push(mark)
+            }
+            return marksList
+         }
+         const marksList = inputMarks()
+         document.write(`початковий масив :${marksList}<br>`)
+         marksList.forEach((el, ind, arr) => {
+            if (el > arr[0]) arr[ind] *= 2
+         }
+         )
+         document.write(`змінений масив :${marksList}`)
+
+
+      }
+   </script>
+</body>
+
+</html>

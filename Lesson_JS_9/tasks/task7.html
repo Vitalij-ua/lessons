@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №9 Задача 7</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 7.</h1>
+   <p>7.Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         function inputMarks() {
+            const arrElement = new Array(parseInt(prompt(`Введіть кількість елементів`)))
+            const marksList = []
+            for (let i = 0; i < arrElement.length; i++) {
+               const mark = parseInt(prompt('Введіть число , кілько біліше 1000'))
+               marksList.push(mark)
+            }
+            return marksList
+         }
+         const marksList = inputMarks()
+         document.write(`початковий масив :${marksList}<br>`)
+         marksList.forEach((el, ind, arr) => {
+            if (el > 1000) arr[ind] *= 0.7
+         }
+         )
+         document.write(`змінений масив :${marksList}`)
+
+
+      }
+   </script>
+</body>
+
+</html>
