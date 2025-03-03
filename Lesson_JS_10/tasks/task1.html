@@ -108,7 +108,11 @@
          // }
          // const newArrPrices9 = getSumPrices(newArrPrices1)
          // === 2 ====
-         const newArrPrices9 = newArrPrices1.reduce((acc, curr) => acc + curr)
+         // const newArrPrices1 = arrPrices.filter(el => el > 1000 )
+         // const newArrPrices9 = newArrPrices1.reduce((acc, curr) => acc + curr)
+         // document.write(`сумa цін, що більше за 1000 : ${newArrPrices9}<br>`)
+         // === 3 ====
+         const newArrPrices9 = arrPrices.reduce((acc, el) => el > 1000 ? acc + el : acc)
          document.write(`сумa цін, що більше за 1000 : ${newArrPrices9}<br>`)
 
 
