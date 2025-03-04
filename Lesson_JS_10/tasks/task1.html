@@ -58,22 +58,29 @@
          document.write(`новий масив, у якому є номери тільки тих, що більші за 1000 грн. :${newArrPrices2}<br>`)
 
          // 3.Сформувати список з тих цін, які більші за попереднє значення
-         const newArrPrices3 = arrPrices.filter((el, ind, arr) => arr[ind] > arr[ind - 1])
+         const newArrPrices3 = arrPrices.filter((el, ind, arr) => ind > 0 && arr[ind] > arr[ind - 1])
          document.write(`список з тих цін, які більші за попереднє значення:${newArrPrices3}<br>`)
 
          // 4.Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
-         const newArrPrices4 = arrPrices.map(el => el / (Math.max(...arrPrices) / 100) + '%')
+         const maxArrPrices = Math.max(...arrPrices)
+         const newArrPrices4 = arrPrices.map(el => el / (maxArrPrices / 100) + '%')
          document.write(`новий масив, що міститиме значення цін у відсотках стосовно максимального :${newArrPrices4}<br>`)
 
          // 5.Підрахувати кількість змін цін
-         function getSumPricesChanges(arr) {
-            let newArrPrices5 = 0
-            for (let el of arr) {
-               if (el !== el + 1) newArrPrices5++
-            }
-            return newArrPrices5
-         }
-         const newArrPrices5 = getSumPricesChanges(arrPrices)
+         // === 1 =====
+         // function getSumPricesChanges(arr) {
+         //    let newArrPrices5 = 0
+         //    for (let i = 0; i < arr.length; i++) {
+         //       if (i > 0 && arr[i] !== arr[i+1]) newArrPrices5++               
+         //    }            
+         //    return newArrPrices5
+         // }
+         // const newArrPrices5 = getSumPricesChanges(arrPrices)
+         // === 2 ====
+         const newArrPrices5 = arrPrices.reduce((acc, el, ind, arr) => {
+            if (ind > 0 && el !== arr[ind + 1]) acc++
+            return acc
+         }, 0)
          document.write(`кількість змін цін : ${newArrPrices5}<br>`)
 
          // 6.Визначити, чи є ціна, що менше 1000
@@ -92,8 +99,14 @@
          document.write(`чи усі ціни більше за 1000 ? : ${newArrPrices7}<br>`)
 
          // 8.Підрахувати кількість цін, що більше за 1000
+         // === 1 ====
          // const newArrPrices1 = arrPrices.filter(el => el > 1000 )
-         const newArrPrices8 = newArrPrices1.length
+         // const newArrPrices8 = newArrPrices1.length
+         // === 2 ====
+         const newArrPrices8 = arrPrices.reduce((acc, el) => {
+            if( el > 1000) acc++
+            return acc
+         },0)
          document.write(`кількість цін, що більше за 1000 : ${newArrPrices8}<br>`)
 
          // 9.Підрахувати суму цін, що більше за 1000
