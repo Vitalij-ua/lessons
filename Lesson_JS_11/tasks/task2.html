@@ -143,20 +143,12 @@
 
          // 8. відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
 
-         const arrRevenueWeeksMax = []
-         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
-            const sumRevenueShop = []
-            for (let revenueDayIndex = 0; revenueDayIndex < revenueNum; revenueDayIndex++) {
-               sumRevenueShop.push(arrShopsRevenue[shopIndex][revenueDayIndex])
-            }
-            arrRevenueWeeksMax.push(sumRevenueShop)
-         }
-
-         arrRevenueWeeksMax.sort((a, b) => Math.max(...b) - Math.max(...a))
+         arrShopsRevenue.sort((a, b) => Math.max(...b) - Math.max(...a))
 
          document.write(`<b>Задача 8</b> <br>`)
-         document.write(`відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків :${JSON.stringify(arrRevenueWeeksMax, null, 2)}<br>`)
+         document.write(`Відсортовані тижні за спаданням максимального елемента в кожному тижні: ${JSON.stringify(arrShopsRevenue, null, 2)}<br>`)
          document.write(`<br><hr><br>`)
+
 
 
 
