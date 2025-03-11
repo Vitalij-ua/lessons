@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №11 Задача 3</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <!-- <table>
+      <tr>
+         <td></td>
+      </tr>
+   </table> -->
+   <h1>Задача 3.</h1>
+   <p>Задача 3. Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач
+      стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться
+      снаряди.</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+
+          function getPlayingField(row = 6, col = 6) {
+            const table = []
+            for (let rowInd = 0; rowInd < row; rowInd++) {
+               const rowArr = []
+               for (let colInd = 0; colInd < col; colInd++) {
+                  rowArr.push(0)
+
+               }
+               table.push(rowArr)
+            }
+            return table
+         }
+
+         // function getPlayingField(row = 6, col = 6) {
+         //    const table = []
+         //    for (let rowInd = 0; rowInd < row; rowInd++) {
+         //       const rowArr = new Array(col).fill(0)
+         //       table.push(rowArr)
+         //    }
+         //    return table
+         // }
+
+         const playingField = getPlayingField()
+
+         function getShipsPlayingField(arr) {
+            let placedShips = 0;
+            while (placedShips < 5) {
+               let randomRowIndex = Math.floor(Math.random() * 6)
+               let randomColIndex = Math.floor(Math.random() * 6)
+
+               if (arr[randomRowIndex][randomColIndex] === 0) {
+                  arr[randomRowIndex][randomColIndex] = 'S'
+                  placedShips++
+               }
+            }
+
+            let sunkShips = 0
+            let shotsLeft = 10
+
+            while (sunkShips < 5 && shotsLeft > 0) {
+               let arrNumberRowForShot = parseInt(prompt("Введіть номер рядка (від 1 до 6):"))
+               let arrNumberColForShot = parseInt(prompt("Введіть номер стовпця (від 1 до 6):"))
+
+               if (isNaN(arrNumberRowForShot) || isNaN(arrNumberColForShot) ||
+                  arrNumberRowForShot < 1 || arrNumberRowForShot > 6 ||
+                  arrNumberColForShot < 1 || arrNumberColForShot > 6) {
+                  alert("Введено некоректний номер клітинки.")
+                  continue
+               }
+
+               let target = arr[arrNumberRowForShot - 1][arrNumberColForShot - 1]
+
+               if (target === 'S') {
+                  sunkShips++
+                  alert(`Влучив у корабель! Потоплено ${sunkShips} кораблів з 5.`)
+                  arr[arrNumberRowForShot - 1][arrNumberColForShot - 1] = 'X'
+               } else if (target === 'X' || target === 'O') {
+                  alert("Ви вже стріляли сюди!")
+               } else {
+                  alert("Промах!")
+                  arr[arrNumberRowForShot - 1][arrNumberColForShot - 1] = 'O'
+               }
+
+               shotsLeft--
+            }
+
+            if (sunkShips === 5) {
+               document.write("<h2>Ви перемогли!</h2>")
+            } else {
+               document.write("<h2>Гра закінчена. У вас закінчилися постріли.</h2>")
+            }
+
+            return arr
+         }
+
+         const shipsPlayingField = getShipsPlayingField(playingField)
+
+         function getShowTable(table) {
+            document.write("<table>")
+            for (let row of table) {
+               document.write("<tr>")
+               for (let col of row) {
+                  let cellColor = col === 'X' ? "red" : col === 'O' ? "gray" : "white"
+                  let cellContent = col === 'S' ? 'S' : col
+                  document.write(`<td style="width: 40px; height: 40px; background-color: ${cellColor};">${cellContent}</td>`)
+               }
+               document.write("</tr>")
+            }
+            document.write("</table>")
+         }
+
+         getShowTable(shipsPlayingField)
+
+      }
+   </script>
+</body>
+
+</html>

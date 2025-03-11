@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №11 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 2.</h1>
+   <p>Задача 2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+      1. загальний прибуток кожного масиву за тиждень;
+      2. загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і
+      т.д.);
+      3. загальний прибуток за робочі дні
+      4. загальний прибуток за вихідні дні
+      5. максимальний прибуток за середу
+      6. сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+      7. відсортувати кожен тиждень за зростанням
+      8. відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні
+      рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+      9. упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти
+      суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти
+      раніше).
+
+   </p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         function generateRandomTable(
+            rowsNumber,
+            colsNumber = 7,
+            minValue = 1,
+            maxValue = 1000
+         ) {
+            const table = []
+            for (let rowIndex = 0; rowIndex < rowsNumber; rowIndex++) {
+               table.push([])
+               for (let colIndex = 0; colIndex < colsNumber; colIndex++) {
+                  const randNum =
+                     minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+                  table[rowIndex].push(randNum)
+               }
+            }
+            return table
+         }
+
+         const arrShopsRevenue = generateRandomTable(5)
+         document.write(`прибуток К магазинів протягом тижня:${JSON.stringify(arrShopsRevenue, null, 2)}<br><hr><br>`)
+
+         //  1. загальний прибуток кожного масиву за тиждень;
+
+         document.write(`<b>Задача 1</b> <br>`)
+         document.write(`Загальний прибуток кожного магазину за тиждень :<br>`)
+
+         const shopNum = arrShopsRevenue.length
+         const revenueNum = arrShopsRevenue[0].length
+         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+            let sumRevenueWeek = 0
+            for (let revenueDayIndex = 0; revenueDayIndex < revenueNum; revenueDayIndex++) {
+               sumRevenueWeek += arrShopsRevenue[shopIndex][revenueDayIndex]
+
+            }
+            document.write(`${shopIndex + 1}й магазин - ${sumRevenueWeek}<br>`)
+         }
+
+         document.write(`<br><hr><br>`)
+
+
+         //  2. загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.) ;
+
+         document.write(`<b>Задача 2</b> <br>`)
+         document.write(`Загальний прибуток усіх магазинів по дням :<br>`)
+         const weekDays = ['понеділок', 'вівторок', 'середа', 'четвер', 'п’ятниця', 'субота', 'неділя']
+         for (let revenueDayIndex = 0; revenueDayIndex < revenueNum; revenueDayIndex++) {
+
+            let sumRevenueDay = 0
+            for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+               sumRevenueDay += arrShopsRevenue[shopIndex][revenueDayIndex]
+            }
+            document.write(`Дeнь ${revenueDayIndex + 1}.${weekDays[revenueDayIndex]} - ${sumRevenueDay}<br>`)
+         }
+         document.write(`<br><hr><br>`)
+
+         // 3. загальний прибуток за робочі дні
+
+         const workDays = 5
+         let sumRevenueWorkDays = 0
+         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+            for (let revenueDayIndex = 0; revenueDayIndex < workDays; revenueDayIndex++) {
+               sumRevenueWorkDays += arrShopsRevenue[shopIndex][revenueDayIndex]
+            }
+         }
+         document.write(`<b>Задача 3</b> <br>`)
+         document.write(`Загальний прибуток за робочі дні :${sumRevenueWorkDays}<br>`)
+         document.write(`<br><hr><br>`)
+
+         // 4. загальний прибуток за вихідні дні
+
+         let sumRevenueWeekends = 0
+         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+            for (let revenueDayIndex = workDays; revenueDayIndex < revenueNum; revenueDayIndex++) {
+               sumRevenueWeekends += arrShopsRevenue[shopIndex][revenueDayIndex]
+            }
+         }
+         document.write(`<b>Задача 4</b> <br>`)
+         document.write(`загальний прибуток за вихідні дні :${sumRevenueWeekends}<br>`)
+         document.write(`<br><hr><br>`)
+
+         //5. максимальний прибуток за середу
+
+         //===== 1 ===
+         const revenueWednesday = []
+         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+
+            revenueWednesday.push(arrShopsRevenue[shopIndex][2])
+         }
+         const maxRevenueWednesday = Math.max(...revenueWednesday)
+
+         //===== 2 ===
+         // const maxRevenueWednesday = Math.max(...arrShopsRevenue.map(shop => shop[2]))
+
+         document.write(`<b>Задача 5</b> <br>`)
+         document.write(`максимальний прибуток за середу :${maxRevenueWednesday}<br>`)
+         document.write(`<br><hr><br>`)
+
+         // 6. сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+
+         const arrRevenueMax200 = arrShopsRevenue.flat(Infinity).filter(revenue => revenue > 200)
+         document.write(`<b>Задача 6</b> <br>`)
+         document.write(`сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200 :${JSON.stringify(arrRevenueMax200, null, 2)}<br>`)
+         document.write(`<br><hr><br>`)
+
+         // 7. відсортувати кожен тиждень за зростанням
+
+         const arrSortAllWeek = arrShopsRevenue.map(week => [...week].sort((a, b) => a - b))
+         document.write(`<b>Задача 7</b> <br>`)
+         document.write(`відсортувати кожен тиждень за зростанням :${JSON.stringify(arrSortAllWeek, null, 2)}<br>`)
+         document.write(`<br><hr><br>`)
+
+         // 8. відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+
+         const arrRevenueWeeksMax = []
+         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+            const sumRevenueShop = []
+            for (let revenueDayIndex = 0; revenueDayIndex < revenueNum; revenueDayIndex++) {
+               sumRevenueShop.push(arrShopsRevenue[shopIndex][revenueDayIndex])
+            }
+            arrRevenueWeeksMax.push(sumRevenueShop)
+         }
+
+         arrRevenueWeeksMax.sort((a, b) => Math.max(...b) - Math.max(...a))
+
+         document.write(`<b>Задача 8</b> <br>`)
+         document.write(`відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків :${JSON.stringify(arrRevenueWeeksMax, null, 2)}<br>`)
+         document.write(`<br><hr><br>`)
+
+
+
+         // 9. упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+
+         //=== 1 ====
+         const arrRevenueWeeks = []
+         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+            let sumRevenueShop = 0
+            for (let revenueDayIndex = 0; revenueDayIndex < revenueNum; revenueDayIndex++) {
+               sumRevenueShop += arrShopsRevenue[shopIndex][revenueDayIndex]
+            }
+            arrRevenueWeeks.push(sumRevenueShop)
+         }
+
+
+         //=== 2 ====
+         // const arrRevenueWeeks = arrShopsRevenue.map(shop => shop.reduce((sum, dayRevenue) => sum + dayRevenue, 0))
+
+         // arrRevenueWeeks.sort((a, b) => a - b)
+         document.write(`<b>Задача 9</b> <br>`)
+         document.write(`упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше). :${JSON.stringify(arrRevenueWeeks, null, 2)}<br>`)
+         document.write(`<br><hr><br>`)
+
+         //=== 3 ====
+         // const arrRevenueWeeksSum = []
+         // for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+         //    const sumRevenueShop = arrShopsRevenue[shopIndex].reduce((sum, day) => sum + day, 0)
+         //    arrRevenueWeeksSum.push({ тиждень: arrShopsRevenue[shopIndex], sum: sumRevenueShop })
+         // }
+         // arrRevenueWeeksSum.sort((a, b) => b.sum - a.sum)
+
+
+         // document.write(`<b>Задача 9</b> <br>`)
+         // document.write(`упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).:${JSON.stringify(arrRevenueWeeksSum, null, 2)}<br>`)
+         // document.write(`<br><hr><br>`)
+
+      }
+   </script>
+</body>
+
+</html>
