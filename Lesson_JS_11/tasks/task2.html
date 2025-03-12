@@ -52,60 +52,75 @@
          document.write(`прибуток К магазинів протягом тижня:${JSON.stringify(arrShopsRevenue, null, 2)}<br><hr><br>`)
 
          //  1. загальний прибуток кожного масиву за тиждень;
+         function getShopsRevenueSum(arr) {
+            const result = []
+            for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {
+               let sumRevenueWeek = 0
+               for (let revenueDayIndex = 0; revenueDayIndex < arr[0].length; revenueDayIndex++) {
+                  sumRevenueWeek += arr[shopIndex][revenueDayIndex]
 
-         document.write(`<b>Задача 1</b> <br>`)
-         document.write(`Загальний прибуток кожного магазину за тиждень :<br>`)
-
-         const shopNum = arrShopsRevenue.length
-         const revenueNum = arrShopsRevenue[0].length
-         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
-            let sumRevenueWeek = 0
-            for (let revenueDayIndex = 0; revenueDayIndex < revenueNum; revenueDayIndex++) {
-               sumRevenueWeek += arrShopsRevenue[shopIndex][revenueDayIndex]
-
+               }
+               result.push(`<b>Магазин ${shopIndex + 1}</b>: ${sumRevenueWeek}<br>`)
             }
-            document.write(`${shopIndex + 1}й магазин - ${sumRevenueWeek}<br>`)
-         }
 
+            return result
+         }
+         const shopsRevenueSum = getShopsRevenueSum(arrShopsRevenue)
+         document.write(`<b>Задача 1</b> <br>`)
+         document.write(`Загальний прибуток кожного магазину за тиждень :${shopsRevenueSum}<br>`)
          document.write(`<br><hr><br>`)
 
+         //  2. загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.) 
 
-         //  2. загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.) ;
+         function getAllRevenueSum(arr) {
+            const result = []
+            const weekDays = ['понеділок', 'вівторок', 'середа', 'четвер', 'п’ятниця', 'субота', 'неділя']
+            for (let revenueDayIndex = 0; revenueDayIndex < arr[0].length; revenueDayIndex++) {
 
-         document.write(`<b>Задача 2</b> <br>`)
-         document.write(`Загальний прибуток усіх магазинів по дням :<br>`)
-         const weekDays = ['понеділок', 'вівторок', 'середа', 'четвер', 'п’ятниця', 'субота', 'неділя']
-         for (let revenueDayIndex = 0; revenueDayIndex < revenueNum; revenueDayIndex++) {
-
-            let sumRevenueDay = 0
-            for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
-               sumRevenueDay += arrShopsRevenue[shopIndex][revenueDayIndex]
+               let sumRevenueDay = 0
+               for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {
+                  sumRevenueDay += arr[shopIndex][revenueDayIndex]
+               }
+               result.push(`Дeнь ${revenueDayIndex + 1}.${weekDays[revenueDayIndex]} - ${sumRevenueDay}<br>`)
             }
-            document.write(`Дeнь ${revenueDayIndex + 1}.${weekDays[revenueDayIndex]} - ${sumRevenueDay}<br>`)
+            return result
          }
+         const allRevenueSum = getAllRevenueSum(arrShopsRevenue)
+         document.write(`<b>Задача 2</b> <br>`)
+         document.write(`Загальний прибуток усіх магазинів по дням :${allRevenueSum}<br>`)
          document.write(`<br><hr><br>`)
 
          // 3. загальний прибуток за робочі дні
+         function getSumRevenueWorkDays(arr) {
 
-         const workDays = 5
-         let sumRevenueWorkDays = 0
-         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
-            for (let revenueDayIndex = 0; revenueDayIndex < workDays; revenueDayIndex++) {
-               sumRevenueWorkDays += arrShopsRevenue[shopIndex][revenueDayIndex]
+
+            const workDays = 5
+            let sumRevenueWorkDays = 0
+            for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {
+               for (let revenueDayIndex = 0; revenueDayIndex < workDays; revenueDayIndex++) {
+                  sumRevenueWorkDays += arr[shopIndex][revenueDayIndex]
+               }
             }
+            return sumRevenueWorkDays
          }
+         const sumRevenueWorkDays = getSumRevenueWorkDays(arrShopsRevenue)
          document.write(`<b>Задача 3</b> <br>`)
          document.write(`Загальний прибуток за робочі дні :${sumRevenueWorkDays}<br>`)
          document.write(`<br><hr><br>`)
 
          // 4. загальний прибуток за вихідні дні
 
-         let sumRevenueWeekends = 0
-         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
-            for (let revenueDayIndex = workDays; revenueDayIndex < revenueNum; revenueDayIndex++) {
-               sumRevenueWeekends += arrShopsRevenue[shopIndex][revenueDayIndex]
+         function getSumRevenueWeekends(arr) {
+            let sumRevenueWeekends = 0
+            const workDays = 5
+            for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {
+               for (let revenueDayIndex = workDays; revenueDayIndex < arr[0].length; revenueDayIndex++) {
+                  sumRevenueWeekends += arr[shopIndex][revenueDayIndex]
+               }
             }
+            return sumRevenueWeekends
          }
+         const sumRevenueWeekends = getSumRevenueWeekends(arrShopsRevenue)
          document.write(`<b>Задача 4</b> <br>`)
          document.write(`загальний прибуток за вихідні дні :${sumRevenueWeekends}<br>`)
          document.write(`<br><hr><br>`)
@@ -113,13 +128,16 @@
          //5. максимальний прибуток за середу
 
          //===== 1 ===
-         const revenueWednesday = []
-         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+         function getMaxRevenueWednesday(arr) {
+            const revenueWednesday = []
+            let maxRevenueWednesday 
+            for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {
 
-            revenueWednesday.push(arrShopsRevenue[shopIndex][2])
+               revenueWednesday.push(arr[shopIndex][2])
+            }
+           return  maxRevenueWednesday = Math.max(...revenueWednesday)
          }
-         const maxRevenueWednesday = Math.max(...revenueWednesday)
-
+         const maxRevenueWednesday = getMaxRevenueWednesday(arrShopsRevenue)
          //===== 2 ===
          // const maxRevenueWednesday = Math.max(...arrShopsRevenue.map(shop => shop[2]))
 
@@ -164,9 +182,9 @@
 
          //=== 1 ====
          const arrRevenueWeeks = []
-         for (let shopIndex = 0; shopIndex < shopNum; shopIndex++) {
+         for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {
             let sumRevenueShop = 0
-            for (let revenueDayIndex = 0; revenueDayIndex < revenueNum; revenueDayIndex++) {
+            for (let revenueDayIndex = 0; revenueDayIndex < arr[0].length; revenueDayIndex++) {
                sumRevenueShop += arrShopsRevenue[shopIndex][revenueDayIndex]
             }
             arrRevenueWeeks.push(sumRevenueShop)
