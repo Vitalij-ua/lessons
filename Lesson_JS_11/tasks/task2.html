@@ -164,13 +164,15 @@
          // arrShopsRevenue.sort((a, b) => Math.max(...b) - Math.max(...a))
 
          //=== 2 ====
-
-         arrShopsRevenue.forEach(row => row.push(Math.max(...row)))
-         arrShopsRevenue.sort((a, b) => b.at(-1) - a.at(-1))
-         arrShopsRevenue.forEach(row => row.pop())
-
+         function getArrShopsRevenueMax(arr) {
+            arr.forEach(row => row.push(Math.max(...row)))
+            arr.sort((row1, row2) => row2.at(-1) - row1.at(-1))
+            arr.forEach(row => row.pop())
+            return arr
+         }
+         const arrShopsRevenueMax = getArrShopsRevenueMax(arrShopsRevenue)
          document.write(`<b>Задача 8</b> <br>`)
-         document.write(`Відсортовані тижні за спаданням максимального елемента в кожному тижні: ${JSON.stringify(arrShopsRevenue, null, 2)}<br>`)
+         document.write(`Відсортовані тижні за спаданням максимального елемента в кожному тижні: ${JSON.stringify(arrShopsRevenueMax, null, 2)}<br>`)
          document.write(`<br><hr><br>`)
 
 
@@ -196,7 +198,7 @@
          //=== 2 ====
          // const arrRevenueWeeks = arrShopsRevenue.map(shop => shop.reduce((sum, dayRevenue) => sum + dayRevenue, 0))
 
-         
+
          document.write(`<b>Задача 9</b> <br>`)
          document.write(`упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше). :${JSON.stringify(arrRevenueWeeks, null, 2)}<br>`)
          document.write(`<br><hr><br>`)
