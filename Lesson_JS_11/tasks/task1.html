@@ -146,7 +146,7 @@
          const rowNum6 = arr6.length
 
          for (let rowIndex = 0; rowIndex < rowNum6; rowIndex++) {
-            for (let colIndex = 0; colIndex < colNum6; colIndex += 2) {
+            for (let colIndex = 1; colIndex < colNum6; colIndex += 2) {
                sum6 += arr6[rowIndex][colIndex]
             }
          }
@@ -156,24 +156,39 @@
          document.write(`Двовимірний масив:${JSON.stringify(arr6, null, 2)}<br>`)
          document.write(`Суму непарних стовпців = ${sum6}<br><br><hr><br>`)
 
-         // 7. У парних рядках – непарні стовпці.
+         // 7. У парних рядках – непарні стовпці, у непарних – парні.
 
          const arr7 = generateRandomTable(5, 5)
          let sum7 = 0
-         const colNum7 = arr7[0].length
-         const rowNum7 = arr7.length
+         for (let rowInd = 0; rowInd < arr7.length; rowInd++) {
+            for (let colInd = 1 - rowInd % 2; colInd < arr7[rowInd].length; colInd += 2) {
+               sum7 += arr7[rowInd][colInd]
 
-         for (let rowIndex = 1; rowIndex < rowNum7; rowIndex += 2) {
-            for (let colIndex = 0; colIndex < colNum7; colIndex += 2) {
-               sum7 += arr7[rowIndex][colIndex]
             }
-         }
 
-         // Вивід даних
+         }
+          // Вивід даних
          document.write(`<b>Задача 7</b><br>`)
          document.write(`Двовимірний масив:${JSON.stringify(arr7, null, 2)}<br>`)
-         document.write(`У парних рядках – непарні стовпці = ${sum7}<br><br><hr><br>`)
-      
+         document.write(`У парних рядках – непарні стовпці, у непарних – парні.= ${sum7}<br><br><hr><br>`)
+
+         //У парних рядках – непарні стовпці
+         // const arr7 = generateRandomTable(5, 5)
+         // let sum7 = 0
+         // const colNum7 = arr7[0].length
+         // const rowNum7 = arr7.length
+
+         // for (let rowIndex = 0; rowIndex < rowNum7; rowIndex += 2) {
+         //    for (let colIndex = 0; colIndex < colNum7; colIndex += 2) {
+         //       sum7 += arr7[rowIndex][colIndex]
+         //    }
+         // }
+
+         // // Вивід даних
+         // document.write(`<b>Задача 7</b><br>`)
+         // document.write(`Двовимірний масив:${JSON.stringify(arr7, null, 2)}<br>`)
+         // document.write(`У парних рядках – непарні стовпці = ${sum7}<br><br><hr><br>`)
+
       }
    </script>
 </body>

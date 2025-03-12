@@ -143,7 +143,15 @@
 
          // 8. відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
 
-         arrShopsRevenue.sort((a, b) => Math.max(...b) - Math.max(...a))
+         //=== 1 ====
+
+         // arrShopsRevenue.sort((a, b) => Math.max(...b) - Math.max(...a))
+
+         //=== 2 ====
+
+         arrShopsRevenue.forEach(row => row.push(Math.max(...row)))
+         arrShopsRevenue.sort((a, b) => b.at(-1) - a.at(-1))
+         arrShopsRevenue.forEach(row => row.pop())
 
          document.write(`<b>Задача 8</b> <br>`)
          document.write(`Відсортовані тижні за спаданням максимального елемента в кожному тижні: ${JSON.stringify(arrShopsRevenue, null, 2)}<br>`)
