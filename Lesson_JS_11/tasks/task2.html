@@ -67,7 +67,7 @@
          }
          const shopsRevenueSum = getShopsRevenueSum(arrShopsRevenue)
          document.write(`<b>Задача 1</b> <br>`)
-         document.write(`Загальний прибуток кожного магазину за тиждень :${shopsRevenueSum}<br>`)
+         document.write(`Загальний прибуток кожного магазину за тиждень :<br>${shopsRevenueSum}<br>`)
          document.write(`<br><hr><br>`)
 
          //  2. загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.) 
@@ -87,13 +87,11 @@
          }
          const allRevenueSum = getAllRevenueSum(arrShopsRevenue)
          document.write(`<b>Задача 2</b> <br>`)
-         document.write(`Загальний прибуток усіх магазинів по дням :${allRevenueSum}<br>`)
+         document.write(`Загальний прибуток усіх магазинів по дням :<br>${allRevenueSum}<br>`)
          document.write(`<br><hr><br>`)
 
          // 3. загальний прибуток за робочі дні
          function getSumRevenueWorkDays(arr) {
-
-
             const workDays = 5
             let sumRevenueWorkDays = 0
             for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {

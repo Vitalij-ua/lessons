@@ -76,9 +76,8 @@
             let sum = 0
             const halfRow = Math.floor(arr.length / 2)
             const halfCol = Math.floor(arr[0].length / 2)
-            const colNum = arr[0].length
             for (let rowIndex = 0; rowIndex < halfRow; rowIndex++) {
-               for (let colIndex = halfCol; colIndex < colNum; colIndex++) {
+               for (let colIndex = halfCol; colIndex < arr[0].length; colIndex++) {
                   sum += arr[rowIndex][colIndex]
                }
             }
@@ -97,8 +96,7 @@
             let sum = 0
             const halfRow = Math.floor(arr.length / 2)
             const halfCol = Math.floor(arr[0].length / 2)
-            const rowNum = arr.length
-            for (let rowIndex = halfRow; rowIndex < rowNum; rowIndex++) {
+            for (let rowIndex = halfRow; rowIndex < arr.length; rowIndex++) {
                for (let colIndex = 0; colIndex < halfCol; colIndex++) {
                   sum += arr[rowIndex][colIndex]
                }
@@ -118,10 +116,8 @@
             let sum = 0
             const halfRow = Math.floor(arr.length / 2)
             const halfCol = Math.floor(arr[0].length / 2)
-            const colNum = arr[0].length
-            const rowNum = arr.length
-            for (let rowIndex = halfRow; rowIndex < rowNum; rowIndex++) {
-               for (let colIndex = halfCol; colIndex < colNum; colIndex++) {
+            for (let rowIndex = halfRow; rowIndex < arr.length; rowIndex++) {
+               for (let colIndex = halfCol; colIndex < arr[0].length; colIndex++) {
                   sum += arr[rowIndex][colIndex]
                }
             }
@@ -138,11 +134,9 @@
          const arr5 = generateRandomTable(6, 6)
          function getSum5(arr) {
             let sum = 0
-            const colNum = arr[0].length
-            const rowNum = arr.length
 
-            for (let rowIndex = 0; rowIndex < rowNum; rowIndex += 2) {
-               for (let colIndex = 0; colIndex < colNum; colIndex++) {
+            for (let rowIndex = 0; rowIndex < arr.length; rowIndex += 2) {
+               for (let colIndex = 0; colIndex < arr[0].length; colIndex++) {
                   sum += arr[rowIndex][colIndex]
                }
             }
@@ -159,11 +153,9 @@
          const arr6 = generateRandomTable(6, 4)
          function getSum6(arr) {
             let sum = 0
-            const colNum = arr[0].length
-            const rowNum = arr.length
 
-            for (let rowIndex = 0; rowIndex < rowNum; rowIndex++) {
-               for (let colIndex = 1; colIndex < colNum; colIndex += 2) {
+            for (let rowIndex = 0; rowIndex < arr.length; rowIndex++) {
+               for (let colIndex = 1; colIndex < arr[0].lengthlNum; colIndex += 2) {
                   sum += arr[rowIndex][colIndex]
                }
             }
