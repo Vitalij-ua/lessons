@@ -130,12 +130,12 @@
          //===== 1 ===
          function getMaxRevenueWednesday(arr) {
             const revenueWednesday = []
-            let maxRevenueWednesday 
+            let maxRevenueWednesday
             for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {
 
                revenueWednesday.push(arr[shopIndex][2])
             }
-           return  maxRevenueWednesday = Math.max(...revenueWednesday)
+            return maxRevenueWednesday = Math.max(...revenueWednesday)
          }
          const maxRevenueWednesday = getMaxRevenueWednesday(arrShopsRevenue)
          //===== 2 ===
@@ -181,20 +181,24 @@
          // 9. упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
 
          //=== 1 ====
-         const arrRevenueWeeks = []
-         for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {
-            let sumRevenueShop = 0
-            for (let revenueDayIndex = 0; revenueDayIndex < arr[0].length; revenueDayIndex++) {
-               sumRevenueShop += arrShopsRevenue[shopIndex][revenueDayIndex]
+         function getRevenueWeeks(arr) {
+            const arrRevenueWeeks = []
+            for (let shopIndex = 0; shopIndex < arr.length; shopIndex++) {
+               let sumRevenueShop = 0
+               for (let revenueDayIndex = 0; revenueDayIndex < arr[0].length; revenueDayIndex++) {
+                  sumRevenueShop += arr[shopIndex][revenueDayIndex]
+               }
+               arrRevenueWeeks.push(sumRevenueShop)
             }
-            arrRevenueWeeks.push(sumRevenueShop)
+            return arrRevenueWeeks
          }
-
+         const arrRevenueWeeks = getRevenueWeeks(arrShopsRevenue)
+         arrRevenueWeeks.sort((a, b) => a - b)
 
          //=== 2 ====
          // const arrRevenueWeeks = arrShopsRevenue.map(shop => shop.reduce((sum, dayRevenue) => sum + dayRevenue, 0))
 
-         // arrRevenueWeeks.sort((a, b) => a - b)
+         
          document.write(`<b>Задача 9</b> <br>`)
          document.write(`упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше). :${JSON.stringify(arrRevenueWeeks, null, 2)}<br>`)
          document.write(`<br><hr><br>`)
