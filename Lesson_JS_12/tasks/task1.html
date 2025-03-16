@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №12 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 1</h1>
+   <p>1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування
+      бульбашкою</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         function getArr(elNum = 30, min = 1, max = 10) {
+            let arr = []
+            for (let index = 0; index < elNum; index++) {
+               arr.push(Math.floor(Math.random() * (max - min + 1)) + min)
+            }
+            return arr
+         }
+
+         const arr = getArr()
+         document.write(`<b>Дано масив :</b> [${arr}]<br>`)
+
+         function getSortArrBubbleChangeEquality(arr) {
+            let change
+            let endIndex = arr.length
+            let sumChange = 0
+            let sumEquality = 0
+            do {
+               change = false
+               for (let i = 1; i < endIndex; i++) {
+                  sumEquality++
+                  if (arr[i - 1] > arr[i]) {
+                     const tmp = arr[i - 1]
+                     arr[i - 1] = arr[i]
+                     arr[i] = tmp
+                     change = true
+                     sumChange++
+                  }
+                 
+               }
+               endIndex--
+            } while (change)
+            return [arr, sumChange, sumEquality]
+         }
+         const [newArr, sumChange, sumEquality ]= getSortArrBubbleChangeEquality(arr)
+         document.write(`<b>Новий масив :</b> [${newArr}]<br><b> було обмінів : </b>${sumChange}<br><b>порівнянь чисел під час сортування : </b>${sumEquality}<br>`)
+
+      }
+   </script>
+</body>
+
+</html>
