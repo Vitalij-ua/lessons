@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №13 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 1</h1>
+   <p>1. Генерація всіх підмножин: Реалізуйте рекурсивну функцію, яка генерує всі можливі підмножини заданого масиву.
+      Наприклад, для масиву [1, 2, 3] можливі підмножини: [], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3].</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+
+         function generateSubsets(arr, step = 0, currentSubset = [], result = []) {
+            if (step === arr.length) {
+               result.push([...currentSubset])
+               return
+            }
+            generateSubsets(arr, step + 1, currentSubset, result)
+
+            currentSubset.push(arr[step])
+            generateSubsets(arr, step + 1, currentSubset, result)
+            currentSubset.pop()
+
+            return result
+         }
+
+         const array = [1, 2, 3, 4, 5]
+         const subsets = generateSubsets(array)
+
+         subsets.sort((a, b) =>
+            a.length - b.length ||
+            a.reduce((acc, el) => acc + el, 0) - b.reduce((acc, el) => acc + el, 0)
+         )
+
+         // subsets.sort((a, b) => a.reduce((acc, el) => acc + el, 0) - b.reduce((acc, el) => acc + el, 0)).sort((a, b) => a.length - b.length )
+
+         document.write(`можливі підмножини: ${JSON.stringify(subsets)}`)
+
+
+      }
+   </script>
+</body>
+
+</html>

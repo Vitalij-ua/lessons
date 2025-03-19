@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №13 Задача 0</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 0</h1>
+   <p>Задача з співбесіди</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+
+         for (let i = 1; i < 5; i++) {
+            setTimeout(() => {
+               alert(i)
+            }, 2000);
+         }
+
+
+
+         let ind
+         for (ind = 1; ind < 5; ind++) {
+            setTimeout(() => {
+               alert(ind)
+            }, 2000);
+         }
+
+
+         let num = 0
+         let myTimer = setInterval(() => {
+            if (num === 5) {
+               alert(`Stop`)
+               clearInterval(myTimer)
+            } else alert(num++)
+         }, 1000);
+
+
+         function myFunc(num) {
+            setTimeout(() => {
+               if (num < 5){
+                  alert(num)
+                  myFunc(num + 1)
+               }
+            }, 2000);
+         }
+         myFunc(1)
+
+      }
+   </script>
+</body>
+
+</html>

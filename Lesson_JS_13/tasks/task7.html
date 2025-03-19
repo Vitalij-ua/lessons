@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №13 Задача 7</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 7.</h1>
+   <p>7. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться
+      перевірка.</p>
+   <script>
+      if (confirm('Почати тестування?')) {
+
+         function getQuestionTest(min = 1, max = 10) {
+            const num1 = Math.floor(Math.random() * (max - min + 1)) + min
+            const num2 = Math.floor(Math.random() * (max - min + 1)) + min
+            const userAnswer = parseInt(prompt(`Скільки буде ${num1} + ${num2}?`))
+            const correctAnswer = num1 + num2
+
+            if (userAnswer === correctAnswer) {
+               alert(`Вірно!`)
+            } else {
+               alert(`Помилка! Правильна відповідь: ${correctAnswer}`)
+            }
+         }
+
+         function startTest(numQuantity, current = 0) {
+            if (current >= numQuantity) {
+               alert("Тест завершено!")
+               return;
+            }
+
+            setTimeout(() => {
+               getQuestionTest()
+               startTest(numQuantity, current + 1)
+            }, 10000);
+         }
+
+         const quantity = parseInt(prompt("Введіть кількість завдань"))
+         if (!isNaN(quantity) && quantity > 0) {
+            startTest(quantity)
+         } else {
+            alert("Введіть коректне число!")
+         }
+
+
+      }
+   </script>
+</body>
+
+</html>
