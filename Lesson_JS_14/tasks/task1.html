@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №14 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 1</h1>
+   <p>Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
+      ----- Властивості ------
+      - назва компанії на час розробки (назву періодично змінюють)
+      - власник компанії
+      - споснсори (масив спонсорів)
+      * прізвище спонсора
+      * ім’я спонсора
+      * сума вкладень спонсора
+      - рік випуску
+      - вартість сайту
+      Знайти:
+      1. загальну вартість усіх сайтів
+      2. кількість сайтів, що було зроблено між 2000 та 2009 рр.
+      3. кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+      4. створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+      5. знайти рік, коли прибуток був найбільшим
+      6. упорядкувати список за спаданням прибутку
+      7. Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+   </p>
+   <script>
+      if (confirm('Почати тестування?')) {
+         let sites = [
+            {
+               company_name: 'Horns and hooves',
+               company_owner: 'Ostap',
+               sponsors: [
+                  {
+                     surname_sponsor: 'Balaganov',
+                     name_sponsor: 'Shura',
+                     investment: 50
+                  },
+                  {
+                     surname_sponsor: 'Panikovsky',
+                     name_sponsor: 'Michael',
+                     investment: 100
+                  }
+               ],
+               release_year: 2005,
+               site_cost: 2000
+            },
+            {
+               company_name: 'Horns and hooves',
+               company_owner: 'Ostap',
+               sponsors: [
+                  {
+                     surname_sponsor: 'Koreiko',
+                     name_sponsor: 'Alexander',
+                     investment: 150000
+                  },
+                  {
+                     surname_sponsor: 'Panikovsky',
+                     name_sponsor: 'Michael',
+                     investment: 100
+                  }
+               ],
+               release_year: 2020,
+               site_cost: 200000
+            },
+            {
+               company_name: '12 chairs',
+               company_owner: 'Ostap',
+               sponsors: [
+                  {
+                     surname_sponsor: 'Vorobyaninov',
+                     name_sponsor: 'Kisa',
+                     investment: 200
+                  },
+                  {
+                     surname_sponsor: 'Panikovsky',
+                     name_sponsor: 'Michael',
+                     investment: 100
+                  }
+               ],
+               release_year: 2015,
+               site_cost: 500
+            }
+         ]
+         console.log("масив об’єктів – сайтів", sites)
+
+         // === 1. загальну вартість усіх сайтів ====
+         const totalSumSites = sites.reduce((prevSum, site) => prevSum + site.site_cost, 0)
+         document.write(`загальну вартість усіх сайтів : ${totalSumSites}<br>`)
+         console.log("загальну вартість усіх сайтів", totalSumSites)
+
+         //=== 2. кількість сайтів, що було зроблено між 2000 та 2009 рр.===
+         const sitesNumber2000_2009 = sites.reduce((prevSum, site) => site.release_year >= 2000 && site.release_year <= 2009 ? prevSum + 1 : prevSum, 0)
+         document.write(`кількість сайтів, що було зроблено між 2000 та 2009 рр. : ${sitesNumber2000_2009}<br>`)
+         console.log("кількість сайтів, що було зроблено між 2000 та 2009 рр.", sitesNumber2000_2009)
+
+         //=== 3. кількість сайтів, де сума спонсорських вкладень була більшою за 100000 ==
+         const sitesNumberInvestment100000 = sites.reduce((prevSum, site) => site.sponsors.reduce((prevSum, sponsor) => prevSum + sponsor.investment, 0) > 100000 ? prevSum + 1 : prevSum, 0)
+         document.write(`кількість сайтів, де сума спонсорських вкладень була більшою за 100000 : ${sitesNumberInvestment100000}<br>`)
+         console.log("кількість сайтів, де сума спонсорських вкладень була більшою за 100000", sitesNumberInvestment100000)
+
+         //=== 4. створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+         const totalSponsors = sites.flatMap(site => site.sponsors)
+         console.log("загальний список усіх спонсорів ", totalSponsors)
+
+         //=== 5. знайти рік, коли прибуток був найбільшим
+         const yearMaxCost = sites.reduce((maxSite, site) => site.site_cost > maxSite.site_cost ? site : maxSite, sites[0]).release_year
+
+         document.write(`Рік, коли прибуток був найбільшим : ${yearMaxCost}<br>`)
+         console.log(`Рік, коли прибуток був найбільшим: ${yearMaxCost}`)
+
+         //===6. упорядкувати список за спаданням прибутку
+         const sortCostDecrease = sites.sort((site1, site2) => site2.site_cost - site1.site_cost)
+         console.log("список за спаданням прибутку", sortCostDecrease)
+
+         //===7. Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+
+         // ==== 1 =====
+         // function getTwoArrCost10000(arr) {
+         //    let costMore10000 = []
+         //    let costLess10000 = []
+         //    for (const element of arr) {
+         //       if (element.site_cost < 10000) costLess10000.push({ ...element })
+         //       else costMore10000.push({ ...element })
+         //    }
+         //    return [costMore10000, costLess10000]
+         // }
+
+         // const [moreThan10000, lessThan10000] = getTwoArrCost10000(sites)
+
+         // console.log("Сайти з вартістю більше 10000:", moreThan10000)
+         // console.log("Сайти з вартістю менше 10000:", lessThan10000)
+
+         // ===== 2 ======
+         const [moreThan10000, lessThan10000] = sites.reduce(
+            ([more, less], site) => {
+               if (site.site_cost >= 10000) more.push({ ...site })
+               else less.push({ ...site })
+               return [more, less]
+            },
+            [[], []]
+         )
+         console.log("Сайти з вартістю більше 10000:", moreThan10000)
+         console.log("Сайти з вартістю менше 10000:", lessThan10000)
+
+         //==== 3 ====
+         // const moreThan10000 = sites.filter(site => site.site_cost >= 10000)
+         // const lessThan10000 = sites.filter(site => site.site_cost < 10000)
+         // console.log("Сайти з вартістю більше 10000:", moreThan10000)
+         // console.log("Сайти з вартістю менше 10000:", lessThan10000)
+      }
+   </script>
+</body>
+
+</html>
