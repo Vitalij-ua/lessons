@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №15 Задача 4</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 4</h1>
+   <p>Задача 4. Розробити клас Baner
+      Поля
+      Масив об’єктів ( графічних зображень та посилань на сайти)
+
+      методи
+      Метод випадкового вибору об’єкта (графічного зображення та посилання)
+      Метод виведення випадкового банера
+
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class Baner {
+            constructor(arrObjectsBaners) {
+               this.arrObjectsBaners = arrObjectsBaners
+            }
+            getRandomObject() {
+               let randomIndex = Math.floor(Math.random() * this.arrObjectsBaners.length)
+               return this.arrObjectsBaners[randomIndex]
+            }
+            render() {
+               let randomBanner = this.getRandomObject();
+               document.write(`
+            <h2>Рекламний банер</h2>
+            <div style="text-align: center;">
+                <a href="${randomBanner.link}" target="_blank">
+                    <img src="${randomBanner.img}" alt="Banner" style="border-radius:10px; width:200px; height:200px;">
+                </a>
+            </div>
+        `)
+            }
+         }
+
+         const imageLinks = [
+            {
+               img: "https://img.freepik.com/free-photo/marketing-ideas-share-research-planning-concept_53876-127431.jpg?t=st=1743356440~exp=1743360040~hmac=a99ceb96e9fb754769d7308959807e92813df49808096a287b3ae8ad5c27070d&w=826",
+               link: "https://example.com/site1" 
+            },
+            {
+               img: "https://img.freepik.com/free-photo/representation-user-experience-interface-design_23-2150169851.jpg?t=st=1743356422~exp=1743360022~hmac=fdbcea81034969b105cfb5b37def43600a69a32e59518dcc899f72a5d7f90d61&w=740",
+               link: "https://example.com/site2" 
+            },
+            {
+               img: "https://img.freepik.com/free-photo/group-businesspeople-planning-social-media-application_23-2147847539.jpg?t=st=1743356402~exp=1743360002~hmac=f1570e1103de9aa56dd8775d0dd0d32366de10f5f8cc3ac13d123ffe377a4ee0&w=1380",
+               link: "https://example.com/site3" 
+            },
+            {
+               img: "https://img.freepik.com/premium-photo/group-people-brainstorming-meeting-room_53876-46304.jpg?w=1380",
+               link: "https://example.com/site4" 
+            },
+            {
+               img: "https://img.freepik.com/free-photo/low-angle-stacked-books-graduation-cap-ladders-education-day_23-2149241016.jpg?t=st=1743356286~exp=1743359886~hmac=9799ca2354029ac55fdfd001a74410b6eb02a41c2eada9f138b6ff3004b77cc9&w=740",
+               link: "https://example.com/site5"
+            }
+         ]
+
+         const baner = new Baner(imageLinks)
+         baner.render()
+      }
+   </script>
+</body>
+
+</html>

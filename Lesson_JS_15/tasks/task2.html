@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №15 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 2.</h1>
+   <p>Задача 2. Створити об’єкт «Авто».
+      Авто
+
+      Поля(властивості)
+
+      Марка
+      Розмір бака
+      Кількість наявних літрів
+      Кількість місць
+      Кількість пасажирів
+
+      Методи (дії)
+
+      Заправка на вказану кількість літрів
+      Виведення кількості пасажирів
+      Додавання пасажирів
+      Висадка пасажирів
+
+
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         let car = {
+            title: 'Audi',
+            tankSize: 60,
+            amountFuel: 20,
+            numberSeats: 5,
+            numberPeople: 3,
+
+            intoTank(liters) {
+               let maxLiters = this.tankSize - this.amountFuel
+               if (liters > maxLiters)
+                  alert(`забагато палива, треба не більше : ${maxLiters}літрів`)
+               else if (liters <= 0)
+                  alert(`Некоректна кількість літрів для заправки.`)
+               else {
+                  this.amountFuel += liters
+                  alert(`Заправлено ${liters} літрів. У баку тепер ${this.amountFuel} літрів.`)
+               }
+            },
+
+            displayNumberPeople() {
+               alert(`Кількість пасажирів: ${this.numberPeople}`)
+            },
+            inCar(people) {
+               let maxPeople = this.numberSeats - this.numberPeople
+               if (people > maxPeople)
+                  alert(`Забагато людей! Доступно лише ${maxPeople} вільних місць.`)
+               else if (people <= 0)
+                  alert(`Некоректна кількість пасажирів для посадки.`)
+
+               else {
+                  this.numberPeople += people
+                  alert(`Додано ${people} пасажирів. У машині тепер ${this.numberPeople}.`)
+               }
+            },
+            getOutCar(people) {
+               if (people > this.numberPeople) alert(`Некоректна кількість! В машині лише ${this.numberPeople} пасажирів.`)
+               else if (people <= 0)
+                  alert(`Некоректна кількість пасажирів для висадки.`)
+               else {
+                  this.numberPeople -= people
+                  alert(`Висаджено ${people} пасажирів. У машині залишилося ${this.numberPeople}.`)
+               }
+
+            }
+
+
+         }
+
+         car.intoTank(50)
+         car.intoTank(20)
+         alert(`Кількість літрів у баку: ${car.amountFuel}`)
+         car.displayNumberPeople()
+         car.inCar(2)
+         car.displayNumberPeople()
+         car.getOutCar(3)
+         car.displayNumberPeople()
+
+
+
+      }
+   </script>
+</body>
+
+</html>

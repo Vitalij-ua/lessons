@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №15 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 1</h1>
+   <p>Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+      Тир
+      Поля(властивості) - Масив, у якому зберігається поле з зайцями
+
+      Методи (дії) - Метод пострілу (задається позиція пострілу)
+      Виведення ігрового поля
+
+
+
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         let shootingRange = {
+            arrShootingRange: [[0, 1, 0], [0, 0, 0], [1, 0, 0]],
+
+            getShot() {
+               let numberRowMax = this.arrShootingRange.length
+               let numberColMax = this.arrShootingRange[0].length
+               let numberRowForShot = parseInt(prompt(`Введіть номер рядка (від 1 до ${numberRowMax}):`))
+               let numberColForShot = parseInt(prompt(`Введіть номер стовпця (від 1 до ${numberColMax}):`))
+               if (isNaN(numberRowForShot) || isNaN(numberColForShot) ||
+                  numberRowForShot < 1 || numberRowForShot > numberRowMax ||
+                  numberColForShot < 1 || numberColForShot > numberColMax) {
+                  alert(`Введено некоректний номер клітинки.`)
+                  return
+               }
+               let row = numberRowForShot - 1
+               let col = numberColForShot - 1
+
+               if (this.arrShootingRange[row][col] === 1) {
+                  alert(`Влучили в зайця!`)
+                  this.arrShootingRange[row][col] = 'X'
+               } else {
+                  alert(`Промах!`)
+                  this.arrShootingRange[row][col] = '0'
+               }
+
+            },
+
+            getShowTable() {
+               document.write("<table>")
+               for (let row of this.arrShootingRange) {
+                  document.write("<tr>")
+                  for (let col of row) {
+                     let cellColor = col === 'X' ? "red" : col === '0' ? "gray" : "white"
+                     let cellContent = col === 1 ? 1 : col
+                     document.write(`<td style="width: 40px; height: 40px; background-color: ${cellColor};">${cellContent}</td>`)
+                  }
+                  document.write("</tr>")
+               }
+               document.write("</table>")
+            }
+         }
+         shootingRange.getShot()
+         shootingRange.getShowTable()
+
+      }
+   </script>
+</body>
+
+</html>

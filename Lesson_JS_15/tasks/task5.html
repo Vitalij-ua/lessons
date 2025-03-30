@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №15 Задача 5</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 5</h1>
+   <p>Задача 5. Розробити клас «Керівник танців»
+      Поля
+      Масив імен хлопців
+      Масив імен дівчат
+      Методи
+      Метод випадкового вибору імені хлопця
+      Метод випадкового вибору імені дівчини
+      Метод виведення пари для танців
+      Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class DanceDirector {
+            constructor(arrBoys, arrGirls, interval) {
+               this.arrBoys = arrBoys
+               this.arrGirls = arrGirls
+               this.interval = interval
+            }
+            getRandomPerson(arr) {
+               let randomIndex = Math.floor(Math.random() * arr.length)
+               return arr[randomIndex]
+            }
+            getRandomBoys() {
+               return this.getRandomPerson(this.arrBoys)
+            }
+            getRandomGirls() {
+               return this.getRandomPerson(this.arrGirls)
+            }
+            getDancingCouple() {
+               let boy = this.getRandomBoys()
+               let girl = this.getRandomGirls()
+               console.log(`Пара для танців: ${boy} - ${girl}`)
+               document.write(`<p>Пара для танців: ${boy} - ${girl}</p>`)
+            }
+
+            run() {
+               setInterval(() => {
+                  this.getDancingCouple()
+               }, this.interval)
+            }
+         }
+
+         const boysNames = ["Олександр", "Максим", "Дмитро", "Артем", "Іван", "Богдан"]
+         const girlsNames = ["Анастасія", "Марія", "Вікторія", "Ольга", "Софія", "Наталія"]
+         const danceDirector = new DanceDirector(boysNames, girlsNames, 4000)
+         danceDirector.run()
+      }
+   </script>
+</body>
+
+</html>

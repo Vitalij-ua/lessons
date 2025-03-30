@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №15 Задача 3</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 3.</h1>
+   <p>Задача 3. Розробити клас MultChecker для перевірки таблиці множення
+      Поля
+      Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+      Кількість правильних відповідей
+      Кількість неправильних відповідей
+      Методи
+      Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+      Перевірка правильності вказаної відповіді
+      render - виведення інформації про тестування на екран
+
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class MultChecker {
+            constructor(verificationNumber, numberOperations) {
+               this.verificationNumber = verificationNumber
+               this.numberOperations = numberOperations
+               this.sumCorrectAnswer = 0
+               this.sumWrongAnswer = 0
+            }
+            getExample() {
+               this.randomNumber = Math.floor(Math.random() * 9) + 1
+               this.correctAnswer = this.verificationNumber * this.randomNumber
+               let userAnswer = parseInt(prompt(`Скількі буде ${this.verificationNumber} * ${this.randomNumber}`))
+               return userAnswer
+            }
+            getCheckAnswer(userAnswer) {
+               if (userAnswer === this.correctAnswer) {
+                  alert(`Вірно!`)
+                  this.sumCorrectAnswer += 1
+               }
+               else {
+                  alert(`Невірно, правильна відповідь : ${this.correctAnswer}`)
+                  this.sumWrongAnswer += 1
+               }
+
+            }
+            getNumberOperations() {
+               for (let i = 0; i < this.numberOperations; i++) {
+                  let userAnswer = this.getExample()
+                  this.getCheckAnswer(userAnswer)
+               }
+            }
+            render() {
+               document.write(`<h2>Результати тесту:</h2>`);
+               document.write(`<p>Перевірка таблиці множення на: ${this.verificationNumber}</p>`);
+               document.write(`<p>Кількість прикладів: ${this.numberOperations}</p>`)
+               document.write(`<p>Правильних відповідей: ${this.sumCorrectAnswer}</p>`)
+               document.write(`<p>Неправильних відповідей: ${this.sumWrongAnswer}</p>`)
+            }
+
+         }
+
+         let multTest = new MultChecker(7, 5)
+         multTest.getNumberOperations()
+         multTest.render()
+      }
+   </script>
+</body>
+
+</html>
