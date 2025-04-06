@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №16 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 2.</h1>
+   <p>Задача 2. Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового
+      еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та
+      визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class TMoney {
+            #amountHryvnia
+            #dollarExchangeRate
+
+            constructor(amountHryvnia, dollarExchangeRate) {
+               this.AmountHryvnia = amountHryvnia
+               this.DollarExchangeRate = dollarExchangeRate
+            }
+
+            get AmountHryvnia() {
+               return this.#amountHryvnia
+            }
+
+            set AmountHryvnia(newAmountHryvnia) {
+               if (typeof newAmountHryvnia !== "number") throw new Error(`Невірне значення гривневої суми`)
+               this.#amountHryvnia = newAmountHryvnia
+            }
+
+            get DollarExchangeRate() {
+               return this.#dollarExchangeRate
+            }
+
+            set DollarExchangeRate(newDollarExchangeRate) {
+               if (typeof newDollarExchangeRate !== "number") throw new Error(`Невірне значення курсу`)
+               this.#dollarExchangeRate = newDollarExchangeRate
+            }
+
+            get AmountDollars() {
+               return this.#amountHryvnia / this.#dollarExchangeRate
+            }
+
+            addAmountHryvnia(addHryvnia) {
+               if (typeof addHryvnia !== "number") throw new Error(`Невірне значення для додавання`)
+               this.AmountHryvnia += addHryvnia
+            }
+
+            removeAmountHryvnia(removeHryvnia) {
+               if (typeof removeHryvnia !== "number") throw new Error(`Невірне значення для вилучення`)
+               this.AmountHryvnia -= removeHryvnia
+            }
+
+            calculateRateForPlus100UAH() {
+               let newSum = this.#amountHryvnia + 100
+               return newSum / this.AmountDollars
+            }
+
+            toString() {
+               return `Ваша сума в гривнях: ${this.AmountHryvnia}<br>В доларах: ${this.AmountDollars.toFixed(2)}<br>Поточний курс: ${this.DollarExchangeRate}<br><hr>`
+            }
+         }
+
+         try {
+            const clientDeposits = new TMoney(50000, 42)
+            document.write(clientDeposits.toString())
+            clientDeposits.addAmountHryvnia(3500)
+            document.write(clientDeposits.toString())
+            clientDeposits.removeAmountHryvnia(6700)
+            document.write(clientDeposits.toString())
+            const newRate = clientDeposits.calculateRateForPlus100UAH()
+            document.write(`Новий курс при збільшенні на 100 грн: ${newRate.toFixed(2)}<br>`)
+         } catch (error) {
+            console.error(error)
+         }
+
+      }
+   </script>
+</body>
+
+</html>

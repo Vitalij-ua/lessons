@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №16 Задача 4</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 4</h1>
+   <p>Задача 4. Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання
+      кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та
+      мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class TBankomat {
+            constructor(notes) {
+               this.denominations = [200, 100, 50, 20, 10, 5]
+               this.notes = {}
+               this.denominations.forEach(nominal => {
+                  this.notes[nominal] = notes[nominal] || 0
+               })
+            }
+
+            getMaxAmount() {
+               return this.denominations.reduce((sum, val) => sum + val * this.notes[val], 0)
+            }
+
+            getMinAmount() {
+               for (let i = this.denominations.length - 1; i >= 0; i--) {
+                  const denom = this.denominations[i]
+                  if (this.notes[denom] > 0) return denom
+               }
+               return 0
+            }
+
+            withdraw(amount) {
+               let tempNotes = { ...this.notes }
+               let toGive = {}
+
+               for (let denom of this.denominations) {
+                  let needed = Math.floor(amount / denom)
+                  let available = tempNotes[denom]
+                  let give = Math.min(needed, available)
+
+                  if (give > 0) {
+                     toGive[denom] = give
+                     tempNotes[denom] -= give
+                     amount -= give * denom
+                  }
+               }
+
+               if (amount === 0) {
+                  this.notes = tempNotes
+                  return toGive
+               } else {
+                  return null
+               }
+            }
+
+            toString() {
+               return `Купюри у банкоматі:\n${this.denominations.map(d => `${d} грн: ${this.notes[d]}`).join('\n')}`
+            }
+         }
+
+         const bankomat = new TBankomat({
+            5: 10,
+            10: 10,
+            20: 10,
+            50: 10,
+            100: 10,
+            200: 10
+         })
+
+         console.log(bankomat.toString())
+         document.write(bankomat.toString().replace(/\n/g, '<br>'))
+         console.log(`Максимальна сума: ${bankomat.getMaxAmount()} грн`)
+         document.write(`Максимальна сума: ${bankomat.getMaxAmount()} грн<br>`)
+         console.log(`Мінімальна сума: ${bankomat.getMinAmount()} грн`)
+         document.write(`Мінімальна сума: ${bankomat.getMinAmount()} грн<br>`)
+
+         const amountToWithdraw = 555
+         const result = bankomat.withdraw(amountToWithdraw)
+
+         if (result) {
+            console.log(`Видано ${amountToWithdraw} грн:`)
+            document.write(`Видано ${amountToWithdraw} грн:<br>`)
+            for (let denom in result) {
+               console.log(`${denom} грн x ${result[denom]}`)
+               document.write(`${denom} грн x ${result[denom]}<br>`)
+            }
+         } else {
+            console.log(`Неможливо видати суму ${amountToWithdraw} грн`)
+            document.write(`Неможливо видати суму ${amountToWithdraw} грн<br>`)
+         }
+
+      }
+   </script>
+</body>
+
+</html>

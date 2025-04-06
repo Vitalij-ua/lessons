@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №16 Задача 3</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 3.</h1>
+   <p>Задача 3. Об’єкт “Фірма” (використати члени-класи)
+      поля
+      назва фірми;
+      дата заснування (рік, місяць);
+      послуги (назва послуги, вартість, термін виконання);
+      адреси філіалів (країна, місто, вулиця, номер будинку);
+      методи
+      визначення кількості років існування фірми;
+      виведення всіх філіалів фірми у вказаному місті;
+      виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+
+
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class DateFounded {
+            constructor(year, month) {
+               this.year = year
+               this.month = month
+            }
+
+            getYearsPassed() {
+               const now = new Date()
+               let years = now.getFullYear() - this.year
+               if (now.getMonth() + 1 < this.month) years--
+               return years
+            }
+         }
+
+         class Service {
+            constructor(name, cost, durationDays) {
+               this.name = name
+               this.cost = cost
+               this.durationDays = durationDays
+            }
+         }
+
+         class BranchAddress {
+            constructor(country, city, street, building) {
+               this.country = country
+               this.city = city
+               this.street = street
+               this.building = building
+            }
+
+            toString() {
+               return `${this.country}, ${this.city}, вул. ${this.street}, буд. ${this.building}<br>`
+            }
+         }
+
+         class Company {
+            constructor(name, year, month) {
+               this.name = name
+               this.dateFounded = new DateFounded(year, month)
+               this.services = []
+               this.branches = []
+            }
+
+            addService(service) {
+               this.services.push(service)
+            }
+
+            addBranch(branch) {
+               this.branches.push(branch)
+            }
+
+            getCompanyAge() {
+               return this.dateFounded.getYearsPassed()
+            }
+
+            getBranchesInCity(city) {
+               return this.branches.filter(branch => branch.city.toLowerCase() === city.toLowerCase())
+            }
+
+            getServicesByBudgetAndTime(maxCost, maxDurationDays) {
+               return this.services.filter(service => service.cost <= maxCost && service.durationDays <= maxDurationDays)
+            }
+
+            toString() {
+               return `Фірма: ${this.name}, заснована ${this.dateFounded.year}-${this.dateFounded.month}<br>`
+            }
+         }
+
+         const firm = new Company("ІнфоТех", 2012, 4)
+
+         firm.addService(new Service("Розробка сайту", 5000, 14))
+         firm.addService(new Service("SEO-оптимізація", 2000, 7))
+         firm.addService(new Service("Реклама в соцмережах", 3000, 10))
+
+         firm.addBranch(new BranchAddress("Україна", "Київ", "Хрещатик", 12))
+         firm.addBranch(new BranchAddress("Україна", "Львів", "Франка", 22))
+         firm.addBranch(new BranchAddress("Україна", "Київ", "Сагайдачного", 7))
+
+         console.log(firm.toString())
+         document.write(firm.toString())
+         console.log(`Років існування: ${firm.getCompanyAge()}`)
+         document.write(`Років існування: ${firm.getCompanyAge()}<br>`)
+         console.log("Філіали в місті Київ:")
+         firm.getBranchesInCity("Київ").forEach(b => console.log(b.toString()))
+         document.write("Філіали в місті Київ:<br>")
+         firm.getBranchesInCity("Київ").forEach(b => document.write(b.toString()))
+         console.log("Послуги до 3000 грн і до 10 днів:")
+         document.write("Послуги до 3000 грн і до 10 днів:<br>")
+         firm.getServicesByBudgetAndTime(3000, 10).forEach(s => console.log(`${s.name} - ${s.cost} грн - ${s.durationDays} днів`))
+         firm.getServicesByBudgetAndTime(3000, 10).forEach(s => document.write(`${s.name} - ${s.cost} грн - ${s.durationDays} днів<br>`))
+
+      }
+   </script>
+</body>
+
+</html>
