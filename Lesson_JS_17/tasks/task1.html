@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №17 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 1</h1>
+   <p>Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості
+      від’ємних, кількість входжень деякого числа (статичні методи)
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         //=== Варіант 1 ====
+         class ArrayCheck {
+            static getNumPositiveNumbers(arr) {
+               let sum = 0
+               for (const el of arr) {
+                  if (el > 0) sum++
+               }
+               return sum
+            }
+
+            static getNumNegativeNumbers(arr) {
+               let sum = 0
+               for (const el of arr) {
+                  if (el < 0) sum++
+               }
+               return sum
+            }
+
+            static getNumOccurrences(arr, num) {
+               let sum = 0
+               for (const el of arr) {
+                  if (el === num) sum++
+               }
+               return sum
+            }
+
+            static toString(arr, num) {
+               return `Кількість додатних: ${this.getNumPositiveNumbers(arr)}<br>` +
+                  `Кількість від’ємних: ${this.getNumNegativeNumbers(arr)}<br>` +
+                  `Кількість входжень числа ${num}: ${this.getNumOccurrences(arr, num)}<br>`
+            }
+         }
+
+         const arr = [3, 5, 10, -3, 0, 9, -1, 3]
+         const num = 3
+         document.write(ArrayCheck.toString(arr, num))
+
+         //=== Варіант 2 ====
+
+         // class ArrayCheck {
+         //    static getNumPositiveNumbers(arr) {
+         //       return arr.reduce((sum, el) => sum + (el > 0 ? 1 : 0), 0)
+         //    }
+
+         //    static getNumNegativeNumbers(arr) {
+         //       return arr.reduce((sum, el) => sum + (el < 0 ? 1 : 0), 0)
+         //    }
+
+         //    static getNumOccurrences(arr, num) {
+         //       return arr.reduce((sum, el) => sum + (el === num ? 1 : 0), 0)
+         //    }
+
+         //    static toString(arr, num) {
+         //       return `Кількість додатних: ${this.getNumPositiveNumbers(arr)}<br>` +
+         //          `Кількість від’ємних: ${this.getNumNegativeNumbers(arr)}<br>` +
+         //          `Кількість входжень числа ${num}: ${this.getNumOccurrences(arr, num)}<br>`
+         //    }
+         // }
+
+         // const arr = [3, 5, 10, -3, 0, 9, -1, 3]
+         // const num = 3
+         // document.write(ArrayCheck.toString(arr, num))
+
+
+      }
+   </script>
+</body>
+
+</html>

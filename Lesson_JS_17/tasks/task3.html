@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №17 Задача 3</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 3.</h1>
+   <p>Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь подію
+      (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було. Зробити так, щоб неможна
+      було зробити одночасно декілька об’єктів-нагадувачів. Методи зупинки таймера, метод зміни повідомлення без зупинки
+      таймера.
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class Reminder {
+            static instance = null
+            #intervalId = null
+            #count = 0
+
+            constructor(msg, interval) {
+               if (Reminder.instance) return Reminder.instance
+
+               this.msg = msg
+               this.interval = interval
+               Reminder.instance = this
+            }
+
+            start() {
+               if (this.#intervalId) {
+                  console.log("Нагадування вже активне!")
+                  return
+               }
+
+               this.#intervalId = setInterval(() => {
+                  this.#count++
+                  console.log(`${this.msg} - №${this.#count}`)
+                  document.write(`${this.msg} - №${this.#count}<br>`)
+               }, this.interval)
+            }
+
+            stop() {
+               clearInterval(this.#intervalId)
+               this.#intervalId = null
+               this.#count = 0
+               Reminder.instance = null
+               console.log("Нагадування зупинено.")
+            }
+
+            changeMessage(newMsg) {
+               this.msg = newMsg
+               console.log(`Повідомлення оновлено: ${this.msg}`)
+            }
+         }
+
+         const reminder = new Reminder("Нагадує про якусь подію", 5000)
+         reminder.start()
+
+         setTimeout(() => {
+            reminder.stop()
+         }, 16000)
+
+         setTimeout(() => {
+            reminder.changeMessage("Нове повідомлення")
+         }, 6000);
+
+
+      }
+   </script>
+</body>
+
+</html>

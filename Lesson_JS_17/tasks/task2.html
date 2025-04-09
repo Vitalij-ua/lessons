@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №17 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 2.</h1>
+   <p>Створити службове авто (водій, марка, номер). Створити клас таким чином, щоб можна було створити тільки один
+      екземпляр цього класу.
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class OfficialCar {
+            static #instance = null
+
+            constructor(name, carBrand, carNum) {
+               if (OfficialCar.#instance) {
+                  throw new Error("Службове авто вже створене!")
+               }
+
+               this.name = name
+               this.carBrand = carBrand
+               this.carNum = carNum
+
+               OfficialCar.#instance = this
+            }
+
+            toString() {
+               return `водій: ${this.name}, марка: ${this.carBrand}, номер: ${this.carNum}`
+            }
+
+            static getInstance() {
+               return OfficialCar.#instance
+            }
+         }
+
+         try {
+            const car1 = new OfficialCar("Василь", "Ford", "AH3245BA")
+            document.write(car1.toString() + "<br>")
+
+            const car2 = new OfficialCar("Петро", "Ford", "KH1765BE")
+            document.write(car2.toString() + "<br>")
+         } catch (e) {
+            console.error(e.message)
+            document.write(e.message + "<br>")
+         }
+
+      }
+   </script>
+</body>
+
+</html>

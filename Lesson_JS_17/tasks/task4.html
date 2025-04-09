@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №17 Задача 4</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 4</h1>
+   <p>Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва,
+      реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за
+      назвою фірми
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class Product {
+            constructor(titleProduct, unit, count, company) {
+               this.titleProduct = titleProduct
+               this.unit = unit
+               this.count = count
+               this.company = {
+                  titleCompany: company.titleCompany,
+                  numCompani: company.numCompani,
+               }
+            }
+
+            toString() {
+               return `${this.titleProduct} : ${this.count} ${this.unit} (${this.company.titleCompany}, №${this.company.numCompani})`
+            }
+         }
+
+         //----
+         class Store {
+            constructor(titleStore) {
+               this.titleStore = titleStore
+               this.productsList = []
+            }
+
+            addProduct(newProd) {
+               this.productsList.push(newProd)
+            }
+
+            removeProduct(productTitleToRemove) {
+               this.productsList = this.productsList.filter(
+                  (prod) => prod.titleProduct !== productTitleToRemove
+               )
+            }
+
+            filterByTitle(titleProduct) {
+               return this.productsList.filter(prod => prod.titleProduct === titleProduct)
+            }
+
+            filterByCompany(titleCompany) {
+               return this.productsList.filter(prod => prod.company.titleCompany === titleCompany)
+            }
+
+            printProducts(products = this.productsList) {
+               document.write(`<h1>Склад: ${this.titleStore}</h1>`)
+               document.write('<ol>')
+               products.forEach((pr) => document.write(`<li>${pr.toString()}</li>`))
+               document.write('</ol>')
+            }
+         }
+
+         //-----------
+
+         const store = new Store('АТБ')
+
+         store.addProduct(new Product('Tea', 'шт', 21, { titleCompany: 'Lovare', numCompani: 'UA001' }))
+         store.addProduct(new Product('Milk', 'л', 45, { titleCompany: 'Молокія', numCompani: 'UA002' }))
+         store.addProduct(new Product('Bread', 'шт', 59, { titleCompany: 'Мій хліб', numCompani: 'UA003' }))
+         store.addProduct(new Product('Sugar', 'кг', 30, { titleCompany: 'ЦукроСмак', numCompani: 'UA004' }))
+         store.addProduct(new Product('Butter', 'шт', 18, { titleCompany: 'МаслоКо', numCompani: 'UA005' }))
+         store.addProduct(new Product('Salt', 'кг', 40, { titleCompany: 'СільЗавод', numCompani: 'UA006' }))
+         store.addProduct(new Product('Juice', 'л', 25, { titleCompany: 'Соки України', numCompani: 'UA007' }))
+         store.addProduct(new Product('Water', 'л', 60, { titleCompany: 'Чиста Вода', numCompani: 'UA008' }))
+         store.addProduct(new Product('Cheese', 'кг', 15, { titleCompany: 'СирБуд', numCompani: 'UA009' }))
+         store.addProduct(new Product('Coffee', 'г', 12, { titleCompany: 'КаваЛенд', numCompani: 'UA010' }))
+         store.addProduct(new Product('Eggs', 'шт', 36, { titleCompany: 'Яєчний світ', numCompani: 'UA011' }))
+         store.addProduct(new Product('Pasta', 'кг', 22, { titleCompany: 'МакФабрика', numCompani: 'UA012' }))
+         store.addProduct(new Product('Oil', 'л', 33, { titleCompany: 'ОліяЛюкс', numCompani: 'UA013' }))
+         store.addProduct(new Product('Bread', 'шт', 9, { titleCompany: 'Xліб', numCompani: 'UA014' }))
+         store.printProducts()
+
+         document.write(`<hr>`)
+         store.removeProduct('Oil')
+         store.removeProduct('Coffee')
+         store.printProducts()
+         
+         document.write(`<hr>`)
+         const breadProduct = store.filterByTitle('Bread')
+         store.printProducts(breadProduct)
+
+         document.write(`<hr>`)
+         const sirbudTitleCompany = store.filterByCompany('СирБуд')
+         store.printProducts(sirbudTitleCompany)
+      }
+   </script>
+</body>
+
+</html>
