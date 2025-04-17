@@ -121,7 +121,7 @@ hr {
 .container{
   display: flex;
   gap: 0.625rem;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1.25rem;
 }
 .stage {
@@ -139,6 +139,8 @@ hr {
 }
 .block__button {
   display: flex;
+  width: fit-content;
+  margin: 0 auto;
   gap: 1.25rem;
   padding: 1.25rem;
   flex-wrap: wrap;
