@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №18 Задача 5</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 7</h1>
+   <p>Задача 7. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто,
+      автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
+      гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+   </p>
+   <h2>Подорож</h2>
+   <div class="container">
+      <div class="stage">
+         <h2> 1 - етап</h2>
+         <h3>транспорт</h3>
+         <label>вид транспорту
+            <select id="">
+               <option value="50">авто</option>
+               <option value="100">автобус</option>
+               <option value="150">літак</option>
+            </select>
+         </label>
+         <h3>харчування</h3>
+         <label>сніданок
+            <input type="checkbox" value="50">
+         </label>
+         <label>обід
+            <input type="checkbox" value="100">
+         </label>
+         <label>вечеря
+            <input type="checkbox" value="70">
+         </label>
+         <h3>гід</h3>
+         <label>гід - 1
+            <input type="radio" value="50" name="stage1">
+         </label>
+         <label>гід - 2
+            <input type="radio" value="70" name="stage1">
+         </label>
+         <label>гід - 3
+            <input type="radio" value="100" name="stage1">
+         </label>
+      </div>
+      <div class="stage">
+         <h2> 2 - етап</h2>
+         <h3>транспорт</h3>
+         <label>вид транспорту
+            <select id="">
+               <option value="50">авто</option>
+               <option value="100">автобус</option>
+               <option value="150">літак</option>
+            </select>
+         </label>
+         <h3>харчування</h3>
+         <label>сніданок
+            <input type="checkbox" value="50">
+         </label>
+         <label>обід
+            <input type="checkbox" value="100">
+         </label>
+         <label>вечеря
+            <input type="checkbox" value="70">
+         </label>
+         <h3>гід</h3>
+         <label>гід - 1
+            <input type="radio" value="50" name="stage2">
+         </label>
+         <label>гід - 2
+            <input type="radio" value="70" name="stage2">
+         </label>
+         <label>гід - 3
+            <input type="radio" value="100" name="stage2">
+         </label>
+      </div>
+      <div class="stage">
+         <h2> 3 - етап</h2>
+         <h3>транспорт</h3>
+         <label>вид транспорту
+            <select id="">
+               <option value="50">авто</option>
+               <option value="100">автобус</option>
+               <option value="150">літак</option>
+            </select>
+         </label>
+         <h3>харчування</h3>
+         <label>сніданок
+            <input type="checkbox" value="50">
+         </label>
+         <label>обід
+            <input type="checkbox" value="100">
+         </label>
+         <label>вечеря
+            <input type="checkbox" value="70">
+         </label>
+         <h3>гід</h3>
+         <label>гід - 1
+            <input type="radio" value="50" name="stage3">
+         </label>
+         <label>гід - 2
+            <input type="radio" value="70" name="stage3">
+         </label>
+         <label>гід - 3
+            <input type="radio" value="100" name="stage3">
+         </label>
+      </div>
+   </div>
+   <div class="block__button">
+      <button class="block__button-button">Підрахувати загальну вартість</button>
+      <p class="block__button-result"></p>
+   </div>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+
+         function getTotalSum() {
+            let transportSum = 0
+            let foodAndGuideSum = 0
+            const transportList = document.querySelectorAll('select')
+            for (const transport of transportList) {
+               transportSum += parseFloat(transport.value)
+            }
+            const foodAndGuideList = document.querySelectorAll('input:checked')
+            for (const foodAndGuide of foodAndGuideList) {
+               foodAndGuideSum += parseFloat(foodAndGuide.value)               
+            }
+            const totalSum = transportSum + foodAndGuideSum
+            document.querySelector('.block__button-result').innerText = `Сума до сплати: ${totalSum} грн`
+         }
+         window.onload = function (){
+            document.querySelector('.block__button-button').onclick = getTotalSum
+         }
+
+      }
+   </script>
+</body>
+
+</html>

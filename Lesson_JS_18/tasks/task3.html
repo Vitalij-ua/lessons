@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №18 Задача 3</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 3.</h1>
+   <p>Задача 3. Користувач задає рік народження. Визначити кількість років користувача.
+   </p>
+   <h2>Kількість років користувача</h2>
+   <div id="myContainer"></div>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         let container = document.getElementById('myContainer')
+
+         let div1 = document.createElement('div')
+         div1.style.cssText = "width: 21.5625rem; display: flex; padding-block: 1.25rem; "
+         container.append(div1)
+
+         let h21 = document.createElement('h2')
+         h21.innerText = 'Введіть свій рік народження'
+         h21.style.cssText = "width: 100%; text-align: start;"
+         div1.append(h21)
+
+         let input1 = document.createElement('input')
+         input1.style.cssText = "border: 0.0625rem solid black;"
+         input1.id = 'input1'
+         div1.append(input1)
+
+         let button = document.createElement('button')
+         button.innerText = 'Визначити кількість років користувача'
+         button.id = 'button'
+         button.style.cssText = "border: 0.0625rem solid black; padding: 0.3125rem; background-color: rgb(180, 174, 174);"
+         container.append(button)
+
+         let div2 = document.createElement('div')
+         div2.style.cssText = "width: 21.5625rem; display: flex; padding-block: 1.25rem; "
+         container.append(div2)
+
+         let h22 = document.createElement('h2')
+         h22.innerText = 'Kількість років користувача'
+         h22.style.cssText = "width: 100%; text-align: start;"
+         div2.append(h22)
+
+         let input2 = document.createElement('input')
+         input2.id = 'input2'
+         input2.style.cssText = "border: 0.0625rem solid black;"
+         div2.append(input2)
+
+         function getAge() {
+            const year = 2025
+            let yearBirth = parseInt(document.getElementById('input1').value)
+            if (isNaN(yearBirth)) {
+               alert("Будь ласка, введіть коректний рік народження")
+               return
+            }
+            let age = year - yearBirth
+            document.getElementById('input2').value = age
+         }
+         window.onload = function(){
+            document.getElementById('button').onclick = getAge
+         }
+      }
+   </script>
+</body>
+
+</html>

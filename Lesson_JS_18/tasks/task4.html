@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №18 Задача 4</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 4</h1>
+   <p>Задача 4. Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином
+      вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)
+   </p>
+   <h2>Список бажань</h2>
+   <div id="myContainer"></div>
+   <script>
+      'use strict'
+
+
+      function getRandomWish(arr) {
+         let randomWishInd = Math.floor(Math.random() * arr.length)
+         return arr[randomWishInd]
+      }
+
+      let wishList = [
+         "Подорожувати Європою",
+         "Вивчити нову мову",
+         "Навчитися грати на гітарі",
+         "Купити власний автомобіль",
+         "Знайти роботу мрії",
+         "Прочитати 50 книжок за рік",
+         "Займатися спортом регулярно",
+         "Навчитися програмувати",
+         "Зробити щось незабутнє для батьків",
+         "Завести домашнього улюбленця"
+      ]
+
+      function getRandomWishList(repetition = 3) {
+         let container = document.getElementById('myContainer')
+         for (let index = 0; index < repetition; index++) {
+            let div = document.createElement('div')
+            container.append(div)
+            let h2 = document.createElement('h2')
+            h2.innerText = getRandomWish(wishList)
+            div.append(h2)
+         }
+
+      }
+
+      window.onload = function () {
+         if (confirm('Почати тестування?')) {
+            getRandomWishList()
+         }
+      }
+
+      
+   </script>
+</body>
+
+</html>

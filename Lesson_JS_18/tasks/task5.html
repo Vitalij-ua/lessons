@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №18 Задача 5</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 5</h1>
+   <p>Задача 5. Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)
+   </p>
+   <h2>Таблиця з випадковими числами</h2>
+   <div id="myContainer"></div>
+   <script>
+      'use strict'
+      function getRandomNumber(min = 1, max = 10) {
+         let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min
+         return randomNumber
+      }
+
+      function getTable(row = 3, col = 4, min = 1, max = 10) {
+         let container = document.getElementById('myContainer')
+         let table = document.createElement('table')
+         container.append(table)
+         for (let index = 0; index < row; index++) {
+            let tr = document.createElement('tr')
+            table.append(tr)
+            for (let index = 0; index < col; index++) {
+               let td = document.createElement('td')
+               td.innerText = getRandomNumber(min, max)
+               tr.append(td)
+
+            }
+         }
+
+      }
+
+      window.onload = function () {
+         if (confirm('Почати тестування?')) {
+            getTable()
+         }
+
+
+      }
+   </script>
+</body>
+
+</html>

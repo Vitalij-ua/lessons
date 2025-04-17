@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №18 Задача 5</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 6</h1>
+   <p>Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з
+      input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+   </p>
+   <h2 style="padding-bottom: 1.25rem;">Таблиця з оцінками</h2>
+   <div id="myContainer"></div>
+
+   <script>
+      'use strict'
+
+      if (confirm('Почати тестування?')) {
+         let container = document.getElementById('myContainer')
+         container.style.cssText = "display: flex; gap: 10px; flex-direction: column; align-items: center;"
+
+         let input1 = document.createElement('input')
+         input1.type = "number"
+         input1.placeholder = "Задайте кількість оцінок"
+         input1.style.cssText = "width: fit-content; border: 1px solid black;"
+         container.append(input1)
+
+         let btnGetTable = document.createElement('button')
+         btnGetTable.innerText = 'get table'
+         btnGetTable.style.cssText = "border: 1px solid black; padding: 5px; background-color: rgb(180, 174, 174); width: fit-content;"
+         container.append(btnGetTable)
+
+         btnGetTable.onclick = function () {
+            let numberRatings = parseInt(input1.value)
+            if (isNaN(numberRatings) || numberRatings <= 0) {
+               alert("Введіть коректну кількість оцінок")
+               return
+            }
+
+
+            for (let i = 0; i < numberRatings; i++) {
+               let input = document.createElement('input')
+               input.className = 'rating'
+               input.type = "number"
+               input.placeholder = `Оцінка №${i + 1}`
+               input.style.cssText = "border: 1px solid black; width: fit-content;"
+               container.append(input)
+            }
+
+            let btnGetSum = document.createElement('button')
+            btnGetSum.innerText = 'get sum'
+            btnGetSum.id = 'getSum'
+            btnGetSum.style.cssText = "border: 1px solid black; padding: 5px; background-color: rgb(180, 174, 174); width: fit-content;"
+            container.append(btnGetSum)
+
+            btnGetSum.onclick = function () {
+               let listRatings = document.querySelectorAll('.rating')
+               let sum = 0
+               let count = 0
+               for (const el of listRatings) {
+                  let val = parseInt(el.value)
+                  if (!isNaN(val)) {
+                     sum += val
+                     count++
+                  }
+               }
+               let h2 = document.createElement('h2')
+               h2.innerText = count > 0 ? `Середня оцінка: ${(sum / count).toFixed(2)}` : "Немає введених оцінок"
+               container.append(h2)
+            }
+         }
+      }
+   </script>
+
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №18 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 1</h1>
+   <p>Задача 1. Розробити калькулятор
+   </p>
+
+   <h2>Kалькулятор</h2>
+   <div id="myContainer"></div>
+
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         let container = document.getElementById('myContainer')
+
+         let div1 = document.createElement('div')
+         div1.style.cssText = "width: 21.5625rem; display: flex; padding-block: 1.25rem; "
+         container.append(div1)
+         let h21 = document.createElement('h2')
+         h21.style.cssText = "width: 100%; "
+         h21.innerText = 'Перше число'
+         div1.append(h21)
+         let input1 = document.createElement('input')
+         input1.id = 'input1'
+         input1.style.cssText = "border: 0.0625rem solid black;"
+         div1.append(input1)
+
+         let div2 = document.createElement('div')
+         div2.style.cssText = "width: 21.5625rem; display: flex;"
+         container.append(div2)
+         let h22 = document.createElement('h2')
+         h22.style.cssText = "width: 100%; "
+         h22.innerText = 'Друге число'
+         div2.append(h22)
+         let input2 = document.createElement('input')
+         input2.id = 'input2'
+         input2.style.cssText = "border: 0.0625rem solid black;"
+         div2.append(input2)
+
+         let div3 = document.createElement('div')
+         div3.style.cssText = " display: flex; padding-block: 1.25rem; gap: 0.625rem; padding-left: 1.25rem;"
+         container.append(div3)
+
+         let btn1 = document.createElement('button')
+         btn1.id = 'add'
+         btn1.innerText = 'Додати'
+         btn1.style.cssText = "border: 0.0625rem solid black; padding: 0.3125rem; background-color: rgb(180, 174, 174);"
+         div3.append(btn1)
+
+         let btn2 = document.createElement('button')
+         btn2.id = 'remove'
+         btn2.innerText = 'Відняти'
+         btn2.style.cssText = "border: 0.0625rem solid black; padding: 0.3125rem; background-color: rgb(180, 174, 174);"
+         div3.append(btn2)
+
+         let btn3 = document.createElement('button')
+         btn3.id = 'multiply'
+         btn3.innerText = 'Помножити'
+         btn3.style.cssText = "border: 0.0625rem solid black; padding: 0.3125rem; background-color: rgb(180, 174, 174);"
+         div3.append(btn3)
+
+         let btn4 = document.createElement('button')
+         btn4.id = 'divide'
+         btn4.innerText = 'Поділити'
+         btn4.style.cssText = "border: 0.0625rem solid black; padding: 0.3125rem; background-color: rgb(180, 174, 174);"
+         div3.append(btn4)
+
+         let div4 = document.createElement('div')
+         div4.style.cssText = "width: 21.5625rem; display: flex;"
+         container.append(div4)
+         let h23 = document.createElement('h2')
+         h23.style.cssText = "width: 100%; "
+         h23.innerText = 'Результат'
+         div4.append(h23)
+         let input3 = document.createElement('input')
+         input3.id = 'input3'
+         input3.style.cssText = "border: 0.0625rem solid black;"
+         div4.append(input3)
+
+         function getSum() {
+            const num1 = parseFloat(document.getElementById('input1').value)
+            const num2 = parseFloat(document.getElementById('input2').value)
+            const sum = num1 + num2
+            document.getElementById('input3').value = sum
+         }
+         function getDifference() {
+            const num1 = parseFloat(document.getElementById('input1').value)
+            const num2 = parseFloat(document.getElementById('input2').value)
+            const diff = num1 - num2
+            document.getElementById('input3').value = diff
+         }
+
+         function getProduct() {
+            const num1 = parseFloat(document.getElementById('input1').value)
+            const num2 = parseFloat(document.getElementById('input2').value)
+            const product = num1 * num2
+            document.getElementById('input3').value = product
+         }
+
+         function getQuotient() {
+            const num1 = parseFloat(document.getElementById('input1').value)
+            const num2 = parseFloat(document.getElementById('input2').value)
+            const quotient = num2 !== 0 ? (num1 / num2) : "Ділення на 0"
+            document.getElementById('input3').value = quotient
+         }
+
+         window.onload = function () {
+            document.getElementById('add').onclick = getSum
+            document.getElementById('remove').onclick = getDifference
+            document.getElementById('multiply').onclick = getProduct
+            document.getElementById('divide').onclick = getQuotient
+         }
+
+
+      }
+   </script>
+</body>
+
+</html>

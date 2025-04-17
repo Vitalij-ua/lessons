@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №18 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 2.</h1>
+   <p>Задача 2. Зробити конвертер валют (курси валют – константи у скрипті)
+   </p>
+   <h2>Kонвертер валют</h2>
+   <div id="myContainer"></div>
+
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         let container = document.getElementById('myContainer')
+
+         let div1 = document.createElement('div')
+         div1.style.cssText = "width: 21.5625rem; display: flex; padding-block: 1.25rem; "
+         container.append(div1)
+         let h21 = document.createElement('h2')
+         h21.innerText = 'Сума у гривнях'
+         h21.style.cssText = "width: 100%; text-align: start;"
+         div1.append(h21)
+         let input1 = document.createElement('input')
+         input1.style.cssText = "border: 0.0625rem solid black;"
+         input1.id = 'input1'
+         div1.append(input1)
+
+         let button = document.createElement('button')
+         button.innerText = 'Конвертувати'
+         button.style.cssText = "border: 0.0625rem solid black; padding: 0.3125rem; background-color: rgb(180, 174, 174);"
+         button.id = 'button'
+         container.append(button)
+
+         let div2 = document.createElement('div')
+         div2.style.cssText = "width: 21.5625rem; display: flex; padding-block: 1.25rem;"
+         container.append(div2)
+         let h22 = document.createElement('h2')
+         h22.innerText = 'Сума у євро'
+         h22.style.cssText = "width: 100%; text-align: start;"
+         div2.append(h22)
+         let input2 = document.createElement('input')
+         input2.style.cssText = "border: 0.0625rem solid black;"
+         input2.id = 'input2'
+         div2.append(input2)
+
+         let div3 = document.createElement('div')
+         div3.style.cssText = "width: 21.5625rem; display: flex; padding-block: 1.25rem;"
+         container.append(div3)
+         let h23 = document.createElement('h2')
+         h23.innerText = 'Сума у доларах'
+         h23.style.cssText = "width: 100%; text-align: start;"
+         div3.append(h23)
+         let input3 = document.createElement('input')
+         input3.style.cssText = "border: 0.0625rem solid black;"
+         input3.id = 'input3'
+         div3.append(input3)
+
+         function convertCurrency() {
+            const dollarExchangeRate = 42
+            const euroExchangeRate = 47
+            let amountInHryvnia = parseFloat(document.getElementById('input1').value)
+            if (isNaN(amountInHryvnia)) {
+               alert("Будь ласка, введіть коректну суму у гривнях.")
+               return
+            }
+            let convertInDollar = amountInHryvnia / dollarExchangeRate
+            let convertInEuro = amountInHryvnia / euroExchangeRate
+            document.getElementById('input2').value = convertInEuro
+            document.getElementById('input3').value = convertInDollar
+         }
+
+         window.onload = function () {
+            document.getElementById('button').onclick = convertCurrency
+         }
+      }
+   </script>
+</body>
+
+</html>
