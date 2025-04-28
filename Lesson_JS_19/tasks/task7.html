@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №19 Задача 7</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body style="background-color: #464889;">
+   <h1>Задача 7</h1>
+   <p>Задача 7. Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану (top =0) і з випадковою
+      швидкістю рухається вниз (у setInterval викликати метод, у якому додавати крок до top). Як тільки сніжинка досягає
+      нижньої частини екрану (top>maxTop) вона знову повинна з’явитись у верхній частині екрану (top=0).
+   </p>
+
+   <script>
+      'use strict'
+
+      if (confirm('Почати тестування?')) {
+         class Snowflake {
+            constructor(image, maxStep = 5, maxSpeed = 30, minSize = 10, maxSize = 30, maxTimeoutStart = 3000) {
+               this.image = image
+               this.maxStep = maxStep
+               this.maxSpeed = maxSpeed
+               this.minSize = minSize
+               this.maxSize = maxSize
+               this.maxTimeoutStart = maxTimeoutStart
+               this.snowflake = null
+               this.top = 0
+               this.left = this.getRandomValue(0, window.innerWidth)
+            }
+
+            getRandomValue(minValue, maxValue) {
+               return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+            }
+
+            createSnowflake() {
+               const snowflake = document.createElement('div')
+               snowflake.style.cssText = `
+                  width: ${this.getRandomValue(this.minSize, this.maxSize)}px;
+                  aspect-ratio: 1;
+                  position: absolute;
+                  top: 0px;
+                  left: ${this.left}px;
+                  pointer-events: none;
+               `
+               const image = document.createElement('img')
+               image.style.cssText = 'width: 100%; height: 100%; object-fit: contain;'
+               image.src = this.image
+               snowflake.append(image)
+               this.snowflake = snowflake
+               return snowflake
+            }
+
+            moveSnowflake() {
+               const maxTop = window.innerHeight
+               const speed = this.getRandomValue(10, this.maxSpeed)
+               const step = this.getRandomValue(1, this.maxStep)
+
+               setInterval(() => {
+                  this.top += step
+                  if (this.top > maxTop) {
+                     this.top = 0
+                     this.left = this.getRandomValue(0, window.innerWidth)
+                     this.snowflake.style.left = `${this.left}px`
+                  }
+                  this.snowflake.style.top = `${this.top}px`
+               }, speed)
+            }
+
+            start(containerSelector) {
+               const container = document.querySelector(containerSelector)
+               this.createSnowflake()
+               container.append(this.snowflake)
+               const timeout = this.getRandomValue(0, this.maxTimeoutStart)
+               setTimeout(() => {
+                  this.moveSnowflake()
+               }, timeout)
+            }
+         }
+
+         for (let i = 0; i < 1000; i++) {
+            const snowflake = new Snowflake("img/7.webp")
+            snowflake.start('body')
+         }
+      }
+   </script>
+
+</body>
+
+</html>

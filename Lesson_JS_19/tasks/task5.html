@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №19 Задача 5</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+   <h1>Задача 5</h1>
+   <p>Задача 5. Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку
+      робити toogle з класом вибраного елемента)
+   </p>
+   <div class="container-5"></div>
+
+   <script>
+      'use strict'
+
+      const productsObj = {
+         product1: "img/1.jpg",
+         product2: "img/2.jpg",
+         product3: "img/3.jpg",
+         product4: "img/4.jpg"
+      }
+      const cssObj = {
+         li: 'card-5',
+         ul: 'cards-5',
+         active: 'active-5'
+      }
+
+      if (confirm('Почати тестування?')) {
+
+         class ProductCards {
+            constructor(productsObj, cssObj) {
+               this.productsObj = productsObj
+               this.cssObj = cssObj
+            }
+
+            createCardProduct(imgSrc) {
+               const cardProduct = document.createElement('li')
+               cardProduct.className = this.cssObj.li
+               const imgProduct = document.createElement('img')
+               imgProduct.src = imgSrc
+               cardProduct.append(imgProduct)
+               return cardProduct
+            }
+
+            createCardsProduct() {
+               const cardsProduct = document.createElement('ul')
+               cardsProduct.className = this.cssObj.ul
+               for (const key in this.productsObj) {
+                  const imgSrc = this.productsObj[key]
+                  cardsProduct.append(this.createCardProduct(imgSrc))
+               }
+               return cardsProduct
+            }
+
+            getActive = (event) => {
+               const liActive = event.target.closest(`.${this.cssObj.li}`)
+               if (liActive) {
+                  liActive.classList.toggle(this.cssObj.active)
+               }
+            }
+
+            render(containerSelector) {
+               const container = document.querySelector(containerSelector)
+               const cards = this.createCardsProduct()
+               cards.addEventListener('click', this.getActive)
+               container.append(cards)
+            }
+         }
+
+         const productCards = new ProductCards(productsObj, cssObj)
+         productCards.render(".container-5")
+      }
+   </script>
+
+</body>
+
+</html>

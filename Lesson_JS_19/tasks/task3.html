@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №19 Задача 3</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+   <h1>Задача 3.</h1>
+   <p>Задача 3. Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у
+      списку випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з
+      парною кількістю елементів зафарбувати у зелений колір, інші у червоний.
+   </p>
+   <div id="myContainer"></div>
+   <button type="button" class="button19__3">зафарбувати</button>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         function getRandomNumber(max, min) {
+            return Math.floor(Math.random() * (max - min + 1)) + min
+         }
+
+         function getList(quantity = 5, elNumMax = 10, elNumMin = 1, elMax = 100, elMin = 1) {
+            let container = document.getElementById('myContainer')
+            container.style.cssText = 'display: flex; gap: 2.5rem; padding: 0.625rem; margin: 0 auto; width: fit-content;'
+            for (let i = 0; i < quantity; i++) {
+               let ol = document.createElement('ol')
+               ol.style.cssText = 'border: 1px solid black; padding: 10px 10px 10px 30px;'
+               container.append(ol)
+               const elNum = getRandomNumber(elNumMax, elNumMin)
+               for (let j = 0; j < elNum; j++) {
+                  let li = document.createElement('li')
+                  li.innerText = getRandomNumber(elMax, elMin)
+                  ol.append(li)
+               }
+            }
+         }
+
+         getList()
+
+         function colorLists() {
+            const olLists = document.querySelectorAll('#myContainer ol')
+            for (const ol of olLists) {
+               if (ol.children.length % 2 === 0) {
+                  ol.style.backgroundColor = 'green'
+                  ol.style.transition = '0.5s'
+               } else {
+                  ol.style.backgroundColor = 'red'
+                  ol.style.transition = '0.5s'
+               }
+            }
+         }
+
+         document.querySelector('.button19__3').addEventListener('click', colorLists)
+      }
+   </script>
+</body>
+
+</html>
