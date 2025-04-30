@@ -29,8 +29,8 @@
                this.maxSize = maxSize
                this.maxTimeoutStart = maxTimeoutStart
                this.snowflake = null
-               this.top = 0
-               this.left = this.getRandomValue(0, window.innerWidth)
+               this.top = this.maxSize
+               this.left = this.getRandomValue(this.maxSize, window.innerWidth - this.maxSize)
             }
 
             getRandomValue(minValue, maxValue) {
@@ -43,7 +43,7 @@
                   width: ${this.getRandomValue(this.minSize, this.maxSize)}px;
                   aspect-ratio: 1;
                   position: absolute;
-                  top: 0px;
+                  top: ${this.maxSize}px;
                   left: ${this.left}px;
                   pointer-events: none;
                `
@@ -56,15 +56,15 @@
             }
 
             moveSnowflake() {
-               const maxTop = window.innerHeight
+               const maxTop = window.innerHeight - this.maxSize
                const speed = this.getRandomValue(10, this.maxSpeed)
                const step = this.getRandomValue(1, this.maxStep)
 
                setInterval(() => {
                   this.top += step
-                  if (this.top > maxTop) {
-                     this.top = 0
-                     this.left = this.getRandomValue(0, window.innerWidth)
+                  if (this.top + this.maxSize > maxTop) {
+                     this.top = this.maxSize
+                     this.left = this.getRandomValue(this.maxSize, window.innerWidth - this.maxSize)
                      this.snowflake.style.left = `${this.left}px`
                   }
                   this.snowflake.style.top = `${this.top}px`
