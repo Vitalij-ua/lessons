@@ -30,7 +30,7 @@
                this.maxTimeoutStart = maxTimeoutStart
                this.snowflake = null
                this.top = this.maxSize
-               this.left = this.getRandomValue(this.maxSize, window.innerWidth - this.maxSize)
+               this.left = this.getRandomValue(0, window.innerWidth - this.maxSize)
             }
 
             getRandomValue(minValue, maxValue) {
@@ -64,7 +64,7 @@
                   this.top += step
                   if (this.top + this.maxSize > maxTop) {
                      this.top = this.maxSize
-                     this.left = this.getRandomValue(this.maxSize, window.innerWidth - this.maxSize)
+                     this.left = this.getRandomValue(0, window.innerWidth - this.maxSize)
                      this.snowflake.style.left = `${this.left}px`
                   }
                   this.snowflake.style.top = `${this.top}px`
