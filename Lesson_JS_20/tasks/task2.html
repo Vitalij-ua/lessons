@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №20 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+   <style>
+      .body-bayraktar::before {
+         content: "";
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: url('img/1.webp') no-repeat center center / cover;
+         opacity: 1;
+         z-index: -1;
+      }
+
+      .tank {
+         position: absolute;
+         width: 100px;
+         aspect-ratio: 1;
+         filter: contrast(10);
+      }
+
+      .tank-image {
+         width: 100%;
+         height: 100%;
+         object-fit: contain;
+      }
+   </style>
+</head>
+
+<body>
+
+   <h1>Задача 2.</h1>
+   <p>Задача 2. Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки, які їдуть
+      вниз. При кліку на танк він вибухає і зникає з екрану.
+   </p>
+
+
+   <script>
+
+      'use strict'
+
+      const imageObj = {
+         bayraktar: "img/7.ico",
+         tank: "img/2.png",
+         destroyedTank: "img/3.png"
+      }
+      const styleObj = {
+         bodyBayraktar: 'body-bayraktar',
+         tankStayle: 'tank',
+         imgTankStayle: 'tank-image'
+      }
+
+      if (confirm('Почати тестування?')) {
+         class Tank {
+            constructor(imageObj, styleObj, maxStep, maxSpeed) {
+               this.imageObj = imageObj
+               this.styleObj = styleObj
+               this.maxStep = maxStep
+               this.maxSpeed = maxSpeed
+            }
+            getRandomValue(minValue, maxValue) {
+               return (
+                  minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+               )
+            }
+            createTank() {
+               const containerTank = document.createElement('div')
+               containerTank.className = this.styleObj.tankStayle
+               const imageTank = document.createElement('img')
+               imageTank.className = this.styleObj.imgTankStayle
+               imageTank.src = this.imageObj.tank
+               containerTank.append(imageTank)
+
+               this.imageTank = imageTank
+               this.tank = containerTank
+               return containerTank
+            }
+            setInitPositionCoordinates() {              
+               this.top = 0
+               this.left = this.getRandomValue(0, 90)
+            }
+            setPosition() {
+               this.tank.style.top = this.top + '%'
+               this.tank.style.left = this.left + '%'
+            }
+            setInitPosition() {
+               this.setInitPositionCoordinates()
+               this.setPosition()
+
+
+            }
+
+            setInitDirection() {
+               this.vy = this.getRandomValue(1, this.maxStep)
+            }
+            updatePosition() {
+               this.top += this.vy
+               if (this.top < 0 || this.top > 80) this.vy = -this.vy
+            }
+
+            move() {
+               this.updatePosition()
+               this.setPosition()
+            }
+            onTap(event) {
+               clearInterval(this.interval)
+               this.imageTank.src = this.imageObj.destroyedTank
+               this.tank.style.transition = 'transform 1s, opacity 1s'
+               this.tank.style.transform = 'scale(0.5)'
+               this.tank.style.opacity = '0'
+               setTimeout(() => {
+                  this.tank.style.display = 'none'
+               }, 1000);
+            }
+            render(containerSelector) {
+               this.createTank()
+               this.tank.onclick = this.onTap.bind(this)
+               this.setInitPosition()
+               this.setInitDirection()
+
+
+               if (containerSelector) {
+                  const container = document.querySelector(containerSelector)
+                  container.append(this.tank)
+                  this.interval = setInterval(() => {
+                     this.move()
+
+                  }, this.maxSpeed)
+               }
+               else {
+                  throw new Error("немає такого елемента")
+               }
+            }
+         }
+
+         class Battleground {
+            constructor(imageObj, styleObj) {
+               this.imageObj = imageObj
+               this.styleObj = styleObj
+            }
+            createMap() {
+               const body = document.querySelector('body')
+               body.className = this.styleObj.bodyBayraktar
+               this.body = body
+               return body
+            }
+            createCursor() {
+               this.body.style.cssText = `cursor: url(${this.imageObj.bayraktar}), auto;`
+
+            }
+
+            render() {
+               this.createMap()
+               this.createCursor()
+            }
+         }
+
+
+         const battleground = new Battleground(imageObj, styleObj)
+         battleground.render()
+
+         try {
+            for (let index = 0; index < 10; index++) {
+               const tank = new Tank(imageObj, styleObj, Math.random() * 3, 150)
+               tank.render('body')
+
+            }
+         } catch (error) {
+            console.error(error)
+         }
+
+
+      }
+
+   </script>
+
+</body>
+
+
+</html>

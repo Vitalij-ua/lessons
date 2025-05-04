@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №20 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body style="background-color: rgb(28, 28, 58);">
+
+
+   <h1>Задача 1</h1>
+   <p>Задача 1. Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. Кожна зірка (це
+      екземпляр класу Star) з певним кроком і інтервалом збільшується від мінімального до максимального розміру. Як
+      тільки досягнути максимального розміру зірочка повинна з’являтися у іншій випадковій позиції.
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class Star {
+            constructor(image, minSize = 1, maxSize = 50, maxStep = 10, maxSpeed = 10000, maxTimeoutStart = 5000) {
+               this.image = image
+               this.minSize = minSize
+               this.maxSize = maxSize
+               this.maxStep = maxStep
+               this.maxSpeed = maxSpeed
+               this.maxTimeoutStart = maxTimeoutStart
+               this.top = this.getRandomValue(0, window.innerHeight - this.maxSize)
+               this.left = this.getRandomValue(0, window.innerWidth - this.maxSize)
+            }
+            getRandomValue(minValue, maxValue) {
+               return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+            }
+            createStar() {
+               const star = document.createElement('div')
+               star.style.cssText = `
+                  width: ${this.maxSize}px;
+                  height: ${this.maxSize}px;
+                  transform-origin: center;
+                  transform: scale(${this.minSize / this.maxSize});
+                  filter: blur(1px);
+                  position: absolute;
+                  top: ${this.top}px;
+                  left: ${this.left}px;                 
+                  pointer-events: none;
+                  opacity: ${Math.random()};
+               `
+               const image = document.createElement('img')
+               image.style.cssText = 'width: 100%; height: 100%; object-fit: contain;'
+               image.src = this.image
+               star.append(image)
+               this.star = star
+               return star
+            }
+
+            lifeStar() {
+               let currentScale = this.minSize / this.maxSize
+               const step = Math.random() * (this.maxStep / this.maxSize)
+               const interval = this.getRandomValue(100, this.maxSpeed)
+               const size  = this.getRandomValue(this.minSize, this.maxSize) / this.maxSize
+               this.intervalId = setInterval(() => {
+                  if (document.hidden) return
+                  currentScale += step
+                  if (currentScale >= size ) {
+                     currentScale = this.minSize / this.maxSize
+                     this.top = this.getRandomValue(0, window.innerHeight - this.maxSize)
+                     this.left = this.getRandomValue(0, window.innerWidth - this.maxSize)
+                     this.star.style.top = `${this.top}px`
+                     this.star.style.left = `${this.left}px`
+                  }
+                  this.star.style.transform = `scale(${currentScale})`
+               }, interval)
+            }
+
+            render(containerSelector) {
+               if (containerSelector) {
+                  const container = document.querySelector(containerSelector)
+                  this.createStar()
+                  container.append(this.star)
+                  const timeout = this.getRandomValue(0, this.maxTimeoutStart)
+                  setTimeout(() => {
+                     this.lifeStar()
+                  }, timeout)
+               }
+               else {
+                  throw new Error("немає такого елемента")
+               }
+            }
+         }
+
+         try {
+            for (let index = 0; index < 100; index++) {
+            const star = new Star("img/star.png")
+            star.render('body')
+         }
+         } catch (error) {
+            console.error(error)
+         }
+         
+
+
+      }
+   </script>
+</body>
+
+</html>
