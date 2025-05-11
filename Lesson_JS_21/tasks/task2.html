@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №21 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+
+</head>
+
+<body>
+
+   <h1>Задача 1.</h1>
+   <p>Задача 1. Створити клас Client
+      Властивості
+      ID
+      ПІБ
+      Кількість грошей на рахунку
+      Методи
+      Додавання грошей
+      Зняття грошей
+      ToString
+
+      На основі цього класу створити клас GoldenClient
+      Властивості
+      ID
+      ПІБ
+      Кількість грошей на рахунку
+      Ліміт кредитних коштів
+      Відсоток за використання кредитних коштів
+      Методи
+      Додавання грошей
+      Зняття грошей
+      Визначення пені за використання кредитних коштів
+      ToString
+
+
+   </p>
+
+
+   <script>
+
+      'use strict'
+
+      if (confirm('Почати тестування?')) {
+         class Client {
+            #amountMoneyInAccount
+
+            constructor(id, name, amountMoneyInAccount) {
+               this.id = id
+               this.name = name
+               this.amountMoneyInAccount = amountMoneyInAccount
+            }
+            get amountMoneyInAccount() {
+               return this.#amountMoneyInAccount
+            }
+            set amountMoneyInAccount(newAmountMoneyInAccount) {
+               if (isNaN(newAmountMoneyInAccount)) {
+                  throw new Error("Введіть число в графі Кількість грошей на рахунку")
+               }
+               if (newAmountMoneyInAccount < 0) {
+                  throw new Error("Введіть коректне число в графі Кількість грошей на рахунку")
+               }
+
+               this.#amountMoneyInAccount = newAmountMoneyInAccount
+            }
+            addMoney(amountMoney) {
+               const value = Number(amountMoney)
+               if (isNaN(value)) {
+                  throw new Error("Сума додавання має бути числом")
+               }
+
+               if (value <= 0) {
+                  throw new Error("Сума додавання має бути більше нуля")
+               }
+               return this.amountMoneyInAccount += value
+            }
+            subtractionMoney(amountMoney) {
+               const value = Number(amountMoney)
+               if (isNaN(value)) {
+                  throw new Error("Сума зняття має бути числом")
+               }
+
+               if (value <= 0) {
+                  throw new Error("Сума зняття має бути більше нуля")
+               }
+
+               if (value > this.amountMoneyInAccount) {
+                  throw new Error(`Неможливо зняти ${value} грн. У Вас недостатньо грошей на рахунку`)
+               }
+
+               this.amountMoneyInAccount -= value
+               return this.amountMoneyInAccount
+            }
+
+            toString() {
+               return `ID : ${this.id},\n ПІБ : ${this.name},\n Кількість грошей на рахунку : ${this.amountMoneyInAccount}грн`
+            }
+         }
+
+         class GoldenClient extends Client {
+            #creditLimit
+            #percentUsageCreditLimit
+            #creditMoney = 0
+
+            constructor(id, name, amountMoneyInAccount, creditLimit, percentUsageCreditLimit) {
+               super(id, name, amountMoneyInAccount)
+               this.creditLimit = creditLimit
+               this.percentUsageCreditLimit = percentUsageCreditLimit
+            }
+
+            get creditLimit() {
+               return this.#creditLimit
+            }
+
+            set creditLimit(value) {
+               if (isNaN(value)) throw new Error("Введіть число в графі Ліміт кредитних коштів")
+               if (value < 0) throw new Error("Введіть коректне число в графі Ліміт кредитних коштів")
+               this.#creditLimit = value
+            }
+
+            get percentUsageCreditLimit() {
+               return this.#percentUsageCreditLimit
+            }
+
+            set percentUsageCreditLimit(value) {
+               if (isNaN(value)) throw new Error("Введіть число в графі Відсоток за використання кредитних коштів")
+               if (value < 0) throw new Error("Введіть коректне число в графі Відсоток за використання кредитних коштів")
+               this.#percentUsageCreditLimit = value
+            }
+
+            get creditMoney() {
+               return this.#creditMoney
+            }
+
+            subtractionMoney(amountMoney) {
+               const value = Number(amountMoney)
+               if (isNaN(value)) throw new Error("Сума зняття має бути числом")
+               if (value <= 0) throw new Error("Сума зняття має бути більше нуля")
+               if (value > (this.amountMoneyInAccount + this.creditLimit))
+                  throw new Error(`Неможливо зняти ${value} грн. У Вас недостатньо коштів`)
+
+               if (value <= this.amountMoneyInAccount) {
+                  this.amountMoneyInAccount -= value
+                  return this.amountMoneyInAccount
+               } else {
+                  this.#creditMoney = value - this.amountMoneyInAccount
+                  this.amountMoneyInAccount = 0
+                  this.creditLimit -= this.#creditMoney
+                  return -this.#creditMoney
+               }
+            }
+
+            calculationPenaltiesForUsingCreditLimit() {
+               if (this.#creditMoney === 0) return 0
+               return (this.#creditMoney * this.percentUsageCreditLimit) / 100
+            }
+
+            toString() {
+               return `${super.toString()},\nЛіміт кредитних коштів: ${this.creditLimit} грн,\nВідсоток за використання кредитних коштів: ${this.percentUsageCreditLimit}%`
+            }
+         }
+
+         try {
+            const client = new Client('42', 'Петров Іван Фредович', 1000000)
+            console.log('--- Client ---')
+            console.log(client.toString())
+            console.log('Після додавання:', client.addMoney(4530))
+            console.log('Після зняття:', client.subtractionMoney(56))
+            const divClient = document.createElement('div')
+            divClient.style.cssText = "width: fit-content;padding: 0.625rem;border: 0.125rem solid rgb(70, 56, 56);border-radius: 0.375rem;margin: 3.125rem auto;"
+            const h2Client = document.createElement('h2')
+            h2Client.innerText = 'Client'
+            const pClient = document.createElement('pre')
+            pClient.innerText = client.toString()
+            divClient.append(h2Client, pClient)            
+            const container = document.querySelector('body')
+            container.append(divClient)
+
+            console.log('--- GoldenClient ---')
+            const goldClient = new GoldenClient('88', 'Сидоренко Ольга Миколаївна', 1000, 2000, 10)
+            console.log(goldClient.toString())
+            console.log('Після додавання:', goldClient.addMoney(300))
+            console.log('Після зняття 2500:', goldClient.subtractionMoney(2500))
+            console.log('Пеня:', goldClient.calculationPenaltiesForUsingCreditLimit())
+            const divGoldenClient = document.createElement('div')
+            divGoldenClient.style.cssText = "width: fit-content;padding: 0.625rem;border: 0.125rem solid rgb(56, 70, 56);border-radius: 0.375rem;margin: 3.125rem auto;"
+            const h2GoldenClient = document.createElement('h2')
+            h2GoldenClient.innerText = 'GoldenClient'
+            const pGoldenClient = document.createElement('pre')
+            pGoldenClient.innerText = goldClient.toString()
+            divGoldenClient.append(h2GoldenClient, pGoldenClient)
+            container.append(divGoldenClient)
+
+         } catch (error) {
+            console.log(error.message)
+            alert(error.message)
+         }
+
+      }
+
+   </script>
+
+</body>
+
+
+</html>

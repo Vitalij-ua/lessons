@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №21 Задача 0</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+
+   <h1>Задача 0</h1>
+   <p>Задача 0. Розробити клас Person (поля:ім'я, вік, адреса; методи: toString, визначення року народження). На основі
+      класу Person розробити клас Worker (додати поля: посада, розмір заробітної плати, кількість відсотів
+      оподаткування; методи:визначення кількості виплачених коштів за рік, та визначення розміру податків)
+   </p>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+         class Person {
+            #age
+
+            constructor(name, age, address) {
+               this.name = name
+               this.age = age
+               this.address = address
+            }
+            get age() {
+               return this.#age
+            }
+            set age(newAge) {
+               if (isNaN(newAge)) throw new Error("Введіть число в графі вік")
+               if (newAge < 0 || newAge > 120) throw new Error("Введіть коректне число в графі вік")
+
+               this.#age = newAge
+            }
+            toString() {
+               return `Ім'я : ${this.name},\n Вік : ${this.age},\n Aдреса : ${this.address}`
+            }
+            getYearBirth() {
+               return new Date().getFullYear() - this.age
+            }
+         }
+         try {
+            const person = new Person('Іван', 35, 'Київ, вул.Галушки, буд.47')
+            console.log(person.toString())
+            console.log("Рік народження:", person.getYearBirth())
+         } catch (error) {
+            console.log(error.message)
+            alert(error.message)
+
+         }
+
+         class Worker extends Person {
+            #salaryAmount
+            #amountTaxPercentage
+
+            constructor(name, age, address, jobTitle, salaryAmount, amountTaxPercentage) {
+               super(name, age, address)
+               this.jobTitle = jobTitle
+               this.salaryAmount = salaryAmount
+               this.amountTaxPercentage = amountTaxPercentage
+            }
+            get salaryAmount() {
+               return this.#salaryAmount
+            }
+            set salaryAmount(newSalaryAmount) {
+               if (isNaN(newSalaryAmount)) throw new Error("Введіть число в графі розмір заробітної плати")
+               if (newSalaryAmount < 0) throw new Error("Введіть коректне число в графі розмір заробітної плати")
+
+               this.#salaryAmount = newSalaryAmount
+            }
+            get amountTaxPercentage() {
+               return this.#amountTaxPercentage
+            }
+            set amountTaxPercentage(newAmountTaxPercentage) {
+               if (isNaN(newAmountTaxPercentage)) throw new Error("Введіть число в графі оподаткування")
+
+               this.#amountTaxPercentage = newAmountTaxPercentage
+            }
+
+            getAmountMoneyPerYear() {
+               return this.salaryAmount * 12
+            }
+            getTaxAmount(amountMoney) {
+               return (amountMoney * this.amountTaxPercentage) / 100
+            }
+            toString() {
+               return `${super.toString()},\n Посада: ${this.jobTitle},\n Зарплата: ${this.salaryAmount} грн,\n Податок: ${this.amountTaxPercentage}%,\nРічна виплата: ${this.getAmountMoneyPerYear()} грн,\n Податки за рік: ${this.getTaxAmount(this.getAmountMoneyPerYear())} грн`
+
+            }
+
+         }
+
+
+         try {
+            const worker = new Worker('Іван', 35, 'Київ, вул.Галушки, буд.47', 'Директор', 134200, 20)
+            console.log(worker.toString())
+            const divWorker = document.createElement('div')
+            divWorker.innerText = worker.toString()
+            divWorker.style.cssText = "width: fit-content;padding: 0.625rem;border: 0.125rem solid rgb(70, 56, 56);border-radius: 0.375rem;margin: 3.125rem auto;"
+            const container = document.querySelector('body')
+            container.append(divWorker)
+         } catch (error) {
+            console.log(error.message)
+            alert(error.message)
+         }
+
+      }
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №21 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+   
+</head>
+
+<body>
+
+   <h1>Задача 2.</h1>
+   <p>Задача 2. Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції
+      Вивести всіх простих клієнтів;
+      Вивести всіх клієнтів GoldenClient;
+      Знайти сумарну кількість грошей на рахунку;
+      
+   </p>
+
+
+   <script>
+
+      'use strict'
+
+      if (confirm('Почати тестування?')) {
+         class Client {
+            #amountMoneyInAccount
+
+            constructor(id, name, amountMoneyInAccount) {
+               this.id = id
+               this.name = name
+               this.amountMoneyInAccount = amountMoneyInAccount
+            }
+            get amountMoneyInAccount() {
+               return this.#amountMoneyInAccount
+            }
+            set amountMoneyInAccount(newAmountMoneyInAccount) {
+               if (isNaN(newAmountMoneyInAccount)) {
+                  throw new Error("Введіть число в графі Кількість грошей на рахунку")
+               }
+               if (newAmountMoneyInAccount < 0) {
+                  throw new Error("Введіть коректне число в графі Кількість грошей на рахунку")
+               }
+
+               this.#amountMoneyInAccount = newAmountMoneyInAccount
+            }
+            addMoney(amountMoney) {
+               const value = Number(amountMoney)
+               if (isNaN(value)) {
+                  throw new Error("Сума додавання має бути числом")
+               }
+
+               if (value <= 0) {
+                  throw new Error("Сума додавання має бути більше нуля")
+               }
+               return this.amountMoneyInAccount += value
+            }
+            subtractionMoney(amountMoney) {
+               const value = Number(amountMoney)
+               if (isNaN(value)) {
+                  throw new Error("Сума зняття має бути числом")
+               }
+
+               if (value <= 0) {
+                  throw new Error("Сума зняття має бути більше нуля")
+               }
+
+               if (value > this.amountMoneyInAccount) {
+                  throw new Error(`Неможливо зняти ${value} грн. У Вас недостатньо грошей на рахунку`)
+               }
+
+               this.amountMoneyInAccount -= value
+               return this.amountMoneyInAccount
+            }
+
+            toString() {
+               return `ID : ${this.id},\n ПІБ : ${this.name},\n Кількість грошей на рахунку : ${this.amountMoneyInAccount}грн`
+            }
+         }
+
+         class GoldenClient extends Client {
+            #creditLimit
+            #percentUsageCreditLimit
+            #creditMoney = 0
+
+            constructor(id, name, amountMoneyInAccount, creditLimit, percentUsageCreditLimit) {
+               super(id, name, amountMoneyInAccount)
+               this.creditLimit = creditLimit
+               this.percentUsageCreditLimit = percentUsageCreditLimit
+            }
+
+            get creditLimit() {
+               return this.#creditLimit
+            }
+
+            set creditLimit(value) {
+               if (isNaN(value)) throw new Error("Введіть число в графі Ліміт кредитних коштів")
+               if (value < 0) throw new Error("Введіть коректне число в графі Ліміт кредитних коштів")
+               this.#creditLimit = value
+            }
+
+            get percentUsageCreditLimit() {
+               return this.#percentUsageCreditLimit
+            }
+
+            set percentUsageCreditLimit(value) {
+               if (isNaN(value)) throw new Error("Введіть число в графі Відсоток за використання кредитних коштів")
+               if (value < 0) throw new Error("Введіть коректне число в графі Відсоток за використання кредитних коштів")
+               this.#percentUsageCreditLimit = value
+            }
+
+            get creditMoney() {
+               return this.#creditMoney
+            }
+
+            subtractionMoney(amountMoney) {
+               const value = Number(amountMoney)
+               if (isNaN(value)) throw new Error("Сума зняття має бути числом")
+               if (value <= 0) throw new Error("Сума зняття має бути більше нуля")
+               if (value > (this.amountMoneyInAccount + this.creditLimit))
+                  throw new Error(`Неможливо зняти ${value} грн. У Вас недостатньо коштів`)
+
+               if (value <= this.amountMoneyInAccount) {
+                  this.amountMoneyInAccount -= value
+                  return this.amountMoneyInAccount
+               } else {
+                  this.#creditMoney = value - this.amountMoneyInAccount
+                  this.amountMoneyInAccount = 0
+                  this.creditLimit -= this.#creditMoney
+                  return -this.#creditMoney
+               }
+            }
+
+            calculationPenaltiesForUsingCreditLimit() {
+               if (this.#creditMoney === 0) return 0
+               return (this.#creditMoney * this.percentUsageCreditLimit) / 100
+            }
+
+            toString() {
+               return `${super.toString()},\nЛіміт кредитних коштів: ${this.creditLimit} грн,\nВідсоток за використання кредитних коштів: ${this.percentUsageCreditLimit}%`
+            }
+         }
+
+         class Bank {
+            constructor(allClients) {
+               this.allClients = allClients
+            }
+            showAllClientsClassClient(){
+               return this.allClients.filter(client => client.constructor.name === Client.name)
+            }
+            showAllClientsClassGoldenClient(){
+               return this.allClients.filter(client => client.constructor.name === GoldenClient.name)
+            }
+            getTotalAmountMoneyInBank(){
+               return this.allClients.reduce((sum, client) => sum + client.amountMoneyInAccount, 0)
+            }
+         }
+
+         const allClients = [
+            new Client('C1', 'Коваль Андрій', 5000),
+            new Client('C2', 'Іваненко Тетяна', 7500),
+            new GoldenClient('G1', 'Петренко Ірина', 3000, 2000, 10),
+            new GoldenClient('G2', 'Мельник Сергій', 1000, 3000, 15)
+         ]
+
+         const bank = new Bank(allClients)
+
+         console.log('Простi клієнти:')
+         bank.showAllClientsClassClient().forEach(client => console.log(client.toString()))
+
+         console.log('Golden клієнти:')
+         bank.showAllClientsClassGoldenClient().forEach(client => console.log(client.toString()))
+
+         console.log(`Сумарна кількість грошей у банку: ${bank.getTotalAmountMoneyInBank()} грн`)
+
+      }
+
+   </script>
+
+</body>
+
+
+</html>

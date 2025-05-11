@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №21 Задача 4</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+
+</head>
+
+<body>
+
+   <h1>Задача 4.</h1>
+   <p>Задача 4. Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку
+      (перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не
+      останній місяць у семестрі) . Обробку усіх помилок зробити з використанням відповідних класів.
+   </p>
+
+   <div class="form" style="max-width: 300px; display: block; margin: 0 auto;">
+      <form>
+         <label for="month">Введіть номер місяця від 1 до 12</label>
+         <input id="month" class="month" type="number" name="month" min="1" max="12"
+            style="border: 0.0625rem solid black; margin-bottom: 0.625rem;">
+
+         <label for="rating">Введіть оцінку від 1 до 100</label>
+         <input id="rating" class="rating" type="number" name="rating" min="1" max="100"
+            style="border: 0.0625rem solid black; margin-bottom: 0.625rem;">
+
+         <button id="btn" type="button" style="padding: 0.625rem; border: 0.0625rem solid black;">Перевірити</button>
+      </form>
+   </div>
+   <p class="result"></p>
+
+
+
+   <script>
+      'use strict'
+
+      class IsNotNumberError extends Error {
+         constructor() {
+            super('Введене значення не є числом')
+            this.name = 'IsNotNumberError'
+         }
+      }
+
+      class IsTooHighNumberError extends Error {
+         constructor(value, name) {
+            super(`${name} не може бути більшим за ${value}`)
+            this.name = 'IsTooHighNumberError'
+         }
+      }
+
+      class IsTooLowNumberError extends Error {
+         constructor(value, name) {
+            super(`${name} не може бути меншим за ${value}`)
+            this.name = 'IsTooLowNumberError'
+         }
+      }
+
+      class IsHoliday extends Error {
+         constructor() {
+            super("У ці місяці — канікули")
+            this.name = "IsHoliday"
+         }
+      }
+
+      function validate(value, min, max, name) {
+         if (isNaN(value)) throw new IsNotNumberError()
+         if (value < min) throw new IsTooLowNumberError(min, name)
+         if (value > max) throw new IsTooHighNumberError(max, name)
+         return true
+      }
+
+      function isHolidayMonth(month) {
+         if (month === 6 || month === 7 || month === 8) {
+            return true
+         } else {
+            return false
+         }
+      }
+
+      function isLastMonthInSemester(month) {
+         if (month === 5 || month === 12) {
+            return true
+         } else {
+            return false
+         }
+      }
+
+      document.getElementById("btn").addEventListener("click", () => {
+         const result = document.querySelector('.result')
+         try {
+            const month = parseInt(document.getElementById("month").value)
+            const rating = parseInt(document.getElementById("rating").value)
+
+            validate(month, 1, 12, 'місяць')
+            validate(rating, 1, 100, 'оцінка')
+
+            if (isHolidayMonth(month)) throw new IsHoliday()
+
+            if (rating >= 60) {
+               result.textContent = "Оцінка достатня. Виправляти не потрібно."
+            } else if (isLastMonthInSemester(month)) {
+               result.textContent = "Це останній місяць семестру. Виправити вже не можна."
+            } else {
+               result.textContent = "Оцінку можна виправити."
+            }
+
+         } catch (error) {
+            result.textContent = error.message
+            console.error(error)
+         }
+      })
+   </script>
+
+
+</body>
+
+
+</html>

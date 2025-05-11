@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №21 Задача 3</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+
+   <style>
+      .element-house {
+         position: absolute;
+         max-width: 12.5rem;
+         transform: scale(1);
+         transition: 1s;
+         overflow: hidden;
+         border-radius: 0.5rem;
+      }
+      .element-dog {
+          position: absolute;
+         max-width: 6.25rem;
+         transform: scale(1);
+         transition: 1s;
+         overflow: hidden;
+         border-radius: 0.5rem;
+      }
+      .element-bird {
+          position: absolute;
+         max-width: 3.125rem;
+         transform: scale(1);
+         transition: 1s;
+         overflow: hidden;
+         border-radius: 0.5rem;
+      }
+      .element-image {        
+         width: 100%;
+         height: 100%;
+         object-fit: contain;
+         border-radius: 0.5rem;
+      }
+   </style>
+</head>
+
+<body style="background-color: rgb(98, 193, 77);">
+
+   <h1>Задача 3.</h1>
+   <p>Задача 3. Розробити Класи
+      House
+      Dog
+      Bird
+      --- властивості ---
+      Координата Х
+      Координата У
+      шлях до зображення
+      інтервал оновлення
+      --- методи ---
+      генерування елемента розмітки
+      оновлення через вказаний інтервал (збільшення або зменшення масштабу (об’єкт не рухається))
+
+
+
+      --- властивості ---
+      Координата Х
+      Координата У
+      шлях до зображення
+      інтервал оновлення
+      --- методи ---
+      генерування елемента розмітки
+      оновлення через вказаний інтервал (випадкове зміщення по горизонталі (зміна координати Х))
+
+
+      --- властивості ---
+      Координата Х
+      Координата У
+      шлях до зображення
+      інтервал оновлення
+      --- методи ---
+      генерування елемента розмітки
+      оновлення через вказаний інтервал (випадкове переміщення у довільному напрямку)
+
+
+
+      Подумайте яким має бути спільний клас предок.
+
+   </p>
+
+
+   <script>
+
+      'use strict'
+
+      if (confirm('Почати тестування?')) {
+         class AnimationObject {
+            #coordinateX
+            #coordinateY
+            #interval
+            constructor(coordinateX, coordinateY, image, interval, classNameEL, classNameImg) {
+               this.coordinateX = coordinateX
+               this.coordinateY = coordinateY
+               this.image = image
+               this.interval = interval
+               this.classNameEL = classNameEL
+               this.classNameImg = classNameImg
+            }
+            get CoordinateX() {
+               return this.#coordinateX
+            }
+            set CoordinateX(newCoordinateX) {
+               if (isNaN(newCoordinateX)) throw new Error("Введіть число в графі coordinateX")
+               if (newCoordinateX < 0 || newCoordinateX > 100) throw new Error("Введіть коректне число в графі coordinateX")
+
+               this.#coordinateX = newCoordinateX
+            }
+            get CoordinateY() {
+               return this.#coordinateY
+            }
+            set CoordinateY(newCoordinateY) {
+               if (isNaN(newCoordinateY)) throw new Error("Введіть число в графі coordinateY")
+               if (newCoordinateY < 0 || newCoordinateY > 100) throw new Error("Введіть коректне число в графі coordinateY")
+
+               this.#coordinateY = newCoordinateY
+            }
+            get Interval() {
+               return this.#interval
+            }
+            set Interval(newInterval) {
+               if (isNaN(newInterval)) throw new Error("Введіть число в графі interval")
+               if (newInterval < 0) throw new Error("Введіть коректне число в графі interval")
+
+               this.#interval = newInterval
+            }
+            getRandomValue(minValue, maxValue) {
+               return (
+                  minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+               )
+            }
+            createElement() {
+               const divEl = document.createElement('div')
+               divEl.className = this.classNameEL
+               divEl.style.top = this.coordinateY + '%'
+               divEl.style.left = this.coordinateX + '%'
+               const imgEl = document.createElement('img')
+               imgEl.className = this.classNameImg
+               imgEl.src = this.image
+               divEl.append(imgEl)
+
+               this.divEl = divEl
+               return divEl
+            }
+            updateElement(update, interval) {
+               setInterval(() => {
+                  update.call(this)
+               }, interval)
+            }
+            render(containerSelector, update) {
+               if (containerSelector) {
+                  const container = document.querySelector(containerSelector)
+                  this.createElement()
+                  container.append(this.divEl)
+                  this.updateElement(update, this.interval)
+               }
+               else {
+                  throw new Error("немає такого елемента")
+               }
+            }
+         }
+
+         class House extends AnimationObject {
+            constructor(coordinateX, coordinateY, image, interval, classNameEL, classNameImg) {
+               super(coordinateX, coordinateY, image, interval, classNameEL, classNameImg)
+            }
+            moveElement() {
+               const scale = this.getRandomValue(5, 10) / 10
+               this.divEl.style.transform = `scale(${scale})`
+            }
+         }
+
+         class Dog extends AnimationObject {
+            constructor(coordinateX, coordinateY, image, interval, classNameEL, classNameImg) {
+               super(coordinateX, coordinateY, image, interval, classNameEL, classNameImg)
+            }
+            moveElement() {
+               this.divEl.style.left = this.getRandomValue(20, 80) + '%'
+            }
+         }
+
+         class Bird extends AnimationObject {
+            constructor(coordinateX, coordinateY, image, interval, classNameEL, classNameImg) {
+               super(coordinateX, coordinateY, image, interval, classNameEL, classNameImg)
+            }
+            moveElement() {
+               this.divEl.style.left = this.getRandomValue(20, 80) + '%'
+               this.divEl.style.top = this.getRandomValue(20, 80) + '%'
+            }
+         }
+
+         try {
+            const house = new House(50, 50, "img/1.png", 3000, 'element-house', 'element-image')
+            house.render('body', house.moveElement.bind(house))
+
+            const dog = new Dog(30, 60, "img/2.png", 2000, 'element-dog', 'element-image')
+            dog.render('body', dog.moveElement.bind(dog))
+
+            const bird = new Bird(70, 20, "img/3.png", 1000, 'element-bird', 'element-image')
+            bird.render('body', bird.moveElement.bind(bird))
+         } catch (error) {
+            console.log(error.message)
+            alert(error.message)
+         }
+      }
+
+   </script>
+
+
+</body>
+
+
+</html>
