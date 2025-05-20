@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №23 Задача 1</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+</head>
+
+<body>
+
+
+   <h1>Задача 1</h1>
+   <p>Усі задачі можете оформити у одному файлі(так, як ми робимо на лекції)
+   </p>
+   <div class="container"></div>
+   <script>
+      'use strict'
+      if (confirm('Почати тестування?')) {
+
+         class CardAnswer {
+            constructor(result, taskName, containerSelector) {
+               this.result = result
+               this.taskName = taskName
+               this.containerSelector = containerSelector
+            }
+            createCard() {
+               const divResult = document.createElement('div')
+               divResult.style.cssText = 'border: 0.0625rem solid black;padding: 0.625rem;margin-bottom: 0.625rem;background-color: #b1a6a6;border-radius: 0.5rem;font-family: Arial, sans-serif;'
+               const h2Result = document.createElement('h2')
+               h2Result.innerText = this.taskName
+               divResult.append(h2Result)
+               const pResult = document.createElement('p')
+               if (Array.isArray(this.result)) {
+                  pResult.innerText = `[${this.result.map(str => `"${str}"`).join(', ')}]`
+               } else {
+                  pResult.innerText = `"${this.result}"`
+               }
+               divResult.append(pResult)
+
+               return divResult
+            }
+            render() {
+               if (this.containerSelector) {
+                  const container = document.querySelector(this.containerSelector)
+                  container.append(this.createCard())
+               }
+               else {
+                  throw new Error("немає такого елемента")
+               }
+            }
+         }
+
+         let strings = [
+            "apple123",
+            "banana",
+            "carrot45",
+            "dog",
+            "elephant99",
+            "fish",
+            "grape7",
+            "house",
+            "ice9",
+            "jungle",
+            "html"
+         ]
+         //Задача 1. Дано масив рядків.Вивести ті, у яких є цифри(використати метод test та регулярні вирази).
+         function outputStringsWithNumbers(strings) {
+            const regex = /\d/
+            return strings.filter(string => regex.test(string))
+         }
+         const result1 = outputStringsWithNumbers(strings)
+         console.log(result1)
+
+         try {
+            const answer1 = new CardAnswer(result1, 'Задача 1. Дано масив рядків.Вивести ті, у яких є цифри(використати метод test та регулярні вирази).', '.container')
+            answer1.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         // Задача 2. Дано масив рядків.Вивести ті, у яких немає цифр.
+         function outputStringsNoNumbers(strings) {
+            const regex = /\d/
+            return strings.filter(string => !regex.test(string))
+         }
+         const result2 = outputStringsNoNumbers(strings)
+         console.log(result2)
+
+         try {
+            const answer2 = new CardAnswer(result2, 'Задача 2. Дано масив рядків.Вивести ті, у яких немає цифр.', '.container')
+            answer2.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         //Задача 3. Дано масив рядків.Вивести ті, у яких є голосні літери.
+         function outputStringsWithVowels(strings) {
+            const regex = /[aeiouy]/i
+            return strings.filter(string => regex.test(string))
+         }
+         const result3 = outputStringsWithVowels(strings)
+         console.log(result3)
+
+         try {
+            const answer3 = new CardAnswer(result3, 'Задача 3. Дано масив рядків.Вивести ті, у яких є голосні літери.', '.container')
+            answer3.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         //Задача 4. Дано масив рядків.Вивести ті, у яких немає голосних літер.
+         function outputStringsNoVowels(strings) {
+            const regex = /[aeiouy]/i
+            return strings.filter(string => !regex.test(string))
+         }
+         const result4 = outputStringsNoVowels(strings)
+         console.log(result4)
+
+         try {
+            const answer4 = new CardAnswer(result4, 'Задача 4. Дано масив рядків.Вивести ті, у яких немає голосних літер.', '.container')
+            answer4.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         // Задача 5. Дано масив рядків.Вивести ті, у яких є або цифра 1 або цифра 3.
+         function outputStringsWith1Or3(strings) {
+            const regex = /[13]/
+            return strings.filter(string => regex.test(string))
+         }
+         const result5 = outputStringsWith1Or3(strings)
+         console.log(result5)
+
+         try {
+            const answer5 = new CardAnswer(result5, 'Задача 5. Дано масив рядків.Вивести ті, у яких є або цифра 1 або цифра 3.', '.container')
+            answer5.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         //Задача 6. Дано рядок тексту, вивести усі числа, які є у тексті.
+         const text = "Сьогодні 14.05.2025, а торік було 2024-й. Ми продали 120 товарів за 3 дні!"
+         function outputNumbersInText(text) {
+            const regex = /\d+/g
+            const matches = text.match(regex)
+            return matches ?? []
+         }
+         const result6 = outputNumbersInText(text)
+         console.log(result6)
+
+         try {
+            const answer6 = new CardAnswer(result6, 'Задача 6. Дано рядок тексту, вивести усі числа, які є у тексті.', '.container')
+            answer6.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         //Задача 7. Дано рядок тексту.Знайти усі знаки пунктуації, які були використано.
+         function outputPunctuationMarksInText(text) {
+            const regex = /[.,!?:;—\-()«»"']/g
+            const matches = text.match(regex)
+            return matches ?? []
+         }
+         const result7 = outputPunctuationMarksInText(text)
+         console.log(result7)
+
+         try {
+            const answer7 = new CardAnswer(result7, 'Задача 7. Дано рядок тексту.Знайти усі знаки пунктуації, які були використано.', '.container')
+            answer7.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         // Задача 8. Дано рядок тексту.Вивести усі складові, які розділені розділовими знаками.
+         function outputSentenceComponents(text) {
+            const regex = /[.,!?:;—\-()«»"']/g
+            const matches = text.split(regex)
+            return matches ?? []
+         }
+         const result8 = outputSentenceComponents(text)
+         console.log(result8)
+
+         try {
+            const answer8 = new CardAnswer(result8, 'Задача 8. Дано рядок тексту.Вивести усі складові, які розділені розділовими знаками.', '.container')
+            answer8.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         // Задача 9. Дано рядок тексту.Перевірити, чи містить він дату у форматі dd.mm.yyyy(dd - день, mm - місяць, yyyy - рік).
+         function checkDateInText(text) {
+            const regex = /\b(0?[1-9]|[12][0-9]|3[01])\.(0?[1-9]|1[0-2])\.\d{4}\b/
+            const matches = regex.test(text)
+            return  matches
+                  ? 'Так, містить дату у форматі dd.mm.yyyy (dd - день, mm - місяць, yyyy - рік).'
+                  : 'Ні, не містить дату у форматі dd.mm.yyyy (dd - день, mm - місяць, yyyy - рік).'
+              
+            
+         }
+
+
+         const result9 = checkDateInText(text)
+         console.log(result9)
+
+         try {
+            const answer9 = new CardAnswer(result9, 'Задача 9. Дано рядок тексту.Перевірити, чи містить він дату у форматі dd.mm.yyyy(dd - день, mm - місяць, yyyy - рік).', '.container')
+            answer9.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         //Задача 10. Дано рядок тексту.Підрахувати кількість двоцифрових чисел у рядку.
+         function getSumNum(text) {
+            const regex = /\b\d{2}\b/g
+            const matches = text.match(regex)
+            return matches ?`${matches.length} - двоцифрових чисел` : 'Текст немістить двоцифрових чисел'
+         }
+         const result10 = getSumNum(text)
+         console.log(result10)
+
+         try {
+            const answer10 = new CardAnswer(result10, 'Задача 10. Дано рядок тексту.Підрахувати кількість двоцифрових чисел у рядку.', '.container')
+            answer10.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         //Задача 11. Визначити чи може бути рядок тексту номером банківської картки(приклад: «4142 - 3433 - 2323 - 3434»).Знайти усі такі номери.
+         const text1 = "Ваш код: 1234. Ваш номер картки: 4142-3433-2323-3434. Резервна карта 4242 1111 2222 3333."
+
+         function findBankCardsInText(text) {
+            const regex = /\b\d{4}\s*[- ]\s*\d{4}\s*[- ]\s*\d{4}\s*[- ]\s*\d{4}\b/g
+            const matches = text.match(regex)
+            return matches ? matches.map(element =>
+               `${element} - рядок тексту може бути номером банківської картки`
+            ) : 'Текст немістить номер банківської картки'
+         }
+
+         const result11 = findBankCardsInText(text1)
+         console.log(result11)
+
+         try {
+            const answer11 = new CardAnswer(result11, 'Задача 11. Визначити чи може бути рядок тексту номером банківської картки(приклад: «4142 - 3433 - 2323 - 3434»).Знайти усі такі номери.', '.container')
+            answer11.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+
+         // function identifyBankCards(text) {
+         //    const regex = /\b\d{4}\s*[- ]\s*\d{4}\s*[- ]\s*\d{4}\s*[- ]\s*\d{4}\b/
+         //    const matches = regex.test(text)
+
+         //    return matches ? `${text} - рядок тексту може бути номером банківської картки` : `${text} - рядок тексту неможе бути номером банківської картки`
+         // }
+         // const text1_2 = '4142 - 3433 - 2323 - 3434'
+         // const result11_2 = identifyBankCards(text1_2)
+         // console.log(result11_2)
+
+         // try {
+         //    const answer11_2 = new CardAnswer(result11_2, 'Задача 11. Визначити чи може бути рядок тексту номером банківської картки(приклад: «4142 - 3433 - 2323 - 3434»).Знайти усі такі номери.', '.container')
+         //    answer11_2.render()
+         // } catch (error) {
+         //    console.error(error)
+         // }
+
+         // Задача 12. Дано адресу сайту.Визначити, чи є він урядовим(містить домен “gov”)
+         const text2 = 'https://www.kmu.gov.ua'
+
+         function identifyGovSites(text) {
+            const regex = /\.gov\b/
+            const matches = regex.test(text)
+            return matches ? `${text} - Адреса сайту є урядовим` : 'Адреса сайту не є урядовим'
+         }
+         // const text2 = "Ось кілька сайтів: https://www.kmu.gov.ua, https://example.com, https://nasa.gov, https://school.edu, https://tax.gov.ua"
+
+         // function identifyGovSites(text) {
+         //    const urlRegex = /https?:\/\/[^\s,]+/g
+         //    const govRegex = /\.gov\b/
+
+         //    const matches = text.match(urlRegex)
+         //    if (!matches) return ['Адрес не знайдено']
+
+         //    const govSites = matches.filter(url => govRegex.test(url))
+
+         //    return govSites.length
+         //       ? [`Знайдено урядові сайти: ${govSites.join(', ')}`]
+         //       : ['Урядові сайти не знайдено']
+         // }
+
+         const result12 = identifyGovSites(text2)
+         console.log(result12)
+
+         try {
+            const answer12 = new CardAnswer(result12, 'Задача 12. Дано адресу сайту.Визначити, чи є він урядовим(містить домен “gov”)', '.container')
+            answer12.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         //Задача 13. Вибрати усі роки після 2021 року з отриманого повідомлення
+         function selectAllYearsAfter2021(text) {
+            const regex = /\b(202[2-9]|20[3-9]\d|2[1-9]\d\d|[3-9]\d\d\d)\b/g
+            const matches = text.match(regex)
+            return matches ? matches.map(year => `${year} - рік після 2021`) : 'У тексті немає років після 2021'
+         }
+         const text3 = "У 2020 році була подія. Потім у 2022 та 2023 стало краще. Можливо, у 2030 ще краще буде."
+         const result13 = selectAllYearsAfter2021(text3)
+         console.log(result13)
+
+         try {
+            const answer13 = new CardAnswer(result13, 'Задача 13. Вибрати усі роки після 2021 року з отриманого повідомлення', '.container')
+            answer13.render()
+         } catch (error) {
+            console.error(error)
+         }
+         //Задача 14. Дано номер телефону.Перевірити, чи є цей телефон телефоном з України(починаєтсья на «+38»)
+         function checkPhoneFromUkraine(text) {
+            const regex = /\+38[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}/
+            const matches = regex.test(text)
+
+            return matches ? 'цей телефон з України' : 'цей телефон не з України'
+         }
+         const text4 = "+38 067-123-45-67"
+         const result14 = checkPhoneFromUkraine(text4)
+         console.log(result14)
+
+         try {
+            const answer14 = new CardAnswer(result14, 'Задача 14. Дано номер телефону.Перевірити, чи є цей телефон телефоном з України(починаєтсья на «+38»)', '.container')
+            answer14.render()
+         } catch (error) {
+            console.error(error)
+         }
+         //Задача 15. Користувач вводить прізвище та ім’я в одному рядку через пробіл.Замінити пробіл на дефіс.
+         function changeSpaceToHyphen(text) {
+            const regex = /\s+/g
+            const result = text.replace(regex, '-')
+
+            return result
+         }
+         const text5 = "Іван Петров"
+         // const text5 = prompt('Введіть своє прізвище та ім\'я')
+         const result15 = changeSpaceToHyphen(text5)
+         console.log(result15)
+
+         try {
+            const answer15 = new CardAnswer(result15, 'Задача 15. Користувач вводить прізвище та ім’я в одному рядку через пробіл.Замінити пробіл на дефіс.', '.container')
+            answer15.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         //Задача 16. Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день / місяць / рік»
+         function replaceDotWithSlash(text) {
+            const regex = /\./g
+            const result = text.replace(regex, ' / ')
+
+            return result
+         }
+         const text6 = "19.05.2025"
+         // const text6 = prompt('Введіть дату у форматі «день.місяць.рік»')
+         const result16 = replaceDotWithSlash(text6)
+         console.log(result16)
+
+         try {
+            const answer16 = new CardAnswer(result16, 'Задача 16. Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день / місяць / рік»', '.container')
+            answer16.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+         //Задача 17. Користувач вводить день(номер дня(0 - 6) або «sun, mon, tue, wed, thu, fri, sat»).Визначити, чи  є це день вихідним
+         function determineDay(text) {
+            const validRegex = /^(1|2|3|4|5|6|0|sun|mon|tue|wed|thu|fri|sat)$/i
+            const weekendRegex = /^(6|0|sun|sat)$/i
+            let result
+            if (validRegex.test(text)) {
+               if (weekendRegex.test(text)) result = 'це день є вихідним'
+               else result = 'це день не є вихідним'
+            }
+            else result = 'Некоректне значення'
+            return result
+         }
+         const text7 = "sat"
+         // const text7 = prompt("Введіть будь-який номер дня від 0 до 6 чи назву дня (sun,mon,tue,wed,thu,fri,sat)")
+         const result17 = determineDay(text7)
+         console.log(result17)
+
+         try {
+            const answer17 = new CardAnswer(result17, 'Задача 17. Користувач вводить день(номер дня(0 - 6) або «sun, mon, tue, wed, thu, fri, sat»).Визначити, чи  є це день вихідним', '.container')
+            answer17.render()
+         } catch (error) {
+            console.error(error)
+         }
+
+      }
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ДЗ №23 Задача 2</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" type="image/svg" sizes="16x16" href="img/icon.svg">
+
+</head>
+
+<body>
+
+   <h1>Задача 2.</h1>
+   <p>Задача 18. Користувач може змінювати колір фону, що вибирає користувач з використанням
+      <!-- <input type="color">. -->
+      Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін протягом
+      одного сеансу.
+
+   </p>
+   <div style="width: fit-content;margin: 0 auto;">
+      <h2>змінити колір фону</h2>
+      <input type="color" id="colorSelector" />
+   </div>
+   <div style="width: fit-content;margin: 0 auto;">
+      <h2>відображати кількість змін протягом
+      одного сеансу</h2>
+      <div id="changeNumber"></div>
+   </div>
+
+   <script>
+
+      'use strict'
+
+      if (confirm('Почати тестування?')) {
+         function setColor(color) {
+            document.body.style.backgroundColor = color
+            localStorage.setItem('bkgColor', color)
+         }
+         function onSetColor() {
+            let color = this.value
+            setColor(color)
+
+            let clickNumber = parseInt(
+               sessionStorage.getItem('setColorNumber') ?? 0
+            )
+
+            sessionStorage.setItem('setColorNumber', ++clickNumber)
+            document.getElementById('changeNumber').innerText = clickNumber
+         }
+
+         window.onload = function () {
+            document.getElementById('colorSelector').oninput = onSetColor
+            let color = localStorage.getItem('bkgColor')
+            if (color) setColor(color)
+         }
+
+      }
+
+   </script>
+
+</body>
+
+
+</html>
